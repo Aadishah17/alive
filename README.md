@@ -28,6 +28,7 @@ Students build custom hero archetypes, earn experience points (XP) for study ses
 
 - [✨ Core Highlights](#-core-highlights)
 - [🌟 Key Features](#-key-features)
+  - [🔒 Biometric Authentication & Onboarding](#-biometric-authentication--onboarding)
   - [⚔️ RPG Character Classes & Attribute System](#️-rpg-character-classes--attribute-system)
   - [📊 Attendance Safeguard & Safe Bunk Engine](#-attendance-safeguard--safe-bunk-engine)
   - [📜 Quest System & Dynamic Boss Battles](#-quest-system--dynamic-boss-battles)
@@ -53,17 +54,27 @@ Students build custom hero archetypes, earn experience points (XP) for study ses
 ## ✨ Core Highlights
 
 > [!NOTE]
-> **ALIVE** is engineered using pure **SwiftUI**, **SwiftData**, **ActivityKit**, **WidgetKit**, and **WatchConnectivity**. It runs natively without external third-party dependencies.
+> **ALIVE** is engineered using pure **SwiftUI**, **SwiftData**, **ActivityKit**, **WidgetKit**, **WatchConnectivity**, and **LocalAuthentication**. It runs natively without external third-party dependencies.
 
-- 🎭 **4 Playable Character Archetypes** with passive bonuses and base stat distributions.
-- 📐 **Predictive Bunk Calculator** ensuring student attendance stays above required policy thresholds.
-- 🌳 **Visual RPG Skill Canvas** rendering interactive node trees and perk unlocks.
-- 🏝️ **Live Activity & Dynamic Island Integration** displaying study timers on the Lock Screen.
-- 🔄 **Real-Time watchOS Sync** streaming hero metrics directly to Apple Watch.
+- 🔒 **Biometric Security & Onboarding**: FaceID/TouchID protection for hero profiles and custom character creation.
+- 🎭 **4 Playable Character Archetypes**: Class-specific passive bonuses, theme color palettes, and base stat distributions.
+- 📐 **Predictive Bunk Calculator**: Real-time algorithm ensuring student attendance stays above required policy thresholds.
+- 🌳 **Visual RPG Skill Canvas**: Rendered interactive node trees, perk unlocks, and prerequisite validation.
+- 🏝️ **Live Activity & Dynamic Island Integration**: Real-time study timer countdowns streamed to Lock Screen.
+- 🔄 **Real-Time watchOS Sync**: WCSession bridge streaming hero metrics directly to Apple Watch.
 
 ---
 
 ## 🌟 Key Features
+
+### 🔒 Biometric Authentication & Onboarding
+
+Hero profiles are protected with native iOS biometric security ([`AuthService.swift`](ALIVE/Services/AuthService.swift), [`AuthViewModel.swift`](ALIVE/ViewModels/AuthViewModel.swift)):
+
+- 🖐️ **Face ID / Touch ID Verification**: Uses `LocalAuthentication` framework for profile entry.
+- 🧙‍♂️ **Character Creation Wizard** ([`CharacterCreationView.swift`](ALIVE/Views/Auth/CharacterCreationView.swift)): Custom username input, archetype selection, and initial quest/skill tree seeding.
+
+---
 
 ### ⚔️ RPG Character Classes & Attribute System
 
@@ -147,6 +158,7 @@ flowchart TD
         AttendanceView["AttendanceTrackerView\n(Safe Bunk Safeguard)"]
         FocusView["FocusSessionView\n(Deep Work Timer)"]
         SkillTreeView["SkillTreeCanvasView\n(Interactive Node Canvas)"]
+        AuthView["AuthView / CharacterCreationView\n(Biometric Entry & Onboarding)"]
     end
 
     subgraph VM ["ViewModel Layer"]
@@ -154,12 +166,13 @@ flowchart TD
         AttendanceVM["AttendanceViewModel"]
         FocusVM["FocusViewModel"]
         SkillTreeVM["SkillTreeViewModel"]
+        AuthVM["AuthViewModel"]
     end
 
     subgraph Services ["Engine & Service Layer"]
         XPEngine["XPEngine\n(Level Up Logic & Multipliers)"]
         QuestEngine["QuestEngine\n(Quest Generator & Rewards)"]
-        AuthService["AuthService\n(Session & State)"]
+        AuthService["AuthService\n(Biometric & State Coordinator)"]
         WatchManager["WatchConnectivityManager\n(WatchOS Bridge)"]
     end
 
@@ -176,7 +189,9 @@ flowchart TD
     AttendanceView --> AttendanceVM
     FocusView --> FocusVM
     SkillTreeView --> SkillTreeVM
+    AuthView --> AuthVM
 
+    AuthVM --> AuthService
     ProfileVM --> XPEngine
     AttendanceVM --> Course
     FocusVM --> XPEngine
@@ -211,18 +226,19 @@ major/
     │   ├── Achievement.swift               # Badge vault entries & rarity tiers
     │   └── XPTransaction.swift             # Transaction log of experience gains
     ├── Services/                           # Core Business Engines
+    │   ├── AuthService.swift               # Biometric authentication & user session state
     │   ├── XPEngine.swift                  # Level-up thresholds & multiplier formulas
     │   ├── QuestEngine.swift               # Quest seed generation & completion handler
     │   ├── MockDataGenerator.swift         # Demo data initializer for fresh installations
-    │   ├── HapticManager.swift             # iOS haptic engine feedback generator
-    │   └── AuthService.swift               # User state & authentication coordinator
+    │   └── HapticManager.swift             # iOS haptic engine feedback generator
     ├── ViewModels/                         # SwiftUI State Management Layer
     │   ├── ProfileViewModel.swift          # Hero HUD state & stat point distribution
     │   ├── AttendanceViewModel.swift       # Course list state & safe bunk calculations
     │   ├── FocusViewModel.swift            # Timer countdown logic & Live Activity state
     │   ├── QuestViewModel.swift            # Quest filtering & completion handlers
     │   ├── SkillTreeViewModel.swift        # Skill canvas unlock logic & node trees
-    │   └── AnalyticsViewModel.swift        # Historical study performance aggregations
+    │   ├── AnalyticsViewModel.swift        # Historical study performance aggregations
+    │   └── AuthViewModel.swift             # Character creation wizard & authentication state
     ├── Views/                              # UI Presentation Layer
     │   ├── Dashboard/                      # Character HUD, Level Up Modals, XP bar
     │   ├── Academics/                      # Course attendance cards & bunk status
@@ -385,3 +401,4 @@ Contributions are welcome! Please follow these guidelines:
 ## 📄 License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
