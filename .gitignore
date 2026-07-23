@@ -1,0 +1,95 @@
+# ==============================================================================
+# Xcode / Swift / iOS / watchOS
+# ==============================================================================
+
+# Xcode User Data & User-specific files
+*.xcuserdata
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+xcuserdata/
+
+# Build artifacts & Derived Data
+build/
+DerivedData/
+*.build
+*.xccheckout
+*.moved-aside
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+Packages/
+.swiftpm/
+
+# CocoaPods & Carthage (if applicable)
+Pods/
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# Code Signing & Certificates (Secrets)
+*.mobileprovision
+*.cer
+*.p12
+*.pfx
+*.keystore
+
+# ==============================================================================
+# Graphify & Tool Artifacts
+# ==============================================================================
+
+graphify-out/
+
+# ==============================================================================
+# Python & Virtual Environments
+# ==============================================================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+.uv/
+
+# ==============================================================================
+# OS & Editor Specific
+# ==============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
