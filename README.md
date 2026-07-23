@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="app_icon.jpg" width="160" height="160" style="border-radius: 20%;" alt="ALIVE App Icon"/><br/><br/>
+
 # 🛡️ ALIVE ⚡
 
 ### *Gamified Academic & Life Management System for iOS & watchOS*
