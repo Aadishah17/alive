@@ -22,7 +22,7 @@ public struct CharacterCreationView: View {
                         
                         Text("Choose your student class archetype to unlock tailored passive buffs.")
                             .font(.subheadline)
-                            .foregroundColor(.gray)
+                            .foregroundColor(ALIVEColor.textSecondary)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal)
                     }
@@ -37,12 +37,12 @@ public struct CharacterCreationView: View {
                         
                         TextField("Enter your name...", text: $viewModel.usernameInput)
                             .padding()
-                            .background(ALIVEColor.glassSurface)
+                            .background(ALIVEColor.cardBackground)
                             .cornerRadius(12)
-                            .foregroundColor(.white)
+                            .foregroundColor(ALIVEColor.textPrimary)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 12)
-                                    .stroke(ALIVEColor.neonCyan.opacity(0.4), lineWidth: 1)
+                                    .stroke(ALIVEColor.neonCyan.opacity(0.3), lineWidth: 1)
                             )
                     }
                     .padding(.horizontal)
@@ -85,9 +85,9 @@ public struct CharacterCreationView: View {
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(ALIVEColor.goldGradient)
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .cornerRadius(14)
-                        .shadow(color: ALIVEColor.rpgGold.opacity(0.4), radius: 10, x: 0, y: 4)
+                        .shadow(color: ALIVEColor.rpgGold.opacity(0.3), radius: 8, x: 0, y: 3)
                     }
                     .padding(.horizontal)
                     .padding(.bottom, 40)
@@ -107,7 +107,7 @@ struct ClassCardView: View {
             HStack(spacing: 16) {
                 ZStack {
                     Circle()
-                        .fill(archetype.themeColor.opacity(0.2))
+                        .fill(archetype.themeColor.opacity(0.15))
                         .frame(width: 54, height: 54)
                     
                     Image(systemName: archetype.iconName)
@@ -119,7 +119,7 @@ struct ClassCardView: View {
                     HStack {
                         Text(archetype.rawValue)
                             .font(.headline)
-                            .foregroundColor(.white)
+                            .foregroundColor(ALIVEColor.textPrimary)
                         Spacer()
                         if isSelected {
                             Image(systemName: "checkmark.circle.fill")
@@ -129,7 +129,7 @@ struct ClassCardView: View {
                     
                     Text(archetype.description)
                         .font(.caption)
-                        .foregroundColor(.gray)
+                        .foregroundColor(ALIVEColor.textSecondary)
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
                     
@@ -145,7 +145,7 @@ struct ClassCardView: View {
             }
             .glassCard(
                 cornerRadius: 16,
-                borderColor: isSelected ? archetype.themeColor : ALIVEColor.neonCyan.opacity(0.15)
+                borderColor: isSelected ? archetype.themeColor : Color(red: 0.90, green: 0.92, blue: 0.95)
             )
         }
         .buttonStyle(.plain)
@@ -164,11 +164,11 @@ struct StatMiniBadge: View {
                 .foregroundColor(color)
             Text("\(value)")
                 .font(.system(size: 10, weight: .heavy))
-                .foregroundColor(.white)
+                .foregroundColor(ALIVEColor.textPrimary)
         }
         .padding(.horizontal, 6)
         .padding(.vertical, 2)
-        .background(color.opacity(0.15))
+        .background(color.opacity(0.1))
         .cornerRadius(6)
     }
 }

@@ -30,7 +30,7 @@ public struct QuestListView: View {
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 8)
                                 .background(viewModel.selectedFilter == cat ? ALIVEColor.neonCyan : ALIVEColor.glassSurface)
-                                .foregroundColor(viewModel.selectedFilter == cat ? .black : .white)
+                                .foregroundColor(viewModel.selectedFilter == cat ? .white : ALIVEColor.textSecondary)
                                 .cornerRadius(10)
                         }
                     }
@@ -43,10 +43,10 @@ public struct QuestListView: View {
                             VStack(spacing: 12) {
                                 Image(systemName: "scroll.fill")
                                     .font(.system(size: 48))
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(ALIVEColor.textMuted)
                                 Text("No quests available in this category.")
                                     .font(.subheadline)
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(ALIVEColor.textSecondary)
                             }
                             .padding(.top, 50)
                         } else {
