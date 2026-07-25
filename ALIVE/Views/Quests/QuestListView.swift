@@ -20,7 +20,7 @@ public struct QuestListView: View {
             VStack(spacing: 16) {
                 // Category Filter Segment Picker
                 HStack(spacing: 8) {
-                    ForEach(QuestCategory.allCases, id: \.self) { cat in
+                    ForEach(QuestCategory.allCases) { cat in
                         Button {
                             viewModel.selectedFilter = cat
                             HapticManager.shared.triggerImpact(style: .light)
@@ -62,6 +62,8 @@ public struct QuestListView: View {
             }
         }
         .navigationTitle("QUEST BOARD")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }

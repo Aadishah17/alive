@@ -149,6 +149,7 @@ public struct DashboardView: View {
                 .padding()
             }
         }
+        #if os(iOS)
         .fullScreenCover(isPresented: $showLevelUpModal) {
             if let profile = userProfile {
                 LevelUpModalView(profile: profile) {
@@ -156,6 +157,15 @@ public struct DashboardView: View {
                 }
             }
         }
+        #else
+        .sheet(isPresented: $showLevelUpModal) {
+            if let profile = userProfile {
+                LevelUpModalView(profile: profile) {
+                    showLevelUpModal = false
+                }
+            }
+        }
+        #endif
     }
 }
 

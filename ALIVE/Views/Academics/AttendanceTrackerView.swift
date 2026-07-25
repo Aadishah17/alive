@@ -65,7 +65,9 @@ public struct AttendanceTrackerView: View {
             AddCourseSheetView(viewModel: viewModel)
         }
         .navigationTitle("ATTENDANCE ENGINE")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 

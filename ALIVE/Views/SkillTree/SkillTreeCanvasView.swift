@@ -62,7 +62,9 @@ public struct SkillTreeCanvasView: View {
             }
         }
         .navigationTitle("SKILL TREE")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 

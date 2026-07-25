@@ -119,7 +119,9 @@ public struct FocusSessionView: View {
             .padding()
         }
         .navigationTitle("FOCUS TIMER")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
     
     private func formattedTime(seconds: Int) -> String {

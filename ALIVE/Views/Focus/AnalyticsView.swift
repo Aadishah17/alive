@@ -84,7 +84,9 @@ public struct AnalyticsView: View {
             }
         }
         .navigationTitle("INSIGHTS")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 

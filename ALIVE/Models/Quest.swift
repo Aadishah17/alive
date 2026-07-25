@@ -1,11 +1,13 @@
 import Foundation
 import SwiftData
 
-public enum QuestCategory: String, Codable, CaseIterable {
+public enum QuestCategory: String, Codable, CaseIterable, Identifiable {
     case daily = "Daily Quest"
     case weekly = "Weekly Boss"
     case mainQuest = "Main Story"
     case epicGoal = "Epic Goal"
+    
+    public var id: String { rawValue }
 }
 
 public enum QuestDifficulty: String, Codable, CaseIterable {

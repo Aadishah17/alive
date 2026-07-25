@@ -34,7 +34,9 @@ public struct BadgeVaultView: View {
             }
         }
         .navigationTitle("BADGES")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 
