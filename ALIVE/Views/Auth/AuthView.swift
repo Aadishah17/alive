@@ -61,16 +61,16 @@ public struct AuthView: View {
                         .glassCard()
                         
                         Button {
-                            authService.authenticateWithBiometrics { success in
+                            authService.authenticateWithDeviceOwnerAuthentication { success in
                                 if success {
                                     authService.loginMockUser(profile: profile)
                                 }
                             }
                         } label: {
                             HStack {
-                                Image(systemName: "faceid")
+                                Image(systemName: "lock.open.fill")
                                     .font(.title2)
-                                Text("BIOMETRIC LOGIN")
+                                Text("UNLOCK ALIVE")
                                     .fontWeight(.bold)
                             }
                             .frame(maxWidth: .infinity)
@@ -78,6 +78,13 @@ public struct AuthView: View {
                             .background(ALIVEColor.neonCyan)
                             .foregroundColor(.black)
                             .cornerRadius(14)
+                        }
+
+                        if let error = authService.authErrorMessage {
+                            Text(error)
+                                .font(.footnote)
+                                .foregroundColor(ALIVEColor.healthRed)
+                                .multilineTextAlignment(.center)
                         }
                     }
                     .padding(.horizontal)

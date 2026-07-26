@@ -70,13 +70,30 @@ public struct FocusSessionView: View {
                 
                 // Controls
                 HStack(spacing: 20) {
-                    if !viewModel.isRunning {
+                    if viewModel.isReadyToClaimXP {
+                        if let profile = profiles.first {
+                            Button {
+                                viewModel.saveCompletedSession(profile: profile, context: modelContext)
+                            } label: {
+                                HStack {
+                                    Image(systemName: "sparkles")
+                                    Text("CLAIM XP")
+                                        .fontWeight(.bold)
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(ALIVEColor.goldGradient)
+                                .foregroundColor(.black)
+                                .cornerRadius(14)
+                            }
+                        }
+                    } else if !viewModel.isRunning {
                         Button {
                             viewModel.startSession()
                         } label: {
                             HStack {
-                                Image(systemName: "play.fill")
-                                Text("ENGAGE FOCUS")
+                                Image(systemName: viewModel.isPaused ? "play.fill" : "bolt.fill")
+                                Text(viewModel.isPaused ? "RESUME FOCUS" : "ENGAGE FOCUS")
                                     .fontWeight(.bold)
                             }
                             .frame(maxWidth: .infinity)
@@ -97,24 +114,16 @@ public struct FocusSessionView: View {
                                 .foregroundColor(.white)
                                 .cornerRadius(14)
                         }
-                        
-                        if let profile = profiles.first {
-                            Button {
-                                viewModel.saveCompletedSession(profile: profile, context: modelContext)
-                                viewModel.resetSession()
-                            } label: {
-                                Text("CLAIM XP")
-                                    .fontWeight(.bold)
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(ALIVEColor.goldGradient)
-                                    .foregroundColor(.black)
-                                    .cornerRadius(14)
-                            }
-                        }
                     }
                 }
                 .padding(.horizontal)
+
+                if let error = viewModel.saveErrorMessage {
+                    Text(error)
+                        .font(.footnote)
+                        .foregroundColor(ALIVEColor.healthRed)
+                        .multilineTextAlignment(.center)
+                }
             }
             .padding()
         }

@@ -9,29 +9,32 @@ public final class AuthService: ObservableObject {
     
     public init() {}
     
-    public func authenticateWithBiometrics(completion: @escaping (Bool) -> Void) {
+    public func authenticateWithDeviceOwnerAuthentication(completion: @escaping (Bool) -> Void) {
         let context = LAContext()
         var error: NSError?
-        
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Authenticate to access your ALIVE RPG Character Profile."
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
-                DispatchQueue.main.async {
-                    if success {
-                        self.isAuthenticated = true
-                        self.authErrorMessage = nil
-                        completion(true)
-                    } else {
-                        self.authErrorMessage = authenticationError?.localizedDescription ?? "Authentication Failed"
-                        completion(false)
-                    }
-                }
-            }
-        } else {
-            // Fallback for Simulator or devices without biometrics
+        let policy: LAPolicy = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+            ? .deviceOwnerAuthenticationWithBiometrics
+            : .deviceOwnerAuthentication
+
+        guard context.canEvaluatePolicy(policy, error: &error) else {
             DispatchQueue.main.async {
-                self.isAuthenticated = true
-                completion(true)
+                self.authErrorMessage = error?.localizedDescription ?? "Device authentication is unavailable."
+                completion(false)
+            }
+            return
+        }
+
+        let reason = "Authenticate to access your ALIVE RPG Character Profile."
+        context.evaluatePolicy(policy, localizedReason: reason) { success, authenticationError in
+            DispatchQueue.main.async {
+                if success {
+                    self.isAuthenticated = true
+                    self.authErrorMessage = nil
+                    completion(true)
+                } else {
+                    self.authErrorMessage = authenticationError?.localizedDescription ?? "Authentication failed."
+                    completion(false)
+                }
             }
         }
     }

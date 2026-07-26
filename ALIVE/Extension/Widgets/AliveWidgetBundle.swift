@@ -1,5 +1,6 @@
 import WidgetKit
 import SwiftUI
+import ActivityKit
 
 public struct AliveWidgetEntry: TimelineEntry {
     public let date: Date
@@ -101,6 +102,7 @@ public struct AliveWidgetEntryView: View {
 struct AliveWidgetBundle: WidgetBundle {
     var body: some Widget {
         AliveHeroWidget()
+        FocusLiveActivityWidget()
     }
 }
 
@@ -114,5 +116,77 @@ struct AliveHeroWidget: Widget {
         .configurationDisplayName("ALIVE Hero Status")
         .description("View your RPG student level, active quests, and safe bunks on your Home Screen.")
         .supportedFamilies([.systemSmall, .systemMedium])
+    }
+}
+
+struct FocusLiveActivityWidget: Widget {
+    var body: some WidgetConfiguration {
+        ActivityConfiguration(for: FocusLiveActivityAttributes.self) { context in
+            HStack(spacing: 12) {
+                Image(systemName: context.state.isPaused ? "pause.circle.fill" : "timer.circle.fill")
+                    .foregroundColor(ALIVEColor.neonCyan)
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(context.attributes.courseName)
+                        .font(.caption)
+                        .lineLimit(1)
+                    FocusTimerText(state: context.state)
+                        .font(.headline.monospacedDigit())
+                }
+
+                Spacer()
+
+                Text("\(context.state.focusScore)%")
+                    .font(.caption2.bold())
+                    .foregroundColor(ALIVEColor.rpgGold)
+            }
+            .padding(.horizontal)
+            .activityBackgroundTint(ALIVEColor.backgroundDark)
+            .activitySystemActionForegroundColor(ALIVEColor.neonCyan)
+        } dynamicIsland: { context in
+            DynamicIsland {
+                DynamicIslandExpandedRegion(.leading) {
+                    Label(context.attributes.courseName, systemImage: "timer")
+                        .lineLimit(1)
+                }
+
+                DynamicIslandExpandedRegion(.trailing) {
+                    FocusTimerText(state: context.state)
+                        .font(.headline.monospacedDigit())
+                }
+
+                DynamicIslandExpandedRegion(.bottom) {
+                    ProgressView(
+                        value: Double(max(0, context.state.timeRemainingSeconds)),
+                        total: Double(max(1, context.attributes.totalDurationMinutes * 60))
+                    )
+                    .tint(ALIVEColor.neonCyan)
+                }
+            } compactLeading: {
+                Image(systemName: context.state.isPaused ? "pause.fill" : "timer")
+            } compactTrailing: {
+                FocusTimerText(state: context.state)
+                    .font(.caption2.monospacedDigit())
+            } minimal: {
+                Image(systemName: context.state.isPaused ? "pause.fill" : "timer")
+            }
+            .keylineTint(ALIVEColor.neonCyan)
+        }
+    }
+}
+
+private struct FocusTimerText: View {
+    let state: FocusLiveActivityAttributes.ContentState
+
+    var body: some View {
+        if let endDate = state.endDate, !state.isPaused {
+            Text(timerInterval: Date()...endDate, countsDown: true)
+        } else {
+            Text(formattedTime)
+        }
+    }
+
+    private var formattedTime: String {
+        String(format: "%02d:%02d", state.timeRemainingSeconds / 60, state.timeRemainingSeconds % 60)
     }
 }

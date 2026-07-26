@@ -9,6 +9,7 @@ public struct DashboardView: View {
     @Query private var sessions: [StudySession]
     
     @StateObject private var profileViewModel = ProfileViewModel()
+    @StateObject private var healthKitManager = HealthKitManager()
     @State private var showLevelUpModal: Bool = false
     
     public init() {}
@@ -35,6 +36,12 @@ public struct DashboardView: View {
                         // Character HUD Header
                         CharacterHUDHeader(profile: profile) {
                             showLevelUpModal = true
+                        }
+
+                        HealthProgressCard(manager: healthKitManager) {
+                            Task {
+                                await healthKitManager.requestStepAccess()
+                            }
                         }
                         
                         // Academic Danger Banner (if any course below threshold)
@@ -156,6 +163,80 @@ public struct DashboardView: View {
                 }
             }
         }
+        .task {
+            if healthKitManager.hasRequestedStepAccess {
+                await healthKitManager.refreshTodayStepCount()
+            }
+        }
+    }
+}
+
+struct HealthProgressCard: View {
+    @ObservedObject var manager: HealthKitManager
+    let onConnect: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Label("STAMINA QUEST", systemImage: "figure.walk")
+                    .font(.system(size: 12, weight: .bold, design: .monospaced))
+                    .foregroundColor(ALIVEColor.staminaGreen)
+                Spacer()
+                if manager.hasRequestedStepAccess {
+                    Button {
+                        Task { await manager.refreshTodayStepCount() }
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
+                    }
+                    .disabled(manager.isLoading)
+                    .accessibilityLabel("Refresh step count")
+                }
+            }
+
+            if !manager.isAvailable {
+                Text("Apple Health is unavailable on this device.")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+            } else if manager.hasRequestedStepAccess {
+                HStack(alignment: .firstTextBaseline) {
+                    Text("\(manager.todayStepCount.formatted())")
+                        .font(.title2.bold())
+                        .foregroundColor(.white)
+                    Text("/ \(manager.dailyStepGoal.formatted()) steps")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    Spacer()
+                    Text(manager.stepProgress >= 1 ? "QUEST READY" : "KEEP MOVING")
+                        .font(.caption2.bold())
+                        .foregroundColor(manager.stepProgress >= 1 ? ALIVEColor.rpgGold : ALIVEColor.neonCyan)
+                }
+
+                ProgressView(value: manager.stepProgress)
+                    .tint(ALIVEColor.staminaGreen)
+            } else {
+                Text("Connect Apple Health to track your walking quest. ALIVE reads only today’s step count.")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+
+                Button("CONNECT APPLE HEALTH", action: onConnect)
+                    .font(.caption.bold())
+                    .foregroundColor(ALIVEColor.staminaGreen)
+                    .disabled(manager.isLoading)
+            }
+
+            if manager.isLoading {
+                ProgressView()
+                    .controlSize(.small)
+                    .tint(ALIVEColor.neonCyan)
+            }
+
+            if let error = manager.errorMessage {
+                Text(error)
+                    .font(.caption2)
+                    .foregroundColor(ALIVEColor.healthRed)
+            }
+        }
+        .glassCard(borderColor: ALIVEColor.staminaGreen.opacity(0.35))
     }
 }
 

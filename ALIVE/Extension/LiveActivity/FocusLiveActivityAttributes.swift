@@ -7,11 +7,18 @@ public struct FocusLiveActivityAttributes: ActivityAttributes {
         public var timeRemainingSeconds: Int
         public var focusScore: Int
         public var isPaused: Bool
+        public var endDate: Date?
         
-        public init(timeRemainingSeconds: Int, focusScore: Int = 100, isPaused: Bool = false) {
+        public init(
+            timeRemainingSeconds: Int,
+            focusScore: Int = 100,
+            isPaused: Bool = false,
+            endDate: Date? = nil
+        ) {
             self.timeRemainingSeconds = timeRemainingSeconds
             self.focusScore = focusScore
             self.isPaused = isPaused
+            self.endDate = endDate
         }
     }
     
