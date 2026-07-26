@@ -1,0 +1,481 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0067F6D258C911A4AD9D713F /* GlassCardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686818BEE3DB94C3909D17EE /* GlassCardStyle.swift */; };
+		0F1206F1A18CA75D41DC6562 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CEFEE747EA59CAD7D32449 /* DashboardView.swift */; };
+		1140AE1FF54AF00F9D13D8C2 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0067181515199EA53DEC53C7 /* HapticManager.swift */; };
+		14060363DF6F2534B9BDB86E /* QuestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7A066D2B4F7F9E60857699 /* QuestListView.swift */; };
+		1D0988E207D30858415759B0 /* LevelUpModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E12DDDEC68311660FF0576 /* LevelUpModalView.swift */; };
+		1F5996B88525285DAB88333F /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8D969CFB32DAA73BFA33DF /* MainTabView.swift */; };
+		23664F53250C8C64AB87961C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D22362E80C55CF1977A39D6 /* AuthService.swift */; };
+		2B9690EF19A9E8CCA846AD8A /* ALIVEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3644598D416F80F355D0C731 /* ALIVEApp.swift */; };
+		354B91DD2E3D383C9C86042F /* XPTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F4AB2B4B0097064AC82A13 /* XPTransaction.swift */; };
+		355A87D004949A7386273186 /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C16A290875039A7B2CB9F4 /* AnalyticsViewModel.swift */; };
+		381061563AB55C3A104244B9 /* CharacterCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7208B4354DF460D388701C2C /* CharacterCreationView.swift */; };
+		3C488242B8BBC84C0B58144D /* MockDataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5984F250D1F80B2A1B0589A /* MockDataGenerator.swift */; };
+		3FD8A673A081892FB74EF675 /* SkillNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61A46F5BC9A6080793A1F1F /* SkillNode.swift */; };
+		44411DD0F5B8089D902E1190 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92825F897A59D34E69F8CE39 /* Course.swift */; };
+		4496BF9F289E515E5CBE6841 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8077452167553738EB305799 /* Quest.swift */; };
+		52926DBF5CC3E3BF3E553C60 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A94AF391EC8CEFC63C50413 /* AnalyticsView.swift */; };
+		5CF305896B568BB0737BFDE3 /* QuestEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD49CEB18458E79F577EFF48 /* QuestEngine.swift */; };
+		63089316937413FE1EF9E610 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7A69709884841855E7EA9F /* Foundation.framework */; };
+		66269F62C18CA17C2F1D693D /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F66ADAE00EC528499AC4358 /* AuthView.swift */; };
+		6F3A04C326BECC8F05E0EDC5 /* CharacterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE827A4032015AF26036455 /* CharacterClass.swift */; };
+		708A3B44A8DD53569111ABB2 /* SkillTreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60111C1EC741355779B9BC6F /* SkillTreeViewModel.swift */; };
+		736CEFF35723E9D97E436666 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCF48F7B9991A8B6CF3AD38 /* UserProfile.swift */; };
+		77D573EAD563AC7F67D97A82 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05A5DB7A9CDE697FBBD609 /* Achievement.swift */; };
+		7A0675BF30369C003514BBF6 /* AttendanceTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304E3812E3FBBB20F8A333BB /* AttendanceTrackerView.swift */; };
+		7BCC2896ECBA6DA4E9EB0CE5 /* FocusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BEDDDF0E0C2515983F4D7B /* FocusViewModel.swift */; };
+		8693A58DF603D2AF61426612 /* SkillTreeCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B2F8D84E566C25D421262 /* SkillTreeCanvasView.swift */; };
+		8FAB4DFF4DD928144AC92456 /* AttendanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED33D7144257EE2169B5AAE /* AttendanceViewModel.swift */; };
+		9FE231C1F54593C1A4930C92 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E4978054BDF00BA18C75FB /* ProfileViewModel.swift */; };
+		A3D73D3B0460A57F971766C6 /* SkillNodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEDA8AFAC495C7454A3DCEA /* SkillNodeDetailView.swift */; };
+		AC2713CFE02047E0766749BA /* ParticleEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9B0286049F0DD49B2CCBDF /* ParticleEffectView.swift */; };
+		AE5DC8003E00AFFFCFFA33AD /* QuestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4912CE691BAD40E1838E37 /* QuestViewModel.swift */; };
+		B29166B27F671D90ED34D20F /* XPEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E8BD17E358C2225BAF577A /* XPEngine.swift */; };
+		B2F1F8012E9CCAFE3692C156 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150F33492F43DC8B024AF5E8 /* ColorPalette.swift */; };
+		B9C930A2A2605A1A54BE889E /* CharacterHUDHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C016CA1D61F6D5679EB9BE4 /* CharacterHUDHeader.swift */; };
+		BDE04E8270A22A971C8E7120 /* StudySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D31B0C2B0F2763E82A215F8 /* StudySession.swift */; };
+		D0BC9E106B8C7049F600D258 /* BadgeVaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E1EE7D253161EF0E0E1D7D /* BadgeVaultView.swift */; };
+		DDABF36A9FB3B648F3BBAFFB /* QuestCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F06E08C3552210705E6144 /* QuestCardView.swift */; };
+		DE11554EE2B5FEBB65D5A982 /* FocusSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D1F962C0EDD048396BA18F /* FocusSessionView.swift */; };
+		FBB7B99937C48EB330E0757E /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AFB8824A643695B8D790B /* AuthViewModel.swift */; };
+		FCCE098894D013A0009D8A45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE88BD98EB1E02104CC6F435 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0067181515199EA53DEC53C7 /* HapticManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HapticManager.swift; path = ALIVE/Services/HapticManager.swift; sourceTree = "<group>"; };
+		01C16A290875039A7B2CB9F4 /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnalyticsViewModel.swift; path = ALIVE/ViewModels/AnalyticsViewModel.swift; sourceTree = "<group>"; };
+		0D22362E80C55CF1977A39D6 /* AuthService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = ALIVE/Services/AuthService.swift; sourceTree = "<group>"; };
+		0F6AFB8824A643695B8D790B /* AuthViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthViewModel.swift; path = ALIVE/ViewModels/AuthViewModel.swift; sourceTree = "<group>"; };
+		115D6658050DBF9D9D28FFFC /* ALIVE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ALIVE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12E4978054BDF00BA18C75FB /* ProfileViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProfileViewModel.swift; path = ALIVE/ViewModels/ProfileViewModel.swift; sourceTree = "<group>"; };
+		150F33492F43DC8B024AF5E8 /* ColorPalette.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = ALIVE/Theme/ColorPalette.swift; sourceTree = "<group>"; };
+		1A7A69709884841855E7EA9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		1C4912CE691BAD40E1838E37 /* QuestViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestViewModel.swift; path = ALIVE/ViewModels/QuestViewModel.swift; sourceTree = "<group>"; };
+		1F66ADAE00EC528499AC4358 /* AuthView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthView.swift; path = ALIVE/Views/Auth/AuthView.swift; sourceTree = "<group>"; };
+		1F9B2F8D84E566C25D421262 /* SkillTreeCanvasView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkillTreeCanvasView.swift; path = ALIVE/Views/SkillTree/SkillTreeCanvasView.swift; sourceTree = "<group>"; };
+		2D31B0C2B0F2763E82A215F8 /* StudySession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StudySession.swift; path = ALIVE/Models/StudySession.swift; sourceTree = "<group>"; };
+		304E3812E3FBBB20F8A333BB /* AttendanceTrackerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AttendanceTrackerView.swift; path = ALIVE/Views/Academics/AttendanceTrackerView.swift; sourceTree = "<group>"; };
+		30E12DDDEC68311660FF0576 /* LevelUpModalView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LevelUpModalView.swift; path = ALIVE/Views/Dashboard/LevelUpModalView.swift; sourceTree = "<group>"; };
+		33E8BD17E358C2225BAF577A /* XPEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XPEngine.swift; path = ALIVE/Services/XPEngine.swift; sourceTree = "<group>"; };
+		3644598D416F80F355D0C731 /* ALIVEApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVEApp.swift; path = ALIVE/App/ALIVEApp.swift; sourceTree = "<group>"; };
+		3C016CA1D61F6D5679EB9BE4 /* CharacterHUDHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CharacterHUDHeader.swift; path = ALIVE/Views/Dashboard/CharacterHUDHeader.swift; sourceTree = "<group>"; };
+		4A05A5DB7A9CDE697FBBD609 /* Achievement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Achievement.swift; path = ALIVE/Models/Achievement.swift; sourceTree = "<group>"; };
+		4D9B0286049F0DD49B2CCBDF /* ParticleEffectView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParticleEffectView.swift; path = ALIVE/Theme/ParticleEffectView.swift; sourceTree = "<group>"; };
+		5EEDA8AFAC495C7454A3DCEA /* SkillNodeDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkillNodeDetailView.swift; path = ALIVE/Views/SkillTree/SkillNodeDetailView.swift; sourceTree = "<group>"; };
+		5F7A066D2B4F7F9E60857699 /* QuestListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestListView.swift; path = ALIVE/Views/Quests/QuestListView.swift; sourceTree = "<group>"; };
+		5FE827A4032015AF26036455 /* CharacterClass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CharacterClass.swift; path = ALIVE/Models/CharacterClass.swift; sourceTree = "<group>"; };
+		60111C1EC741355779B9BC6F /* SkillTreeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkillTreeViewModel.swift; path = ALIVE/ViewModels/SkillTreeViewModel.swift; sourceTree = "<group>"; };
+		686818BEE3DB94C3909D17EE /* GlassCardStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassCardStyle.swift; path = ALIVE/Theme/GlassCardStyle.swift; sourceTree = "<group>"; };
+		68D1F962C0EDD048396BA18F /* FocusSessionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusSessionView.swift; path = ALIVE/Views/Focus/FocusSessionView.swift; sourceTree = "<group>"; };
+		71BEDDDF0E0C2515983F4D7B /* FocusViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusViewModel.swift; path = ALIVE/ViewModels/FocusViewModel.swift; sourceTree = "<group>"; };
+		7208B4354DF460D388701C2C /* CharacterCreationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CharacterCreationView.swift; path = ALIVE/Views/Auth/CharacterCreationView.swift; sourceTree = "<group>"; };
+		7D8D969CFB32DAA73BFA33DF /* MainTabView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MainTabView.swift; path = ALIVE/Views/MainTabView.swift; sourceTree = "<group>"; };
+		8077452167553738EB305799 /* Quest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Quest.swift; path = ALIVE/Models/Quest.swift; sourceTree = "<group>"; };
+		82E1EE7D253161EF0E0E1D7D /* BadgeVaultView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BadgeVaultView.swift; path = ALIVE/Views/Achievements/BadgeVaultView.swift; sourceTree = "<group>"; };
+		92825F897A59D34E69F8CE39 /* Course.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Course.swift; path = ALIVE/Models/Course.swift; sourceTree = "<group>"; };
+		93CEFEE747EA59CAD7D32449 /* DashboardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DashboardView.swift; path = ALIVE/Views/Dashboard/DashboardView.swift; sourceTree = "<group>"; };
+		9A94AF391EC8CEFC63C50413 /* AnalyticsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnalyticsView.swift; path = ALIVE/Views/Focus/AnalyticsView.swift; sourceTree = "<group>"; };
+		A61A46F5BC9A6080793A1F1F /* SkillNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkillNode.swift; path = ALIVE/Models/SkillNode.swift; sourceTree = "<group>"; };
+		ABCF48F7B9991A8B6CF3AD38 /* UserProfile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserProfile.swift; path = ALIVE/Models/UserProfile.swift; sourceTree = "<group>"; };
+		BE88BD98EB1E02104CC6F435 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ALIVE/Assets.xcassets; sourceTree = "<group>"; };
+		C5F4AB2B4B0097064AC82A13 /* XPTransaction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XPTransaction.swift; path = ALIVE/Models/XPTransaction.swift; sourceTree = "<group>"; };
+		D5984F250D1F80B2A1B0589A /* MockDataGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MockDataGenerator.swift; path = ALIVE/Services/MockDataGenerator.swift; sourceTree = "<group>"; };
+		E2F06E08C3552210705E6144 /* QuestCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestCardView.swift; path = ALIVE/Views/Quests/QuestCardView.swift; sourceTree = "<group>"; };
+		FD49CEB18458E79F577EFF48 /* QuestEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestEngine.swift; path = ALIVE/Services/QuestEngine.swift; sourceTree = "<group>"; };
+		FED33D7144257EE2169B5AAE /* AttendanceViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AttendanceViewModel.swift; path = ALIVE/ViewModels/AttendanceViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F7F984ECDFE839D9F0EF0BD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63089316937413FE1EF9E610 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5937C805C71D69B6EE8947DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF155CD60FF527C8D657F4D2 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8DF6D186668CA0E2BC75E32C = {
+			isa = PBXGroup;
+			children = (
+				BA6236CA5CD3E7CA68C5226B /* Products */,
+				5937C805C71D69B6EE8947DB /* Frameworks */,
+				71BEDDDF0E0C2515983F4D7B /* FocusViewModel.swift */,
+				60111C1EC741355779B9BC6F /* SkillTreeViewModel.swift */,
+				0F6AFB8824A643695B8D790B /* AuthViewModel.swift */,
+				1C4912CE691BAD40E1838E37 /* QuestViewModel.swift */,
+				12E4978054BDF00BA18C75FB /* ProfileViewModel.swift */,
+				FED33D7144257EE2169B5AAE /* AttendanceViewModel.swift */,
+				01C16A290875039A7B2CB9F4 /* AnalyticsViewModel.swift */,
+				3644598D416F80F355D0C731 /* ALIVEApp.swift */,
+				5FE827A4032015AF26036455 /* CharacterClass.swift */,
+				8077452167553738EB305799 /* Quest.swift */,
+				A61A46F5BC9A6080793A1F1F /* SkillNode.swift */,
+				ABCF48F7B9991A8B6CF3AD38 /* UserProfile.swift */,
+				92825F897A59D34E69F8CE39 /* Course.swift */,
+				4A05A5DB7A9CDE697FBBD609 /* Achievement.swift */,
+				2D31B0C2B0F2763E82A215F8 /* StudySession.swift */,
+				C5F4AB2B4B0097064AC82A13 /* XPTransaction.swift */,
+				4D9B0286049F0DD49B2CCBDF /* ParticleEffectView.swift */,
+				150F33492F43DC8B024AF5E8 /* ColorPalette.swift */,
+				686818BEE3DB94C3909D17EE /* GlassCardStyle.swift */,
+				E2F06E08C3552210705E6144 /* QuestCardView.swift */,
+				5F7A066D2B4F7F9E60857699 /* QuestListView.swift */,
+				7D8D969CFB32DAA73BFA33DF /* MainTabView.swift */,
+				304E3812E3FBBB20F8A333BB /* AttendanceTrackerView.swift */,
+				82E1EE7D253161EF0E0E1D7D /* BadgeVaultView.swift */,
+				5EEDA8AFAC495C7454A3DCEA /* SkillNodeDetailView.swift */,
+				1F9B2F8D84E566C25D421262 /* SkillTreeCanvasView.swift */,
+				7208B4354DF460D388701C2C /* CharacterCreationView.swift */,
+				1F66ADAE00EC528499AC4358 /* AuthView.swift */,
+				68D1F962C0EDD048396BA18F /* FocusSessionView.swift */,
+				9A94AF391EC8CEFC63C50413 /* AnalyticsView.swift */,
+				93CEFEE747EA59CAD7D32449 /* DashboardView.swift */,
+				30E12DDDEC68311660FF0576 /* LevelUpModalView.swift */,
+				3C016CA1D61F6D5679EB9BE4 /* CharacterHUDHeader.swift */,
+				0067181515199EA53DEC53C7 /* HapticManager.swift */,
+				33E8BD17E358C2225BAF577A /* XPEngine.swift */,
+				FD49CEB18458E79F577EFF48 /* QuestEngine.swift */,
+				0D22362E80C55CF1977A39D6 /* AuthService.swift */,
+				D5984F250D1F80B2A1B0589A /* MockDataGenerator.swift */,
+				BE88BD98EB1E02104CC6F435 /* Assets.xcassets */,
+			);
+			sourceTree = "<group>";
+		};
+		BA6236CA5CD3E7CA68C5226B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				115D6658050DBF9D9D28FFFC /* ALIVE.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF155CD60FF527C8D657F4D2 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				1A7A69709884841855E7EA9F /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2455BDCFBC14A40EAEBD2A45 /* ALIVE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A499D4B089B86C81C6D51746 /* Build configuration list for PBXNativeTarget "ALIVE" */;
+			buildPhases = (
+				59F78DC557CCBDB789AD1781 /* Sources */,
+				F7F984ECDFE839D9F0EF0BD2 /* Frameworks */,
+				BDDDEA803E1C6900BB22A584 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ALIVE;
+			productName = ALIVE;
+			productReference = 115D6658050DBF9D9D28FFFC /* ALIVE.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A6ABAFC8ED42DAFC23B72A52 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = 0FC6EF2E0D80C7505C4F2B9E /* Build configuration list for PBXProject "alive" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8DF6D186668CA0E2BC75E32C;
+			minimizedProjectReferenceProxies = 0;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = BA6236CA5CD3E7CA68C5226B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2455BDCFBC14A40EAEBD2A45 /* ALIVE */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BDDDEA803E1C6900BB22A584 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCCE098894D013A0009D8A45 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		59F78DC557CCBDB789AD1781 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BCC2896ECBA6DA4E9EB0CE5 /* FocusViewModel.swift in Sources */,
+				708A3B44A8DD53569111ABB2 /* SkillTreeViewModel.swift in Sources */,
+				FBB7B99937C48EB330E0757E /* AuthViewModel.swift in Sources */,
+				AE5DC8003E00AFFFCFFA33AD /* QuestViewModel.swift in Sources */,
+				9FE231C1F54593C1A4930C92 /* ProfileViewModel.swift in Sources */,
+				8FAB4DFF4DD928144AC92456 /* AttendanceViewModel.swift in Sources */,
+				355A87D004949A7386273186 /* AnalyticsViewModel.swift in Sources */,
+				2B9690EF19A9E8CCA846AD8A /* ALIVEApp.swift in Sources */,
+				6F3A04C326BECC8F05E0EDC5 /* CharacterClass.swift in Sources */,
+				4496BF9F289E515E5CBE6841 /* Quest.swift in Sources */,
+				3FD8A673A081892FB74EF675 /* SkillNode.swift in Sources */,
+				736CEFF35723E9D97E436666 /* UserProfile.swift in Sources */,
+				44411DD0F5B8089D902E1190 /* Course.swift in Sources */,
+				77D573EAD563AC7F67D97A82 /* Achievement.swift in Sources */,
+				BDE04E8270A22A971C8E7120 /* StudySession.swift in Sources */,
+				354B91DD2E3D383C9C86042F /* XPTransaction.swift in Sources */,
+				AC2713CFE02047E0766749BA /* ParticleEffectView.swift in Sources */,
+				B2F1F8012E9CCAFE3692C156 /* ColorPalette.swift in Sources */,
+				0067F6D258C911A4AD9D713F /* GlassCardStyle.swift in Sources */,
+				DDABF36A9FB3B648F3BBAFFB /* QuestCardView.swift in Sources */,
+				14060363DF6F2534B9BDB86E /* QuestListView.swift in Sources */,
+				1F5996B88525285DAB88333F /* MainTabView.swift in Sources */,
+				7A0675BF30369C003514BBF6 /* AttendanceTrackerView.swift in Sources */,
+				D0BC9E106B8C7049F600D258 /* BadgeVaultView.swift in Sources */,
+				A3D73D3B0460A57F971766C6 /* SkillNodeDetailView.swift in Sources */,
+				8693A58DF603D2AF61426612 /* SkillTreeCanvasView.swift in Sources */,
+				381061563AB55C3A104244B9 /* CharacterCreationView.swift in Sources */,
+				66269F62C18CA17C2F1D693D /* AuthView.swift in Sources */,
+				DE11554EE2B5FEBB65D5A982 /* FocusSessionView.swift in Sources */,
+				52926DBF5CC3E3BF3E553C60 /* AnalyticsView.swift in Sources */,
+				0F1206F1A18CA75D41DC6562 /* DashboardView.swift in Sources */,
+				1D0988E207D30858415759B0 /* LevelUpModalView.swift in Sources */,
+				B9C930A2A2605A1A54BE889E /* CharacterHUDHeader.swift in Sources */,
+				1140AE1FF54AF00F9D13D8C2 /* HapticManager.swift in Sources */,
+				B29166B27F671D90ED34D20F /* XPEngine.swift in Sources */,
+				5CF305896B568BB0737BFDE3 /* QuestEngine.swift in Sources */,
+				23664F53250C8C64AB87961C /* AuthService.swift in Sources */,
+				3C488242B8BBC84C0B58144D /* MockDataGenerator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B75833C24E1D69B7C8D8C01B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "ALIVE uses Face ID to secure your hero profile and stats.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alive.app;
+				PRODUCT_NAME = ALIVE;
+				SDKROOT = iphonesimulator;
+				SUPPORTED_PLATFORMS = iphonesimulator;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C124AAB57F1F08C8508131ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "ALIVE uses Face ID to secure your hero profile and stats.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alive.app;
+				PRODUCT_NAME = ALIVE;
+				SDKROOT = iphonesimulator;
+				SUPPORTED_PLATFORMS = iphonesimulator;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C437779C07EB1383064B3DAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphonesimulator;
+				SUPPORTED_PLATFORMS = iphonesimulator;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C82A31C2E3BBCF6A1D23D95D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphonesimulator;
+				SUPPORTED_PLATFORMS = iphonesimulator;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0FC6EF2E0D80C7505C4F2B9E /* Build configuration list for PBXProject "alive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C437779C07EB1383064B3DAA /* Debug */,
+				C82A31C2E3BBCF6A1D23D95D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A499D4B089B86C81C6D51746 /* Build configuration list for PBXNativeTarget "ALIVE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B75833C24E1D69B7C8D8C01B /* Release */,
+				C124AAB57F1F08C8508131ED /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A6ABAFC8ED42DAFC23B72A52 /* Project object */;
+}

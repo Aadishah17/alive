@@ -55,10 +55,10 @@ public struct AnalyticsView: View {
                                     .foregroundColor(ALIVEColor.healthRed)
                                 Text("You logged heavy study hours while missing attendance. Take a 15-minute restorative rest break.")
                                     .font(.footnote)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(ALIVEColor.textPrimary)
                             }
                         }
-                        .glassCard(borderColor: ALIVEColor.healthRed)
+                        .glassCard(borderColor: ALIVEColor.healthRed.opacity(0.3))
                     }
                     
                     // Study Time Distribution Chart Mock/Visual
@@ -66,7 +66,7 @@ public struct AnalyticsView: View {
                         Text("WEEKLY STUDY DISTRIBUTION")
                             .font(.caption)
                             .fontWeight(.bold)
-                            .foregroundColor(.gray)
+                            .foregroundColor(ALIVEColor.textMuted)
                         
                         VStack(spacing: 10) {
                             BarRow(label: "Mon", fraction: 0.8, color: ALIVEColor.neonCyan)
@@ -84,7 +84,9 @@ public struct AnalyticsView: View {
             }
         }
         .navigationTitle("INSIGHTS")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 
@@ -101,18 +103,18 @@ struct MetricBox: View {
             Text(value)
                 .font(.headline)
                 .fontWeight(.black)
-                .foregroundColor(.white)
+                .foregroundColor(ALIVEColor.textPrimary)
             Text(title)
                 .font(.system(size: 8, weight: .bold))
-                .foregroundColor(.gray)
+                .foregroundColor(ALIVEColor.textMuted)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 12)
-        .background(color.opacity(0.1))
+        .background(color.opacity(0.08))
         .cornerRadius(12)
         .overlay(
             RoundedRectangle(cornerRadius: 12)
-                .stroke(color.opacity(0.3), lineWidth: 1)
+                .stroke(color.opacity(0.2), lineWidth: 1)
         )
     }
 }
@@ -127,13 +129,13 @@ struct BarRow: View {
             Text(label)
                 .font(.caption)
                 .fontWeight(.bold)
-                .foregroundColor(.gray)
+                .foregroundColor(ALIVEColor.textSecondary)
                 .frame(width: 35, alignment: .leading)
             
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
                     Capsule()
-                        .fill(Color.black.opacity(0.4))
+                        .fill(Color(red: 0.88, green: 0.91, blue: 0.95))
                     Capsule()
                         .fill(color)
                         .frame(width: geo.size.width * fraction)

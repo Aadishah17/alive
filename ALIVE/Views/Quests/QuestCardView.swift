@@ -36,8 +36,8 @@ public struct QuestCardView: View {
                 HStack {
                     Text(quest.title)
                         .font(.headline)
-                        .strikethrough(quest.isCompleted, color: .gray)
-                        .foregroundColor(quest.isCompleted ? .gray : .white)
+                        .strikethrough(quest.isCompleted, color: ALIVEColor.textMuted)
+                        .foregroundColor(quest.isCompleted ? ALIVEColor.textMuted : ALIVEColor.textPrimary)
                     
                     Spacer()
                     
@@ -53,7 +53,7 @@ public struct QuestCardView: View {
                 
                 Text(quest.questDescription)
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundColor(ALIVEColor.textSecondary)
                     .lineLimit(2)
                 
                 HStack(spacing: 12) {

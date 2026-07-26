@@ -25,7 +25,7 @@ public struct FocusSessionView: View {
                         }
                     }
                     .pickerStyle(.menu)
-                    .tint(.white)
+                    .tint(ALIVEColor.textPrimary)
                 }
                 .padding(.horizontal, 14)
                 .padding(.vertical, 8)
@@ -35,7 +35,7 @@ public struct FocusSessionView: View {
                 // Focus Timer Ring
                 ZStack {
                     Circle()
-                        .stroke(ALIVEColor.glassSurface, lineWidth: 16)
+                        .stroke(Color(red: 0.88, green: 0.91, blue: 0.95), lineWidth: 16)
                         .frame(width: 240, height: 240)
                     
                     Circle()
@@ -46,12 +46,12 @@ public struct FocusSessionView: View {
                         )
                         .frame(width: 240, height: 240)
                         .rotationEffect(.degrees(-90))
-                        .shadow(color: ALIVEColor.neonCyan.opacity(0.8), radius: 10)
+                        .shadow(color: ALIVEColor.neonCyan.opacity(0.3), radius: 8)
                     
                     VStack(spacing: 6) {
                         Text(formattedTime(seconds: viewModel.timeRemainingSeconds))
                             .font(.system(size: 44, weight: .black, design: .monospaced))
-                            .foregroundColor(.white)
+                            .foregroundColor(ALIVEColor.textPrimary)
                         
                         Text(viewModel.isRunning ? "FLOWSTATE ACTIVE" : "READY FOR BATTLE")
                             .font(.system(size: 10, weight: .bold))
@@ -99,7 +99,7 @@ public struct FocusSessionView: View {
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(ALIVEColor.neonCyan)
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .cornerRadius(14)
                         }
                     } else {
@@ -111,7 +111,7 @@ public struct FocusSessionView: View {
                                 .frame(maxWidth: .infinity)
                                 .padding()
                                 .background(ALIVEColor.glassSurface)
-                                .foregroundColor(.white)
+                                .foregroundColor(ALIVEColor.textPrimary)
                                 .cornerRadius(14)
                         }
                     }
@@ -128,7 +128,9 @@ public struct FocusSessionView: View {
             .padding()
         }
         .navigationTitle("FOCUS TIMER")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
     
     private func formattedTime(seconds: Int) -> String {
@@ -150,7 +152,7 @@ struct DurationButton: View {
                 .padding(.horizontal, 14)
                 .padding(.vertical, 8)
                 .background(isSelected ? ALIVEColor.xpViolet : ALIVEColor.glassSurface)
-                .foregroundColor(isSelected ? .white : .gray)
+                .foregroundColor(isSelected ? .white : ALIVEColor.textSecondary)
                 .cornerRadius(10)
         }
     }

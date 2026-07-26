@@ -23,7 +23,7 @@ public struct AttendanceTrackerView: View {
                         
                         Text("Track attendance and calculate safe bunks before thresholds drop.")
                             .font(.caption)
-                            .foregroundColor(.gray)
+                            .foregroundColor(ALIVEColor.textSecondary)
                     }
                     Spacer()
                     
@@ -43,10 +43,10 @@ public struct AttendanceTrackerView: View {
                             VStack(spacing: 12) {
                                 Image(systemName: "book.closed.fill")
                                     .font(.system(size: 48))
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(ALIVEColor.textMuted)
                                 Text("No registered courses. Tap '+' to add your subjects.")
                                     .font(.subheadline)
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(ALIVEColor.textSecondary)
                             }
                             .padding(.top, 40)
                         } else {
@@ -65,7 +65,9 @@ public struct AttendanceTrackerView: View {
             AddCourseSheetView(viewModel: viewModel)
         }
         .navigationTitle("ATTENDANCE ENGINE")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 
@@ -86,7 +88,7 @@ struct CourseAttendanceCard: View {
                     
                     Text(course.courseName)
                         .font(.subheadline)
-                        .foregroundColor(.white)
+                        .foregroundColor(ALIVEColor.textPrimary)
                 }
                 
                 Spacer()
@@ -100,7 +102,7 @@ struct CourseAttendanceCard: View {
                     
                     Text("REQ: \(Int(course.minimumAttendancePercentage))%")
                         .font(.system(size: 9, weight: .bold))
-                        .foregroundColor(.gray)
+                        .foregroundColor(ALIVEColor.textMuted)
                 }
             }
             
@@ -111,7 +113,7 @@ struct CourseAttendanceCard: View {
                         .foregroundColor(ALIVEColor.staminaGreen)
                     Text("SAFE BUNK MARGIN: **\(course.maxSafeBunksRemaining)** class(es) remaining")
                         .font(.caption)
-                        .foregroundColor(.white)
+                        .foregroundColor(ALIVEColor.textPrimary)
                 } else {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundColor(ALIVEColor.healthRed)
@@ -139,7 +141,7 @@ struct CourseAttendanceCard: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 8)
                     .background(ALIVEColor.neonCyan)
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                     .cornerRadius(8)
                 }
                 
@@ -179,26 +181,38 @@ struct AddCourseSheetView: View {
                 
                 TextField("Course Code (e.g. CS401)", text: $viewModel.newCourseCode)
                     .padding()
-                    .background(ALIVEColor.glassSurface)
+                    .background(ALIVEColor.cardBackground)
                     .cornerRadius(10)
-                    .foregroundColor(.white)
+                    .foregroundColor(ALIVEColor.textPrimary)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(ALIVEColor.glassSurface, lineWidth: 1)
+                    )
                 
                 TextField("Course Full Name", text: $viewModel.newCourseName)
                     .padding()
-                    .background(ALIVEColor.glassSurface)
+                    .background(ALIVEColor.cardBackground)
                     .cornerRadius(10)
-                    .foregroundColor(.white)
+                    .foregroundColor(ALIVEColor.textPrimary)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(ALIVEColor.glassSurface, lineWidth: 1)
+                    )
                 
                 TextField("Instructor Name", text: $viewModel.newInstructor)
                     .padding()
-                    .background(ALIVEColor.glassSurface)
+                    .background(ALIVEColor.cardBackground)
                     .cornerRadius(10)
-                    .foregroundColor(.white)
+                    .foregroundColor(ALIVEColor.textPrimary)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(ALIVEColor.glassSurface, lineWidth: 1)
+                    )
                 
                 VStack(alignment: .leading) {
                     Text("Minimum Attendance Required: \(Int(viewModel.newMinPercentage))%")
                         .font(.caption)
-                        .foregroundColor(.gray)
+                        .foregroundColor(ALIVEColor.textSecondary)
                     
                     Slider(value: $viewModel.newMinPercentage, in: 50...90, step: 5)
                         .tint(ALIVEColor.neonCyan)
@@ -212,7 +226,7 @@ struct AddCourseSheetView: View {
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(ALIVEColor.goldGradient)
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .cornerRadius(12)
                 }
             }

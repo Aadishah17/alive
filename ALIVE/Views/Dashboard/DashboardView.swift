@@ -58,11 +58,11 @@ public struct DashboardView: View {
                                         .foregroundColor(ALIVEColor.healthRed)
                                     Text("\(coursesAtRisk.count) course(s) below safe attendance threshold (\(coursesAtRisk.first?.courseCode ?? "")).")
                                         .font(.footnote)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(ALIVEColor.textPrimary)
                                 }
                                 Spacer()
                             }
-                            .glassCard(borderColor: ALIVEColor.healthRed)
+                            .glassCard(borderColor: ALIVEColor.healthRed.opacity(0.3))
                         }
                         
                         // Active Daily Quests Quick Section
@@ -82,7 +82,7 @@ public struct DashboardView: View {
                             if pendingDailyQuests.isEmpty {
                                 Text("All daily quests completed! Outstanding work, hero.")
                                     .font(.subheadline)
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(ALIVEColor.textSecondary)
                                     .padding()
                                     .glassCard()
                             } else {
@@ -118,12 +118,12 @@ public struct DashboardView: View {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("RECENT STUDY BATTLES")
                                 .font(.system(size: 12, weight: .bold, design: .monospaced))
-                                .foregroundColor(.gray)
+                                .foregroundColor(ALIVEColor.textMuted)
                             
                             if sessions.isEmpty {
                                 Text("No study sessions logged yet. Start a focus timer!")
                                     .font(.caption)
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(ALIVEColor.textSecondary)
                             } else {
                                 ForEach(sessions.prefix(3)) { session in
                                     HStack {
@@ -133,10 +133,10 @@ public struct DashboardView: View {
                                             Text(session.courseName)
                                                 .font(.subheadline)
                                                 .fontWeight(.bold)
-                                                .foregroundColor(.white)
+                                                .foregroundColor(ALIVEColor.textPrimary)
                                             Text("\(session.sessionType) • \(session.formattedDuration)")
                                                 .font(.caption)
-                                                .foregroundColor(.gray)
+                                                .foregroundColor(ALIVEColor.textSecondary)
                                         }
                                         Spacer()
                                         Text("+\(session.xpEarned) XP")
@@ -150,19 +150,21 @@ public struct DashboardView: View {
                         }
                     } else {
                         ProgressView("Loading Hero Profile...")
-                            .foregroundColor(.white)
+                            .foregroundColor(ALIVEColor.textPrimary)
                     }
                 }
                 .padding()
             }
         }
-        .fullScreenCover(isPresented: $showLevelUpModal) {
+        #else
+        .sheet(isPresented: $showLevelUpModal) {
             if let profile = userProfile {
                 LevelUpModalView(profile: profile) {
                     showLevelUpModal = false
                 }
             }
         }
+        #endif
         .task {
             if healthKitManager.hasRequestedStepAccess {
                 await healthKitManager.refreshTodayStepCount()
@@ -239,6 +241,8 @@ struct HealthProgressCard: View {
         .glassCard(borderColor: ALIVEColor.staminaGreen.opacity(0.35))
     }
 }
+    }
+}
 
 struct ShortcutCard: View {
     let title: String
@@ -255,13 +259,13 @@ struct ShortcutCard: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(title)
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(ALIVEColor.textPrimary)
                 Text(subtitle)
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundColor(ALIVEColor.textSecondary)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .glassCard(borderColor: color.opacity(0.4))
+        .glassCard(borderColor: color.opacity(0.25))
     }
 }

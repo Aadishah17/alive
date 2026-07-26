@@ -30,7 +30,7 @@ public struct AuthView: View {
                 VStack(spacing: 8) {
                     Text("A L I V E")
                         .font(.system(size: 40, weight: .black, design: .monospaced))
-                        .foregroundColor(.white)
+                        .foregroundColor(ALIVEColor.textPrimary)
                     
                     Text("RPG STUDENT PRODUCTIVITY & ACADEMIC ENGINE")
                         .font(.system(size: 11, weight: .bold))
@@ -51,7 +51,7 @@ public struct AuthView: View {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(profile.username)
                                     .font(.headline)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(ALIVEColor.textPrimary)
                                 Text("Level \(profile.level) \(profile.characterClass.rawValue)")
                                     .font(.subheadline)
                                     .foregroundColor(ALIVEColor.rpgGold)
@@ -76,7 +76,7 @@ public struct AuthView: View {
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(ALIVEColor.neonCyan)
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .cornerRadius(14)
                         }
 
@@ -100,7 +100,7 @@ public struct AuthView: View {
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(ALIVEColor.goldGradient)
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .cornerRadius(14)
                         }
                         

@@ -11,24 +11,24 @@ public struct SkillNodeDetailView: View {
     
     public var body: some View {
         ZStack {
-            Color.black.opacity(0.8).ignoresSafeArea()
+            ALIVEColor.backgroundDark.ignoresSafeArea()
             
             VStack(spacing: 20) {
                 ZStack {
                     Circle()
-                        .fill(skill.isUnlocked ? ALIVEColor.neonCyan.opacity(0.2) : Color.gray.opacity(0.2))
+                        .fill(skill.isUnlocked ? ALIVEColor.neonCyan.opacity(0.15) : ALIVEColor.glassSurface)
                         .frame(width: 80, height: 80)
                     
                     Image(systemName: skill.iconName)
                         .font(.system(size: 36))
-                        .foregroundColor(skill.isUnlocked ? ALIVEColor.neonCyan : .gray)
+                        .foregroundColor(skill.isUnlocked ? ALIVEColor.neonCyan : ALIVEColor.textMuted)
                 }
                 
                 VStack(spacing: 6) {
                     Text(skill.name)
                         .font(.title2)
                         .fontWeight(.black)
-                        .foregroundColor(.white)
+                        .foregroundColor(ALIVEColor.textPrimary)
                     
                     Text("TIER \(skill.tier) • \(skill.category.uppercased())")
                         .font(.caption)
@@ -38,7 +38,7 @@ public struct SkillNodeDetailView: View {
                 
                 Text(skill.skillDescription)
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(ALIVEColor.textSecondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
                 
@@ -49,10 +49,10 @@ public struct SkillNodeDetailView: View {
                         .foregroundColor(ALIVEColor.neonCyan)
                     Text(skill.buffDescription)
                         .font(.headline)
-                        .foregroundColor(.white)
+                        .foregroundColor(ALIVEColor.textPrimary)
                 }
                 .padding()
-                .glassCard(borderColor: ALIVEColor.neonCyan)
+                .glassCard(borderColor: ALIVEColor.neonCyan.opacity(0.3))
                 
                 if let error = viewModel.unlockErrorMessage {
                     Text(error)
@@ -77,13 +77,13 @@ public struct SkillNodeDetailView: View {
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(ALIVEColor.goldGradient)
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .cornerRadius(14)
                     }
                 }
                 
                 Button("CLOSE", action: onDismiss)
-                    .foregroundColor(.gray)
+                    .foregroundColor(ALIVEColor.textSecondary)
             }
             .padding()
         }

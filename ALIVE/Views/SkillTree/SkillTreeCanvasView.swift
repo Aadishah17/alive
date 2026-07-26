@@ -23,7 +23,7 @@ public struct SkillTreeCanvasView: View {
                     
                     Text("Invest total earned XP to unlock permanent study and attendance perks.")
                         .font(.caption)
-                        .foregroundColor(.gray)
+                        .foregroundColor(ALIVEColor.textSecondary)
                 }
                 .padding(.top, 10)
                 
@@ -62,7 +62,9 @@ public struct SkillTreeCanvasView: View {
             }
         }
         .navigationTitle("SKILL TREE")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 
@@ -75,23 +77,23 @@ struct SkillNodeCircleView: View {
             VStack(spacing: 6) {
                 ZStack {
                     Circle()
-                        .fill(skill.isUnlocked ? ALIVEColor.neonCyan.opacity(0.2) : ALIVEColor.glassSurface)
+                        .fill(skill.isUnlocked ? ALIVEColor.neonCyan.opacity(0.15) : ALIVEColor.glassSurface)
                         .frame(width: 64, height: 64)
                     
                     Circle()
-                        .stroke(skill.isUnlocked ? ALIVEColor.neonCyan : Color.gray.opacity(0.4), lineWidth: 2)
+                        .stroke(skill.isUnlocked ? ALIVEColor.neonCyan : ALIVEColor.textMuted.opacity(0.4), lineWidth: 2)
                         .frame(width: 68, height: 68)
                     
                     Image(systemName: skill.iconName)
                         .font(.title2)
-                        .foregroundColor(skill.isUnlocked ? ALIVEColor.neonCyan : .gray)
+                        .foregroundColor(skill.isUnlocked ? ALIVEColor.neonCyan : ALIVEColor.textMuted)
                 }
-                .shadow(color: skill.isUnlocked ? ALIVEColor.neonCyan.opacity(0.5) : .clear, radius: 10)
+                .shadow(color: skill.isUnlocked ? ALIVEColor.neonCyan.opacity(0.3) : .clear, radius: 8)
                 
                 Text(skill.name)
                     .font(.caption)
                     .fontWeight(.bold)
-                    .foregroundColor(skill.isUnlocked ? .white : .gray)
+                    .foregroundColor(skill.isUnlocked ? ALIVEColor.textPrimary : ALIVEColor.textMuted)
                     .multilineTextAlignment(.center)
                     .frame(width: 90)
             }

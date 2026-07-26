@@ -28,14 +28,14 @@ public struct CharacterHUDHeader: View {
                         Text(profile.username)
                             .font(.title3)
                             .fontWeight(.black)
-                            .foregroundColor(.white)
+                            .foregroundColor(ALIVEColor.textPrimary)
                         
                         Text("LVL \(profile.level)")
                             .font(.system(size: 11, weight: .heavy))
                             .padding(.horizontal, 8)
                             .padding(.vertical, 3)
                             .background(ALIVEColor.goldGradient)
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .cornerRadius(8)
                     }
                     
@@ -54,11 +54,11 @@ public struct CharacterHUDHeader: View {
                         Text("\(profile.streakDays)")
                             .font(.headline)
                             .fontWeight(.black)
-                            .foregroundColor(.white)
+                            .foregroundColor(ALIVEColor.textPrimary)
                     }
                     Text("DAY STREAK")
                         .font(.system(size: 8, weight: .bold))
-                        .foregroundColor(.gray)
+                        .foregroundColor(ALIVEColor.textMuted)
                 }
                 .padding(.horizontal, 10)
                 .padding(.vertical, 8)
@@ -66,7 +66,7 @@ public struct CharacterHUDHeader: View {
                 .cornerRadius(12)
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
-                        .stroke(ALIVEColor.rpgGold.opacity(0.4), lineWidth: 1)
+                        .stroke(ALIVEColor.rpgGold.opacity(0.3), lineWidth: 1)
                 )
             }
             
@@ -81,19 +81,19 @@ public struct CharacterHUDHeader: View {
                     
                     Text("\(profile.currentXP) / \(profile.requiredXPForNextLevel) XP")
                         .font(.system(size: 10, weight: .bold, design: .monospaced))
-                        .foregroundColor(.white)
+                        .foregroundColor(ALIVEColor.textSecondary)
                 }
                 
                 GeometryReader { geo in
                     ZStack(alignment: .leading) {
                         Capsule()
-                            .fill(Color.black.opacity(0.5))
+                            .fill(Color(red: 0.88, green: 0.91, blue: 0.95))
                             .frame(height: 12)
                         
                         Capsule()
                             .fill(ALIVEColor.xpGradient)
                             .frame(width: max(0, min(geo.size.width * CGFloat(profile.xpProgressFraction), geo.size.width)), height: 12)
-                            .shadow(color: ALIVEColor.neonCyan.opacity(0.8), radius: 6, x: 0, y: 0)
+                            .shadow(color: ALIVEColor.neonCyan.opacity(0.3), radius: 4, x: 0, y: 0)
                     }
                 }
                 .frame(height: 12)
@@ -118,7 +118,7 @@ public struct CharacterHUDHeader: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 6)
                     .background(ALIVEColor.rpgGold)
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                     .cornerRadius(8)
                 }
             }
@@ -140,15 +140,15 @@ struct StatPill: View {
                 .foregroundColor(color)
             Text(label)
                 .font(.system(size: 9, weight: .bold))
-                .foregroundColor(.gray)
+                .foregroundColor(ALIVEColor.textMuted)
             Text("\(val)")
                 .font(.system(size: 11, weight: .black))
-                .foregroundColor(.white)
+                .foregroundColor(ALIVEColor.textPrimary)
         }
         .padding(.horizontal, 8)
         .padding(.vertical, 6)
         .frame(maxWidth: .infinity)
-        .background(color.opacity(0.12))
+        .background(color.opacity(0.08))
         .cornerRadius(8)
     }
 }
