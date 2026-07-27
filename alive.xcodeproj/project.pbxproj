@@ -7,108 +7,115 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00122E00AC0A8AA5D8705B1C /* DailyQuestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC244890A9D999E5D33B361 /* DailyQuestService.swift */; };
-		050586AD030FF4D723B38123 /* FocusSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C0846D9B6876A771BA610A /* FocusSessionTests.swift */; };
-		0901106F22BDD5D328177A18 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BBB9AD41F4B468576D04D7 /* AuthViewModel.swift */; };
-		1306BA31CCFC9E648A0B787F /* AttendanceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C517B4612EAE5C33F83B3CA7 /* AttendanceCalculatorTests.swift */; };
-		159D808D3428FDA56BD598C3 /* ALIVEWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EE36931A67CCF4C25B65A3 /* ALIVEWidgets.swift */; };
-		19172B6DCA805FC0E3FDB25B /* ALIVEModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FE21F1B1730BE37B8316DA /* ALIVEModelContainer.swift */; };
-		1A6A17AAA63653E56A3BFB39 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552DC69E08E4A3BC1D75BAFD /* Quest.swift */; };
-		1EDD7E6B4A2251006A22EAE0 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50950B504A9E120C7A20804 /* Achievement.swift */; };
-		2236FDA5DA56F73A529BC0E4 /* DailyQuestServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12027CEBE08715718E0C2EF /* DailyQuestServiceTests.swift */; };
-		244AC08BDC7C82DE6B4FDBB3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2999CEC37B42A1C823EA759 /* WidgetKit.framework */; };
-		258548E8340E3C79967B1A9A /* ALIVERouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2AF84E81A109417425C2D /* ALIVERouterTests.swift */; };
-		25C95C4CC006BB1480AE673C /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D902F0D5F4F55CD1F6EE0E /* MainTabView.swift */; };
-		2AC90D7F4432B3E73DE8173A /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13CDEACF654CBB6F77F1609 /* Course.swift */; };
-		2E75947FFE03738BC0C579A3 /* MockDataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7DE1714C0C1DC0B5F6A6DA /* MockDataGenerator.swift */; };
-		2FA2E81F8A6226D4CF51C0F6 /* StudySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425296D0B1D9CDE352668C9E /* StudySession.swift */; };
-		304CE8B9B2BDC3462773A327 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCB8E1F195E6BAA3101A97F /* AnalyticsView.swift */; };
-		335B31A9FC4962F860F3E85C /* SwiftDataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71690DAF30001B15B96F2A5 /* SwiftDataModelTests.swift */; };
-		38526DB87D200811B7932B04 /* AttendanceTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16A6A38C80E1A8362EF8B5B /* AttendanceTrackerView.swift */; };
-		38655A88BFA7BB38C503C22F /* FocusSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAA66D6C56F49821FCB38B9 /* FocusSessionView.swift */; };
-		406749E4A06902825DAA45EE /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247737B8A3435D0C04F69272 /* PersistenceService.swift */; };
-		4398F9C454BAAACC1B87DB6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457F573F1832AAB549D5E94B /* Foundation.framework */; };
-		4638E91486CB3B5498798153 /* ParticleEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1B06D5A753222130193DD /* ParticleEffectView.swift */; };
-		4C0F78DB4A59CA7098FE02D4 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA572DDAD1DB5659A60E1DD3 /* DashboardView.swift */; };
-		656165DC5A87F81F55C7F452 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E97A5A2DB145EEB30603A0 /* ProfileViewModel.swift */; };
-		6979C24E22563DF28138E52E /* CharacterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49D3D7387835D99B66D191D /* CharacterClass.swift */; };
-		6BA430A5ABB46DEE32D3FECA /* XPTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D6405DCBD2ADF2E8179C1D /* XPTransaction.swift */; };
-		6C51F6BF3A45B0D291383600 /* SkillNodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00735F372B0C9793C8CD088C /* SkillNodeDetailView.swift */; };
-		6E561E5DB9FF76932F7B08A3 /* QuestCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E96A5CC19F4F0A781081240 /* QuestCardView.swift */; };
-		6F715C65D457AD8D8AD3F6CC /* SkillTreeCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD905319EE8B33C8F490DEC /* SkillTreeCanvasView.swift */; };
-		6FF489B088794C7D5F211675 /* FocusActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392799980D9C1EC3FBAA7038 /* FocusActivityAttributes.swift */; };
-		73D53DB809B030AC7E1048D0 /* XPEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4770A5F885F90932BFD164B /* XPEngine.swift */; };
-		758C7367806C2FFE7F1A33E4 /* SkillNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8273F18A33DE213B660FAF11 /* SkillNode.swift */; };
-		786B025F2AB5324877AF82AA /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB1918DFA2D26B858651918 /* AuthView.swift */; };
-		7DFD6C8E2BAAEF6ADC2E3B2C /* QuestEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924DF3EA46653695509C0A34 /* QuestEngineTests.swift */; };
-		80A56937DE2C7E96A064D915 /* ALIVEAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CD7B40DC6A80D12AEBBC45 /* ALIVEAppIntents.swift */; };
-		858C12C3F1607B0453782180 /* SkillTreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E1E230CB17D63468B0A87 /* SkillTreeViewModel.swift */; };
-		86E5DFB411A2389E3BEC9F1E /* WidgetSnapshotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D91966FA8695273F36533EF /* WidgetSnapshotService.swift */; };
-		88628C3E2D0A77EA4881DF32 /* FocusNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172E85F30456564CB89554E /* FocusNotificationService.swift */; };
-		89DD12AE91319BA24B0AF491 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6AD7072A6D808D2DAEBF9 /* ColorPalette.swift */; };
-		8AAC1FE8C03E6D45EDDB447A /* FocusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1AB0D98FC608F1AD23A108 /* FocusViewModel.swift */; };
-		95D198B5C553830B298E65E2 /* ALIVEWidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778183CDD7A2F243DDC5FF17 /* ALIVEWidgetSnapshot.swift */; };
-		9957A091E9A07552C3EB869D /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79E6326619116E5D151D608 /* AnalyticsViewModel.swift */; };
-		99E8401BE9FDD37A9DDBFCBD /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473B936056C2204E121CD4BF /* HealthKit.framework */; };
-		9B12E3CE4A54D5A9595F4FDC /* QuestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CB86F8EBE738AFC4729ED5 /* QuestViewModel.swift */; };
-		A168CB5AAEE112777DD2F755 /* ALIVEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E62F536738FD6A3CB0ECF35 /* ALIVEApp.swift */; };
-		A718D234C02FC703E1AEE73E /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD39906D3B795A5F76FF884 /* ActivityKit.framework */; };
-		A76E9B1E795FC6826EBD1CB2 /* LevelUpModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B867A9834CF14AD0B70418 /* LevelUpModalView.swift */; };
-		AC93A03ACE2F05E3F9907713 /* CharacterCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C30DFEFA65A88E8B6DBB8C /* CharacterCreationView.swift */; };
-		AD558C4C19215C05A86F2F6E /* FocusLiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F8EE8FA80E824A5949560F /* FocusLiveActivityManager.swift */; };
-		AFD857799B0141BD54D3ABBA /* CharacterHUDHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DDDEF09DF9EBC54FE46303 /* CharacterHUDHeader.swift */; };
-		B0619AA5DBF49DD5F81371EA /* QuestProgressEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E9469E31AF7699EA694360 /* QuestProgressEngine.swift */; };
-		B0E125D6E9E51E9DDA28085F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2999CEC37B42A1C823EA759 /* WidgetKit.framework */; };
-		B210DC3963F24B4C260E16F7 /* QuestProgressEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61F3B3DCA5243FCF18538A0 /* QuestProgressEngineTests.swift */; };
-		B3F3E6A34477791CBBE8EE7A /* ALIVEWidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E5235B3EAFE2B5FD2471E /* ALIVEWidgetSnapshot.swift */; };
-		B8FB0ACEBE2E436B2F65F3A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 670B5DC6D26573FDB59153F3 /* Assets.xcassets */; };
-		BC5C6682620890EB715FD38A /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3B51BFFA674317F687F8B /* UserProfile.swift */; };
-		BD4517053E327FECECD0B419 /* BadgeVaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34227D9BC675C5C91AFD3B92 /* BadgeVaultView.swift */; };
-		C18CD03B26449DCE4A2E2506 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1277B1339B4D4334AE9845 /* HapticManager.swift */; };
-		C35F01F26C8E2A0DFCF4AE8B /* QuestEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6146F50DB33AFA4F97EDEC41 /* QuestEngine.swift */; };
-		C7852624E615CBA1E4968818 /* AttendanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF38DDB97BCBB90479381C2 /* AttendanceViewModel.swift */; };
-		C863B22A1477E18445CB50AE /* WellnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4791CF6845BFB061364817 /* WellnessView.swift */; };
-		CAC30704FB4C8200BD76ED96 /* XPEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E25D50C45A966C846C6B684 /* XPEngineTests.swift */; };
-		D01B9C05E2E261C8CE6B0558 /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD39906D3B795A5F76FF884 /* ActivityKit.framework */; };
-		D08AD72E6DF55DCB33FEDA08 /* GlassCardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E60EE927E9172EA57A96A0F /* GlassCardStyle.swift */; };
-		D158CE6417BDF1AD784AE411 /* ALIVEWidgets.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6AE84E3C67FEC2FEB39F5804 /* ALIVEWidgets.appex */; };
-		D44A4F656930275B560AF809 /* AnalyticsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D6F0EFBC4CBDA42C773686 /* AnalyticsViewModelTests.swift */; };
-		D53271370CA1EBFA1F72DF50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457F573F1832AAB549D5E94B /* Foundation.framework */; };
-		DB278B151089CA256B6D2AF2 /* FocusActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ABD4AB9845D257D27DA6E7 /* FocusActivityAttributes.swift */; };
-		DF3F0A17BD8C51120E5B9914 /* QuestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC617D135FC2B7B49E4DBEBA /* QuestListView.swift */; };
-		E3F9742526CADB9087EC1FDC /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAC65BD8FC99F553A855C76 /* HealthKitService.swift */; };
-		E5E40AE02CFBE05BE52E7E1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457F573F1832AAB549D5E94B /* Foundation.framework */; };
-		E6E231C51C0F37F1428AD7C8 /* ALIVERouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B1300B1A4CB93E678533B /* ALIVERouter.swift */; };
-		E95C62F6115BFFD9184AC4BD /* SkillTreeSeedFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C56ECF72C1D9400DB76514C /* SkillTreeSeedFactory.swift */; };
-		EF95B5530BA650465177EE1E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97CCAC94ED47202660FD3337 /* UserNotifications.framework */; };
-		FBE6F90F64CA485B4A9B920D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17AED73E11D58EF73574721 /* AuthService.swift */; };
+		000B793D99CB91242EF8E035 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30953914B2675F2B482E383 /* ColorPalette.swift */; };
+		0125009782506CB802A52F6B /* DailyQuestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0C41B9C81845C67E9F5202 /* DailyQuestService.swift */; };
+		01D191BA167E29808539B845 /* MockDataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1D2C4516806D3A626F1064 /* MockDataGenerator.swift */; };
+		034835099A72DC174C9CFD95 /* AttendanceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02A761AA99E937C3C85FF68 /* AttendanceCalculatorTests.swift */; };
+		03561716BBFAFA7EAE63962F /* QuestCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8696C54A9AEFF43D607AD /* QuestCardView.swift */; };
+		071538FF18046AF1391CE260 /* FocusActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC317E47BAC0C7DAC6C816CE /* FocusActivityAttributes.swift */; };
+		091BF5AC0E1C5875E45C4BD3 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2123ACB056FD3FD7260754DA /* HealthKitManager.swift */; };
+		0955BD7486C25161CA8692B1 /* ALIVEWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36D7D2FF426A7BD087A11EE /* ALIVEWidgets.swift */; };
+		09F7AEBB525748287A3714E8 /* QuestEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376955CD27A7CEFCAA081A9 /* QuestEngineTests.swift */; };
+		0A4B185932B01E791134A142 /* XPEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B481F8E985E760760FDD4AB2 /* XPEngine.swift */; };
+		0D00CA7C41AD17F6FF3A6250 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94B6875E8D2CC52A0C7C5A5 /* MainTabView.swift */; };
+		0E9DF0F52F084C4C3265B7BF /* FocusSessionComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A505D8A5BDA700B244790 /* FocusSessionComponents.swift */; };
+		0F956EEE4136130BDFDEC84E /* ALIVEModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EDC50FF3D48A5E0AD4DE10 /* ALIVEModelContainer.swift */; };
+		0FF7CE2A60A640D679E15FA9 /* BadgeVaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE233D634140ABAE0BB77092 /* BadgeVaultView.swift */; };
+		12BF2755015C86DA707D1A32 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C16686B3E03CB0B31BE91D /* ProfileViewModel.swift */; };
+		16DBF1B9BDD9748D7B0008F8 /* QuestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD562F7217D299093E9DE0A2 /* QuestListView.swift */; };
+		25E815A80788063692E70ED9 /* ALIVEWidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F0474F0F320E84DCAC4015 /* ALIVEWidgetSnapshot.swift */; };
+		2AAA2BD0AA256BC576E269FC /* SkillTreeSeedFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA21449F7285AD2AFC8CECA4 /* SkillTreeSeedFactory.swift */; };
+		2B7E0915564A252C1A9A55D7 /* FocusSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A50EE915874A8933A490B6B /* FocusSessionTests.swift */; };
+		2DBC7808E6854B631E264AB5 /* SkillTreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9F502AB54938EA8C4764FC /* SkillTreeViewModel.swift */; };
+		30F3E22D017B3C1829E23200 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5858995B33F2467834714998 /* HealthKitService.swift */; };
+		313099478F601131FA597281 /* CharacterCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36406A065B87442572E81F03 /* CharacterCreationView.swift */; };
+		36018E5F61FC0B8253CAC47E /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C0F715EC2C2E925A8C1F75 /* AnalyticsView.swift */; };
+		39F5E480180F60FDC97B48C9 /* QuestEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2065CF33709340F6910D091F /* QuestEngine.swift */; };
+		3D084615EAFA8752B62DCED0 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7192969B612BAE772B4DEA /* Course.swift */; };
+		5084B7EADA76F49E09401851 /* WellnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2292E9D71411AB5830E60F /* WellnessView.swift */; };
+		513B779E85C333C8BB6A0BBD /* XPEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E515B4F90C46FC649A216E /* XPEngineTests.swift */; };
+		5A0D33AB0EE776CE63D4424E /* ALIVEAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D08DFC57240D45F15EB0B5A /* ALIVEAppIntents.swift */; };
+		5C37F9EE51526B144E4C35B0 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F891A73AF9E271E3E7877E73 /* Quest.swift */; };
+		60B27A771C3037EA64C446B0 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC77BD5F3EA1103B5048C168 /* HealthKit.framework */; };
+		63BF5C8E5A22FD35260B951B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D8698E46FB110BCE65D61F /* Foundation.framework */; };
+		643B354297E7BE737564BA61 /* QuestProgressEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726E36B1AC12E81E397A0307 /* QuestProgressEngine.swift */; };
+		6455F35BC899F7E365AFFB1A /* SkillTreeCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB393B6A159089CC4E2F0BB /* SkillTreeCanvasView.swift */; };
+		65A3679AD785C34BDCD5E04E /* SkillNodeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB64DE8EF4C7FD67C4C7F76 /* SkillNodeDetailView.swift */; };
+		65BADAE6123255590F71DCFB /* SwiftDataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A780991E5FB4674E3704BF /* SwiftDataModelTests.swift */; };
+		668166FA42F4018AAC1F941E /* ProgressionModifierEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F315F1A553DC37845C28F5 /* ProgressionModifierEngineTests.swift */; };
+		66BFB08AFC91732C91ED728C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D8698E46FB110BCE65D61F /* Foundation.framework */; };
+		67C1077CDB89E581E3B58BF1 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F995EBF6BC0B306E65C8AF6B /* WidgetKit.framework */; };
+		6B389F243241E1CE469056A9 /* FocusLiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25717E46E2D952020355DD09 /* FocusLiveActivityManager.swift */; };
+		6D71BF40F721035AF0A1B1D7 /* FocusReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57A2B496B467F91E043FEA8 /* FocusReminderManager.swift */; };
+		6EA45A9252F07503F90B37FF /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF4CA775C32BD61934DD2AA /* AnalyticsViewModel.swift */; };
+		7073DD252CC1CC08E04DC89C /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A953BF89D542AFC324675ED8 /* HapticManager.swift */; };
+		70D594FD74A2E50F46B820BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D8698E46FB110BCE65D61F /* Foundation.framework */; };
+		712584D5FB0238111D9D2A9A /* ALIVEApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E6EA40402359369B75A0FF /* ALIVEApplicationDelegate.swift */; };
+		751864BF22372863CE474A71 /* SkillNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180E249C8CDA586B08EE5F43 /* SkillNode.swift */; };
+		7C2DECB218FE0E9097A2519A /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C378185F52AF3AEC65609BC /* AuthService.swift */; };
+		7DBA86E52FB992C4AE0BD4BE /* LevelUpModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974A25DE533096DC2EBD82A5 /* LevelUpModalView.swift */; };
+		7F24AD5563F618F56F975286 /* ALIVERouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCD5330616339A9EB8C40D1 /* ALIVERouter.swift */; };
+		7FF9C93651C9C54040FA75BC /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = A703CE55A264D5CD38770C99 /* Achievement.swift */; };
+		82F6B89C2CFC312362D58F23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99D34EE9CBA2779F4473BF9B /* Assets.xcassets */; };
+		866BCBA273B5AB688F1A84F1 /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350B1FBCCE9BBF126EA55CA0 /* ActivityKit.framework */; };
+		86B1B4433566B8826E40F0A3 /* QuestProgressEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2174939A9D550A497D18196D /* QuestProgressEngineTests.swift */; };
+		8F61E17F4B6169D9BBD30C49 /* FocusSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537598493A1E00924474DF4F /* FocusSessionView.swift */; };
+		9196E0199A2428BA39A81A44 /* CharacterHUDHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA68A470EC4322500E91202 /* CharacterHUDHeader.swift */; };
+		A97FE011F729EA5D116E35D1 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F995EBF6BC0B306E65C8AF6B /* WidgetKit.framework */; };
+		A9AA6BA4C7385E10F4463A84 /* ALIVEWidgets.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 66EE889B79FD2C744DD8C351 /* ALIVEWidgets.appex */; };
+		B7B32C472E2B7EC3E0E92FB0 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B677AF7D6A53197FD44F6A63 /* AuthView.swift */; };
+		B91F0697FDD43796EB5D8E23 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F26214B63B640950DE94949 /* PersistenceService.swift */; };
+		BC5E9F0A2EBD2EF84E2A3FEF /* ProgressionModifierEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA70F091A0419ECFCD3DB1CD /* ProgressionModifierEngine.swift */; };
+		C6E9496256029EA879FE2034 /* ParticleEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884A3AEBC0220FDC4F8E49FD /* ParticleEffectView.swift */; };
+		C8BEC1E4649CDB678A4BCD30 /* GlassCardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D857462CEE8B561F0625BF64 /* GlassCardStyle.swift */; };
+		CAED15A0F2A3D54C0A1B8B4E /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48907E5561DF66F214D03840 /* UserProfile.swift */; };
+		D1F3245BCE32D1611B3EA81F /* DailyQuestServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CDA335609AA4B6D4D27747 /* DailyQuestServiceTests.swift */; };
+		D351C32A50AA0C086981D554 /* FocusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC68C597CD99120594239BC /* FocusViewModel.swift */; };
+		D3DD08DE3B1CA5D13C57258D /* XPTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5000AF7F9FB137B2FFAFE490 /* XPTransaction.swift */; };
+		D4C930FBDCB6947C42A18B51 /* AnalyticsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A451D36DC35295757132CBFA /* AnalyticsViewModelTests.swift */; };
+		D813AC9FF47D1609D6123AB2 /* ALIVEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C57958737EC00BB7AC76F53 /* ALIVEApp.swift */; };
+		D96E207C981CA4763486AFF3 /* AttendanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE628B45D6FDB3BACFB3DAF7 /* AttendanceViewModel.swift */; };
+		DD54D5D4E828B0513DB22005 /* FocusActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158823D962076241B9DE3178 /* FocusActivityAttributes.swift */; };
+		DEC0CD492AA11B9EB353622F /* QuestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E41957E78A4A011020F3E8 /* QuestViewModel.swift */; };
+		E42841B6199E26A7024E9942 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A7F287DC8FF668E2436B66 /* DashboardView.swift */; };
+		E7F18413AC9F88D3738FDE2F /* CharacterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CD87AB97BD49916B5697AE /* CharacterClass.swift */; };
+		EA0CFF4350A1224BE90822CD /* FocusSessionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E58079E7991C9AE748AAAE /* FocusSessionViewModelTests.swift */; };
+		EC20E9CD806EA8FAF7F70863 /* WidgetSnapshotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11E7AC000BF99B540D14687 /* WidgetSnapshotService.swift */; };
+		F38350EEB81351BFFCEF182E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 552E2564DADD3EBA7372DFD8 /* UserNotifications.framework */; };
+		F55CEFB910376B1A74F32A29 /* ALIVEWidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B20A2F34A518B81239C877 /* ALIVEWidgetSnapshot.swift */; };
+		F59FAD70793F0B877C2F2E51 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B60A4E6C9D61547BBFE72A /* AuthViewModel.swift */; };
+		F6648D5C190FFB8D87244BD7 /* FocusNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D32C5ECD76B92D07FCC9F0 /* FocusNotificationService.swift */; };
+		F7082DFDB100A500E3F996E6 /* AttendanceTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBE56A4254830B18E6725D8 /* AttendanceTrackerView.swift */; };
+		F81E36D19C6F530402B05606 /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350B1FBCCE9BBF126EA55CA0 /* ActivityKit.framework */; };
+		F8CD37A8F0568A2FABBED2EC /* StudySession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E6E4655E15326DCEF0058 /* StudySession.swift */; };
+		FC6F5DCC1E1FDE4459D5443E /* ALIVERouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19D7C44DD130361EC7EFD20 /* ALIVERouterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		353DA9F68D2FC65F6959760E /* PBXContainerItemProxy */ = {
+		60F0311E28B0AD12970E0006 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 32C9BAF6EB91B37CA1CDA740 /* Project object */;
+			containerPortal = E18F73AA1E0CA5E6330E9FDE /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2AE6A7D23D6D6A80CAA5D60B;
-			remoteInfo = ALIVE;
-		};
-		F0551221078D45AC17DF0BA2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 32C9BAF6EB91B37CA1CDA740 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 84BA00B5AB7E3C75841BB4D7;
+			remoteGlobalIDString = B616D36C7A949A767FC56B53;
 			remoteInfo = ALIVEWidgets;
+		};
+		E54A59031FCFA1117449CF0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E18F73AA1E0CA5E6330E9FDE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B3276A94F32452288D02978;
+			remoteInfo = ALIVE;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		12F97313FC2E82CC773D8D6B /* Embed App Extensions */ = {
+		9DED2C34E2A58EB2AA0C3395 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				D158CE6417BDF1AD784AE411 /* ALIVEWidgets.appex in Embed App Extensions */,
+				A9AA6BA4C7385E10F4463A84 /* ALIVEWidgets.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,273 +123,287 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		00735F372B0C9793C8CD088C /* SkillNodeDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkillNodeDetailView.swift; path = ALIVE/Views/SkillTree/SkillNodeDetailView.swift; sourceTree = "<group>"; };
-		02B867A9834CF14AD0B70418 /* LevelUpModalView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LevelUpModalView.swift; path = ALIVE/Views/Dashboard/LevelUpModalView.swift; sourceTree = "<group>"; };
-		04DDDEF09DF9EBC54FE46303 /* CharacterHUDHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CharacterHUDHeader.swift; path = ALIVE/Views/Dashboard/CharacterHUDHeader.swift; sourceTree = "<group>"; };
-		08D6F0EFBC4CBDA42C773686 /* AnalyticsViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnalyticsViewModelTests.swift; path = ALIVE/Tests/AnalyticsViewModelTests.swift; sourceTree = "<group>"; };
-		0BAC65BD8FC99F553A855C76 /* HealthKitService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HealthKitService.swift; path = ALIVE/Services/HealthKitService.swift; sourceTree = "<group>"; };
-		0C56ECF72C1D9400DB76514C /* SkillTreeSeedFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkillTreeSeedFactory.swift; path = ALIVE/Services/SkillTreeSeedFactory.swift; sourceTree = "<group>"; };
-		0CB1918DFA2D26B858651918 /* AuthView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthView.swift; path = ALIVE/Views/Auth/AuthView.swift; sourceTree = "<group>"; };
-		10FE21F1B1730BE37B8316DA /* ALIVEModelContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVEModelContainer.swift; path = ALIVE/App/ALIVEModelContainer.swift; sourceTree = "<group>"; };
-		1139C2A66CE8C13169081116 /* ALIVETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALIVETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		14EE36931A67CCF4C25B65A3 /* ALIVEWidgets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVEWidgets.swift; path = ALIVE/Extensions/ALIVEWidgets/ALIVEWidgets.swift; sourceTree = "<group>"; };
-		1AD905319EE8B33C8F490DEC /* SkillTreeCanvasView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkillTreeCanvasView.swift; path = ALIVE/Views/SkillTree/SkillTreeCanvasView.swift; sourceTree = "<group>"; };
-		23C13D13F052C575F448C545 /* ALIVE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ALIVE.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		247737B8A3435D0C04F69272 /* PersistenceService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PersistenceService.swift; path = ALIVE/Services/PersistenceService.swift; sourceTree = "<group>"; };
-		2BAA66D6C56F49821FCB38B9 /* FocusSessionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusSessionView.swift; path = ALIVE/Views/Focus/FocusSessionView.swift; sourceTree = "<group>"; };
-		30D6405DCBD2ADF2E8179C1D /* XPTransaction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XPTransaction.swift; path = ALIVE/Models/XPTransaction.swift; sourceTree = "<group>"; };
-		34227D9BC675C5C91AFD3B92 /* BadgeVaultView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BadgeVaultView.swift; path = ALIVE/Views/Achievements/BadgeVaultView.swift; sourceTree = "<group>"; };
-		35E6AD7072A6D808D2DAEBF9 /* ColorPalette.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = ALIVE/Theme/ColorPalette.swift; sourceTree = "<group>"; };
-		392799980D9C1EC3FBAA7038 /* FocusActivityAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusActivityAttributes.swift; path = ALIVE/Shared/FocusActivityAttributes.swift; sourceTree = "<group>"; };
-		400B1300B1A4CB93E678533B /* ALIVERouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVERouter.swift; path = ALIVE/App/ALIVERouter.swift; sourceTree = "<group>"; };
-		41F8EE8FA80E824A5949560F /* FocusLiveActivityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusLiveActivityManager.swift; path = ALIVE/Services/FocusLiveActivityManager.swift; sourceTree = "<group>"; };
-		425296D0B1D9CDE352668C9E /* StudySession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StudySession.swift; path = ALIVE/Models/StudySession.swift; sourceTree = "<group>"; };
-		457F573F1832AAB549D5E94B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		473B936056C2204E121CD4BF /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		49E97A5A2DB145EEB30603A0 /* ProfileViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProfileViewModel.swift; path = ALIVE/ViewModels/ProfileViewModel.swift; sourceTree = "<group>"; };
-		4E25D50C45A966C846C6B684 /* XPEngineTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XPEngineTests.swift; path = ALIVE/Tests/XPEngineTests.swift; sourceTree = "<group>"; };
-		4E96A5CC19F4F0A781081240 /* QuestCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestCardView.swift; path = ALIVE/Views/Quests/QuestCardView.swift; sourceTree = "<group>"; };
-		552DC69E08E4A3BC1D75BAFD /* Quest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Quest.swift; path = ALIVE/Models/Quest.swift; sourceTree = "<group>"; };
-		59E9469E31AF7699EA694360 /* QuestProgressEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestProgressEngine.swift; path = ALIVE/Services/QuestProgressEngine.swift; sourceTree = "<group>"; };
-		6146F50DB33AFA4F97EDEC41 /* QuestEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestEngine.swift; path = ALIVE/Services/QuestEngine.swift; sourceTree = "<group>"; };
-		6172E85F30456564CB89554E /* FocusNotificationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusNotificationService.swift; path = ALIVE/Services/FocusNotificationService.swift; sourceTree = "<group>"; };
-		670B5DC6D26573FDB59153F3 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ALIVE/Assets.xcassets; sourceTree = "<group>"; };
-		6AD39906D3B795A5F76FF884 /* ActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActivityKit.framework; path = System/Library/Frameworks/ActivityKit.framework; sourceTree = SDKROOT; };
-		6AE84E3C67FEC2FEB39F5804 /* ALIVEWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ALIVEWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E60EE927E9172EA57A96A0F /* GlassCardStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassCardStyle.swift; path = ALIVE/Theme/GlassCardStyle.swift; sourceTree = "<group>"; };
-		778183CDD7A2F243DDC5FF17 /* ALIVEWidgetSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVEWidgetSnapshot.swift; path = ALIVE/Shared/ALIVEWidgetSnapshot.swift; sourceTree = "<group>"; };
-		7CC1B06D5A753222130193DD /* ParticleEffectView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParticleEffectView.swift; path = ALIVE/Theme/ParticleEffectView.swift; sourceTree = "<group>"; };
-		7D91966FA8695273F36533EF /* WidgetSnapshotService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WidgetSnapshotService.swift; path = ALIVE/Services/WidgetSnapshotService.swift; sourceTree = "<group>"; };
-		7F3E5235B3EAFE2B5FD2471E /* ALIVEWidgetSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVEWidgetSnapshot.swift; path = ALIVE/Shared/ALIVEWidgetSnapshot.swift; sourceTree = "<group>"; };
-		8273F18A33DE213B660FAF11 /* SkillNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkillNode.swift; path = ALIVE/Models/SkillNode.swift; sourceTree = "<group>"; };
-		82ABD4AB9845D257D27DA6E7 /* FocusActivityAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusActivityAttributes.swift; path = ALIVE/Shared/FocusActivityAttributes.swift; sourceTree = "<group>"; };
-		8DC244890A9D999E5D33B361 /* DailyQuestService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DailyQuestService.swift; path = ALIVE/Services/DailyQuestService.swift; sourceTree = "<group>"; };
-		924DF3EA46653695509C0A34 /* QuestEngineTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestEngineTests.swift; path = ALIVE/Tests/QuestEngineTests.swift; sourceTree = "<group>"; };
-		97CCAC94ED47202660FD3337 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		99CB86F8EBE738AFC4729ED5 /* QuestViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestViewModel.swift; path = ALIVE/ViewModels/QuestViewModel.swift; sourceTree = "<group>"; };
-		9B1277B1339B4D4334AE9845 /* HapticManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HapticManager.swift; path = ALIVE/Services/HapticManager.swift; sourceTree = "<group>"; };
-		9DC3B51BFFA674317F687F8B /* UserProfile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserProfile.swift; path = ALIVE/Models/UserProfile.swift; sourceTree = "<group>"; };
-		9E62F536738FD6A3CB0ECF35 /* ALIVEApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVEApp.swift; path = ALIVE/App/ALIVEApp.swift; sourceTree = "<group>"; };
-		A12027CEBE08715718E0C2EF /* DailyQuestServiceTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DailyQuestServiceTests.swift; path = ALIVE/Tests/DailyQuestServiceTests.swift; sourceTree = "<group>"; };
-		A49D3D7387835D99B66D191D /* CharacterClass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CharacterClass.swift; path = ALIVE/Models/CharacterClass.swift; sourceTree = "<group>"; };
-		A50950B504A9E120C7A20804 /* Achievement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Achievement.swift; path = ALIVE/Models/Achievement.swift; sourceTree = "<group>"; };
-		A9D902F0D5F4F55CD1F6EE0E /* MainTabView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MainTabView.swift; path = ALIVE/Views/MainTabView.swift; sourceTree = "<group>"; };
-		AA572DDAD1DB5659A60E1DD3 /* DashboardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DashboardView.swift; path = ALIVE/Views/Dashboard/DashboardView.swift; sourceTree = "<group>"; };
-		AEA2AF84E81A109417425C2D /* ALIVERouterTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVERouterTests.swift; path = ALIVE/Tests/ALIVERouterTests.swift; sourceTree = "<group>"; };
-		B17AED73E11D58EF73574721 /* AuthService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = ALIVE/Services/AuthService.swift; sourceTree = "<group>"; };
-		BD1AB0D98FC608F1AD23A108 /* FocusViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusViewModel.swift; path = ALIVE/ViewModels/FocusViewModel.swift; sourceTree = "<group>"; };
-		BD7DE1714C0C1DC0B5F6A6DA /* MockDataGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MockDataGenerator.swift; path = ALIVE/Services/MockDataGenerator.swift; sourceTree = "<group>"; };
-		C517B4612EAE5C33F83B3CA7 /* AttendanceCalculatorTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AttendanceCalculatorTests.swift; path = ALIVE/Tests/AttendanceCalculatorTests.swift; sourceTree = "<group>"; };
-		C59E1E230CB17D63468B0A87 /* SkillTreeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkillTreeViewModel.swift; path = ALIVE/ViewModels/SkillTreeViewModel.swift; sourceTree = "<group>"; };
-		C7BBB9AD41F4B468576D04D7 /* AuthViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthViewModel.swift; path = ALIVE/ViewModels/AuthViewModel.swift; sourceTree = "<group>"; };
-		CFCB8E1F195E6BAA3101A97F /* AnalyticsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnalyticsView.swift; path = ALIVE/Views/Focus/AnalyticsView.swift; sourceTree = "<group>"; };
-		D61F3B3DCA5243FCF18538A0 /* QuestProgressEngineTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestProgressEngineTests.swift; path = ALIVE/Tests/QuestProgressEngineTests.swift; sourceTree = "<group>"; };
-		D71690DAF30001B15B96F2A5 /* SwiftDataModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftDataModelTests.swift; path = ALIVE/Tests/SwiftDataModelTests.swift; sourceTree = "<group>"; };
-		D8C30DFEFA65A88E8B6DBB8C /* CharacterCreationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CharacterCreationView.swift; path = ALIVE/Views/Auth/CharacterCreationView.swift; sourceTree = "<group>"; };
-		DB4791CF6845BFB061364817 /* WellnessView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WellnessView.swift; path = ALIVE/Views/Wellness/WellnessView.swift; sourceTree = "<group>"; };
-		DC617D135FC2B7B49E4DBEBA /* QuestListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestListView.swift; path = ALIVE/Views/Quests/QuestListView.swift; sourceTree = "<group>"; };
-		E13CDEACF654CBB6F77F1609 /* Course.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Course.swift; path = ALIVE/Models/Course.swift; sourceTree = "<group>"; };
-		E4770A5F885F90932BFD164B /* XPEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XPEngine.swift; path = ALIVE/Services/XPEngine.swift; sourceTree = "<group>"; };
-		E79E6326619116E5D151D608 /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnalyticsViewModel.swift; path = ALIVE/ViewModels/AnalyticsViewModel.swift; sourceTree = "<group>"; };
-		E9C0846D9B6876A771BA610A /* FocusSessionTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusSessionTests.swift; path = ALIVE/Tests/FocusSessionTests.swift; sourceTree = "<group>"; };
-		EAF38DDB97BCBB90479381C2 /* AttendanceViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AttendanceViewModel.swift; path = ALIVE/ViewModels/AttendanceViewModel.swift; sourceTree = "<group>"; };
-		F16A6A38C80E1A8362EF8B5B /* AttendanceTrackerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AttendanceTrackerView.swift; path = ALIVE/Views/Academics/AttendanceTrackerView.swift; sourceTree = "<group>"; };
-		F2999CEC37B42A1C823EA759 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		F5CD7B40DC6A80D12AEBBC45 /* ALIVEAppIntents.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVEAppIntents.swift; path = ALIVE/Intents/ALIVEAppIntents.swift; sourceTree = "<group>"; };
+		0BBE56A4254830B18E6725D8 /* AttendanceTrackerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AttendanceTrackerView.swift; path = ALIVE/Views/Academics/AttendanceTrackerView.swift; sourceTree = "<group>"; };
+		0BCD5330616339A9EB8C40D1 /* ALIVERouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVERouter.swift; path = ALIVE/App/ALIVERouter.swift; sourceTree = "<group>"; };
+		14EDC50FF3D48A5E0AD4DE10 /* ALIVEModelContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVEModelContainer.swift; path = ALIVE/App/ALIVEModelContainer.swift; sourceTree = "<group>"; };
+		158823D962076241B9DE3178 /* FocusActivityAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusActivityAttributes.swift; path = ALIVE/Shared/FocusActivityAttributes.swift; sourceTree = "<group>"; };
+		180E249C8CDA586B08EE5F43 /* SkillNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkillNode.swift; path = ALIVE/Models/SkillNode.swift; sourceTree = "<group>"; };
+		2065CF33709340F6910D091F /* QuestEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestEngine.swift; path = ALIVE/Services/QuestEngine.swift; sourceTree = "<group>"; };
+		2123ACB056FD3FD7260754DA /* HealthKitManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HealthKitManager.swift; path = ALIVE/Services/HealthKitManager.swift; sourceTree = "<group>"; };
+		2174939A9D550A497D18196D /* QuestProgressEngineTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestProgressEngineTests.swift; path = ALIVE/Tests/QuestProgressEngineTests.swift; sourceTree = "<group>"; };
+		25717E46E2D952020355DD09 /* FocusLiveActivityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusLiveActivityManager.swift; path = ALIVE/Services/FocusLiveActivityManager.swift; sourceTree = "<group>"; };
+		25CD87AB97BD49916B5697AE /* CharacterClass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CharacterClass.swift; path = ALIVE/Models/CharacterClass.swift; sourceTree = "<group>"; };
+		26D8698E46FB110BCE65D61F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		26E41957E78A4A011020F3E8 /* QuestViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestViewModel.swift; path = ALIVE/ViewModels/QuestViewModel.swift; sourceTree = "<group>"; };
+		29418054D0142B4D0F0399F4 /* ALIVETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALIVETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AA68A470EC4322500E91202 /* CharacterHUDHeader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CharacterHUDHeader.swift; path = ALIVE/Views/Dashboard/CharacterHUDHeader.swift; sourceTree = "<group>"; };
+		2DC8696C54A9AEFF43D607AD /* QuestCardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestCardView.swift; path = ALIVE/Views/Quests/QuestCardView.swift; sourceTree = "<group>"; };
+		32E6EA40402359369B75A0FF /* ALIVEApplicationDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVEApplicationDelegate.swift; path = ALIVE/App/ALIVEApplicationDelegate.swift; sourceTree = "<group>"; };
+		350B1FBCCE9BBF126EA55CA0 /* ActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActivityKit.framework; path = System/Library/Frameworks/ActivityKit.framework; sourceTree = SDKROOT; };
+		36406A065B87442572E81F03 /* CharacterCreationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CharacterCreationView.swift; path = ALIVE/Views/Auth/CharacterCreationView.swift; sourceTree = "<group>"; };
+		39F0474F0F320E84DCAC4015 /* ALIVEWidgetSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVEWidgetSnapshot.swift; path = ALIVE/Shared/ALIVEWidgetSnapshot.swift; sourceTree = "<group>"; };
+		40C0F715EC2C2E925A8C1F75 /* AnalyticsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnalyticsView.swift; path = ALIVE/Views/Focus/AnalyticsView.swift; sourceTree = "<group>"; };
+		47E515B4F90C46FC649A216E /* XPEngineTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XPEngineTests.swift; path = ALIVE/Tests/XPEngineTests.swift; sourceTree = "<group>"; };
+		48907E5561DF66F214D03840 /* UserProfile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserProfile.swift; path = ALIVE/Models/UserProfile.swift; sourceTree = "<group>"; };
+		5000AF7F9FB137B2FFAFE490 /* XPTransaction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XPTransaction.swift; path = ALIVE/Models/XPTransaction.swift; sourceTree = "<group>"; };
+		537598493A1E00924474DF4F /* FocusSessionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusSessionView.swift; path = ALIVE/Views/Focus/FocusSessionView.swift; sourceTree = "<group>"; };
+		552E2564DADD3EBA7372DFD8 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		5858995B33F2467834714998 /* HealthKitService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HealthKitService.swift; path = ALIVE/Services/HealthKitService.swift; sourceTree = "<group>"; };
+		5A50EE915874A8933A490B6B /* FocusSessionTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusSessionTests.swift; path = ALIVE/Tests/FocusSessionTests.swift; sourceTree = "<group>"; };
+		5E7192969B612BAE772B4DEA /* Course.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Course.swift; path = ALIVE/Models/Course.swift; sourceTree = "<group>"; };
+		65C16686B3E03CB0B31BE91D /* ProfileViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProfileViewModel.swift; path = ALIVE/ViewModels/ProfileViewModel.swift; sourceTree = "<group>"; };
+		66EE889B79FD2C744DD8C351 /* ALIVEWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ALIVEWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A9F502AB54938EA8C4764FC /* SkillTreeViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkillTreeViewModel.swift; path = ALIVE/ViewModels/SkillTreeViewModel.swift; sourceTree = "<group>"; };
+		6CC68C597CD99120594239BC /* FocusViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusViewModel.swift; path = ALIVE/ViewModels/FocusViewModel.swift; sourceTree = "<group>"; };
+		6F26214B63B640950DE94949 /* PersistenceService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PersistenceService.swift; path = ALIVE/Services/PersistenceService.swift; sourceTree = "<group>"; };
+		726E36B1AC12E81E397A0307 /* QuestProgressEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestProgressEngine.swift; path = ALIVE/Services/QuestProgressEngine.swift; sourceTree = "<group>"; };
+		7376955CD27A7CEFCAA081A9 /* QuestEngineTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestEngineTests.swift; path = ALIVE/Tests/QuestEngineTests.swift; sourceTree = "<group>"; };
+		7C2292E9D71411AB5830E60F /* WellnessView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WellnessView.swift; path = ALIVE/Views/Wellness/WellnessView.swift; sourceTree = "<group>"; };
+		7D08DFC57240D45F15EB0B5A /* ALIVEAppIntents.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVEAppIntents.swift; path = ALIVE/Intents/ALIVEAppIntents.swift; sourceTree = "<group>"; };
+		84A780991E5FB4674E3704BF /* SwiftDataModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftDataModelTests.swift; path = ALIVE/Tests/SwiftDataModelTests.swift; sourceTree = "<group>"; };
+		884A3AEBC0220FDC4F8E49FD /* ParticleEffectView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParticleEffectView.swift; path = ALIVE/Theme/ParticleEffectView.swift; sourceTree = "<group>"; };
+		898E6E4655E15326DCEF0058 /* StudySession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StudySession.swift; path = ALIVE/Models/StudySession.swift; sourceTree = "<group>"; };
+		8C378185F52AF3AEC65609BC /* AuthService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = ALIVE/Services/AuthService.swift; sourceTree = "<group>"; };
+		974A25DE533096DC2EBD82A5 /* LevelUpModalView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LevelUpModalView.swift; path = ALIVE/Views/Dashboard/LevelUpModalView.swift; sourceTree = "<group>"; };
+		99D34EE9CBA2779F4473BF9B /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ALIVE/Assets.xcassets; sourceTree = "<group>"; };
+		9C57958737EC00BB7AC76F53 /* ALIVEApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVEApp.swift; path = ALIVE/App/ALIVEApp.swift; sourceTree = "<group>"; };
+		9E1D2C4516806D3A626F1064 /* MockDataGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MockDataGenerator.swift; path = ALIVE/Services/MockDataGenerator.swift; sourceTree = "<group>"; };
+		A02A761AA99E937C3C85FF68 /* AttendanceCalculatorTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AttendanceCalculatorTests.swift; path = ALIVE/Tests/AttendanceCalculatorTests.swift; sourceTree = "<group>"; };
+		A2B20A2F34A518B81239C877 /* ALIVEWidgetSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVEWidgetSnapshot.swift; path = ALIVE/Shared/ALIVEWidgetSnapshot.swift; sourceTree = "<group>"; };
+		A30953914B2675F2B482E383 /* ColorPalette.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = ALIVE/Theme/ColorPalette.swift; sourceTree = "<group>"; };
+		A451D36DC35295757132CBFA /* AnalyticsViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnalyticsViewModelTests.swift; path = ALIVE/Tests/AnalyticsViewModelTests.swift; sourceTree = "<group>"; };
+		A703CE55A264D5CD38770C99 /* Achievement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Achievement.swift; path = ALIVE/Models/Achievement.swift; sourceTree = "<group>"; };
+		A953BF89D542AFC324675ED8 /* HapticManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HapticManager.swift; path = ALIVE/Services/HapticManager.swift; sourceTree = "<group>"; };
+		AA21449F7285AD2AFC8CECA4 /* SkillTreeSeedFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkillTreeSeedFactory.swift; path = ALIVE/Services/SkillTreeSeedFactory.swift; sourceTree = "<group>"; };
+		ACB393B6A159089CC4E2F0BB /* SkillTreeCanvasView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkillTreeCanvasView.swift; path = ALIVE/Views/SkillTree/SkillTreeCanvasView.swift; sourceTree = "<group>"; };
+		B11E7AC000BF99B540D14687 /* WidgetSnapshotService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WidgetSnapshotService.swift; path = ALIVE/Services/WidgetSnapshotService.swift; sourceTree = "<group>"; };
+		B1F315F1A553DC37845C28F5 /* ProgressionModifierEngineTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProgressionModifierEngineTests.swift; path = ALIVE/Tests/ProgressionModifierEngineTests.swift; sourceTree = "<group>"; };
+		B481F8E985E760760FDD4AB2 /* XPEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XPEngine.swift; path = ALIVE/Services/XPEngine.swift; sourceTree = "<group>"; };
+		B63A505D8A5BDA700B244790 /* FocusSessionComponents.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusSessionComponents.swift; path = ALIVE/Views/Focus/FocusSessionComponents.swift; sourceTree = "<group>"; };
+		B677AF7D6A53197FD44F6A63 /* AuthView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthView.swift; path = ALIVE/Views/Auth/AuthView.swift; sourceTree = "<group>"; };
+		B8A7F287DC8FF668E2436B66 /* DashboardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DashboardView.swift; path = ALIVE/Views/Dashboard/DashboardView.swift; sourceTree = "<group>"; };
+		BA70F091A0419ECFCD3DB1CD /* ProgressionModifierEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProgressionModifierEngine.swift; path = ALIVE/Services/ProgressionModifierEngine.swift; sourceTree = "<group>"; };
+		BADF897136841988D6CF190E /* ALIVE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ALIVE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC317E47BAC0C7DAC6C816CE /* FocusActivityAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusActivityAttributes.swift; path = ALIVE/Shared/FocusActivityAttributes.swift; sourceTree = "<group>"; };
+		C2B60A4E6C9D61547BBFE72A /* AuthViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthViewModel.swift; path = ALIVE/ViewModels/AuthViewModel.swift; sourceTree = "<group>"; };
+		C9D32C5ECD76B92D07FCC9F0 /* FocusNotificationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusNotificationService.swift; path = ALIVE/Services/FocusNotificationService.swift; sourceTree = "<group>"; };
+		CD562F7217D299093E9DE0A2 /* QuestListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuestListView.swift; path = ALIVE/Views/Quests/QuestListView.swift; sourceTree = "<group>"; };
+		CE233D634140ABAE0BB77092 /* BadgeVaultView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BadgeVaultView.swift; path = ALIVE/Views/Achievements/BadgeVaultView.swift; sourceTree = "<group>"; };
+		CEF4CA775C32BD61934DD2AA /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnalyticsViewModel.swift; path = ALIVE/ViewModels/AnalyticsViewModel.swift; sourceTree = "<group>"; };
+		D36D7D2FF426A7BD087A11EE /* ALIVEWidgets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVEWidgets.swift; path = ALIVE/Extensions/ALIVEWidgets/ALIVEWidgets.swift; sourceTree = "<group>"; };
+		D857462CEE8B561F0625BF64 /* GlassCardStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassCardStyle.swift; path = ALIVE/Theme/GlassCardStyle.swift; sourceTree = "<group>"; };
+		E19D7C44DD130361EC7EFD20 /* ALIVERouterTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ALIVERouterTests.swift; path = ALIVE/Tests/ALIVERouterTests.swift; sourceTree = "<group>"; };
+		E4E58079E7991C9AE748AAAE /* FocusSessionViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusSessionViewModelTests.swift; path = ALIVE/Tests/FocusSessionViewModelTests.swift; sourceTree = "<group>"; };
+		E57A2B496B467F91E043FEA8 /* FocusReminderManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusReminderManager.swift; path = ALIVE/Services/FocusReminderManager.swift; sourceTree = "<group>"; };
+		EC0C41B9C81845C67E9F5202 /* DailyQuestService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DailyQuestService.swift; path = ALIVE/Services/DailyQuestService.swift; sourceTree = "<group>"; };
+		EDB64DE8EF4C7FD67C4C7F76 /* SkillNodeDetailView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SkillNodeDetailView.swift; path = ALIVE/Views/SkillTree/SkillNodeDetailView.swift; sourceTree = "<group>"; };
+		EE628B45D6FDB3BACFB3DAF7 /* AttendanceViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AttendanceViewModel.swift; path = ALIVE/ViewModels/AttendanceViewModel.swift; sourceTree = "<group>"; };
+		F891A73AF9E271E3E7877E73 /* Quest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Quest.swift; path = ALIVE/Models/Quest.swift; sourceTree = "<group>"; };
+		F94B6875E8D2CC52A0C7C5A5 /* MainTabView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MainTabView.swift; path = ALIVE/Views/MainTabView.swift; sourceTree = "<group>"; };
+		F995EBF6BC0B306E65C8AF6B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		F9CDA335609AA4B6D4D27747 /* DailyQuestServiceTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DailyQuestServiceTests.swift; path = ALIVE/Tests/DailyQuestServiceTests.swift; sourceTree = "<group>"; };
+		FC77BD5F3EA1103B5048C168 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		604D5E66D83256B501B5086D /* Frameworks */ = {
+		056E39C8C9EDD6A84EF40A3E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D53271370CA1EBFA1F72DF50 /* Foundation.framework in Frameworks */,
-				A718D234C02FC703E1AEE73E /* ActivityKit.framework in Frameworks */,
-				244AC08BDC7C82DE6B4FDBB3 /* WidgetKit.framework in Frameworks */,
+				70D594FD74A2E50F46B820BA /* Foundation.framework in Frameworks */,
+				866BCBA273B5AB688F1A84F1 /* ActivityKit.framework in Frameworks */,
+				60B27A771C3037EA64C446B0 /* HealthKit.framework in Frameworks */,
+				F38350EEB81351BFFCEF182E /* UserNotifications.framework in Frameworks */,
+				67C1077CDB89E581E3B58BF1 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E1DF1212A8147AC1069AAC40 /* Frameworks */ = {
+		823F120D1D503C80FC6263FD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5E40AE02CFBE05BE52E7E1F /* Foundation.framework in Frameworks */,
+				63BF5C8E5A22FD35260B951B /* Foundation.framework in Frameworks */,
+				F81E36D19C6F530402B05606 /* ActivityKit.framework in Frameworks */,
+				A97FE011F729EA5D116E35D1 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F16018AEA16A6C0F0A39ECAA /* Frameworks */ = {
+		BE7C2D517D143EA76672F98E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4398F9C454BAAACC1B87DB6A /* Foundation.framework in Frameworks */,
-				D01B9C05E2E261C8CE6B0558 /* ActivityKit.framework in Frameworks */,
-				99E8401BE9FDD37A9DDBFCBD /* HealthKit.framework in Frameworks */,
-				EF95B5530BA650465177EE1E /* UserNotifications.framework in Frameworks */,
-				B0E125D6E9E51E9DDA28085F /* WidgetKit.framework in Frameworks */,
+				66BFB08AFC91732C91ED728C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2ABFB141E5EE7075C956BD33 /* ALIVE Widgets */ = {
+		2E13CF18166FA1F2AA54C21B /* ALIVE Widgets */ = {
 			isa = PBXGroup;
 			children = (
-				14EE36931A67CCF4C25B65A3 /* ALIVEWidgets.swift */,
-				7F3E5235B3EAFE2B5FD2471E /* ALIVEWidgetSnapshot.swift */,
-				392799980D9C1EC3FBAA7038 /* FocusActivityAttributes.swift */,
+				D36D7D2FF426A7BD087A11EE /* ALIVEWidgets.swift */,
+				39F0474F0F320E84DCAC4015 /* ALIVEWidgetSnapshot.swift */,
+				158823D962076241B9DE3178 /* FocusActivityAttributes.swift */,
 			);
 			name = "ALIVE Widgets";
 			sourceTree = "<group>";
 		};
-		70419B8AADE0FC62379263C2 /* Products */ = {
+		30492C1206A774D247491E15 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				23C13D13F052C575F448C545 /* ALIVE.app */,
-				6AE84E3C67FEC2FEB39F5804 /* ALIVEWidgets.appex */,
-				1139C2A66CE8C13169081116 /* ALIVETests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		7322F3F35785F86A32570166 = {
-			isa = PBXGroup;
-			children = (
-				70419B8AADE0FC62379263C2 /* Products */,
-				99B6B4CCF6938F6BEB5981DC /* Frameworks */,
-				BD1AB0D98FC608F1AD23A108 /* FocusViewModel.swift */,
-				C59E1E230CB17D63468B0A87 /* SkillTreeViewModel.swift */,
-				C7BBB9AD41F4B468576D04D7 /* AuthViewModel.swift */,
-				99CB86F8EBE738AFC4729ED5 /* QuestViewModel.swift */,
-				49E97A5A2DB145EEB30603A0 /* ProfileViewModel.swift */,
-				EAF38DDB97BCBB90479381C2 /* AttendanceViewModel.swift */,
-				E79E6326619116E5D151D608 /* AnalyticsViewModel.swift */,
-				10FE21F1B1730BE37B8316DA /* ALIVEModelContainer.swift */,
-				9E62F536738FD6A3CB0ECF35 /* ALIVEApp.swift */,
-				400B1300B1A4CB93E678533B /* ALIVERouter.swift */,
-				778183CDD7A2F243DDC5FF17 /* ALIVEWidgetSnapshot.swift */,
-				82ABD4AB9845D257D27DA6E7 /* FocusActivityAttributes.swift */,
-				A49D3D7387835D99B66D191D /* CharacterClass.swift */,
-				552DC69E08E4A3BC1D75BAFD /* Quest.swift */,
-				8273F18A33DE213B660FAF11 /* SkillNode.swift */,
-				9DC3B51BFFA674317F687F8B /* UserProfile.swift */,
-				E13CDEACF654CBB6F77F1609 /* Course.swift */,
-				A50950B504A9E120C7A20804 /* Achievement.swift */,
-				425296D0B1D9CDE352668C9E /* StudySession.swift */,
-				30D6405DCBD2ADF2E8179C1D /* XPTransaction.swift */,
-				7CC1B06D5A753222130193DD /* ParticleEffectView.swift */,
-				35E6AD7072A6D808D2DAEBF9 /* ColorPalette.swift */,
-				6E60EE927E9172EA57A96A0F /* GlassCardStyle.swift */,
-				F5CD7B40DC6A80D12AEBBC45 /* ALIVEAppIntents.swift */,
-				4E96A5CC19F4F0A781081240 /* QuestCardView.swift */,
-				DC617D135FC2B7B49E4DBEBA /* QuestListView.swift */,
-				A9D902F0D5F4F55CD1F6EE0E /* MainTabView.swift */,
-				F16A6A38C80E1A8362EF8B5B /* AttendanceTrackerView.swift */,
-				34227D9BC675C5C91AFD3B92 /* BadgeVaultView.swift */,
-				00735F372B0C9793C8CD088C /* SkillNodeDetailView.swift */,
-				1AD905319EE8B33C8F490DEC /* SkillTreeCanvasView.swift */,
-				DB4791CF6845BFB061364817 /* WellnessView.swift */,
-				D8C30DFEFA65A88E8B6DBB8C /* CharacterCreationView.swift */,
-				0CB1918DFA2D26B858651918 /* AuthView.swift */,
-				2BAA66D6C56F49821FCB38B9 /* FocusSessionView.swift */,
-				CFCB8E1F195E6BAA3101A97F /* AnalyticsView.swift */,
-				AA572DDAD1DB5659A60E1DD3 /* DashboardView.swift */,
-				02B867A9834CF14AD0B70418 /* LevelUpModalView.swift */,
-				04DDDEF09DF9EBC54FE46303 /* CharacterHUDHeader.swift */,
-				59E9469E31AF7699EA694360 /* QuestProgressEngine.swift */,
-				8DC244890A9D999E5D33B361 /* DailyQuestService.swift */,
-				9B1277B1339B4D4334AE9845 /* HapticManager.swift */,
-				E4770A5F885F90932BFD164B /* XPEngine.swift */,
-				247737B8A3435D0C04F69272 /* PersistenceService.swift */,
-				6172E85F30456564CB89554E /* FocusNotificationService.swift */,
-				0C56ECF72C1D9400DB76514C /* SkillTreeSeedFactory.swift */,
-				6146F50DB33AFA4F97EDEC41 /* QuestEngine.swift */,
-				B17AED73E11D58EF73574721 /* AuthService.swift */,
-				0BAC65BD8FC99F553A855C76 /* HealthKitService.swift */,
-				41F8EE8FA80E824A5949560F /* FocusLiveActivityManager.swift */,
-				7D91966FA8695273F36533EF /* WidgetSnapshotService.swift */,
-				BD7DE1714C0C1DC0B5F6A6DA /* MockDataGenerator.swift */,
-				670B5DC6D26573FDB59153F3 /* Assets.xcassets */,
-				2ABFB141E5EE7075C956BD33 /* ALIVE Widgets */,
-				08D6F0EFBC4CBDA42C773686 /* AnalyticsViewModelTests.swift */,
-				C517B4612EAE5C33F83B3CA7 /* AttendanceCalculatorTests.swift */,
-				4E25D50C45A966C846C6B684 /* XPEngineTests.swift */,
-				AEA2AF84E81A109417425C2D /* ALIVERouterTests.swift */,
-				D61F3B3DCA5243FCF18538A0 /* QuestProgressEngineTests.swift */,
-				924DF3EA46653695509C0A34 /* QuestEngineTests.swift */,
-				E9C0846D9B6876A771BA610A /* FocusSessionTests.swift */,
-				A12027CEBE08715718E0C2EF /* DailyQuestServiceTests.swift */,
-				D71690DAF30001B15B96F2A5 /* SwiftDataModelTests.swift */,
-			);
-			sourceTree = "<group>";
-		};
-		7C5B8B26D2E5929A9F668F3F /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				457F573F1832AAB549D5E94B /* Foundation.framework */,
-				6AD39906D3B795A5F76FF884 /* ActivityKit.framework */,
-				473B936056C2204E121CD4BF /* HealthKit.framework */,
-				97CCAC94ED47202660FD3337 /* UserNotifications.framework */,
-				F2999CEC37B42A1C823EA759 /* WidgetKit.framework */,
+				26D8698E46FB110BCE65D61F /* Foundation.framework */,
+				350B1FBCCE9BBF126EA55CA0 /* ActivityKit.framework */,
+				FC77BD5F3EA1103B5048C168 /* HealthKit.framework */,
+				552E2564DADD3EBA7372DFD8 /* UserNotifications.framework */,
+				F995EBF6BC0B306E65C8AF6B /* WidgetKit.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		99B6B4CCF6938F6BEB5981DC /* Frameworks */ = {
+		33D0059A884577D5EBA3236B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7C5B8B26D2E5929A9F668F3F /* iOS */,
+				30492C1206A774D247491E15 /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8DF27A4FB7CFE2D2A7C8A66F = {
+			isa = PBXGroup;
+			children = (
+				D1D2E68AA7CD2709AC34D17A /* Products */,
+				33D0059A884577D5EBA3236B /* Frameworks */,
+				6CC68C597CD99120594239BC /* FocusViewModel.swift */,
+				6A9F502AB54938EA8C4764FC /* SkillTreeViewModel.swift */,
+				C2B60A4E6C9D61547BBFE72A /* AuthViewModel.swift */,
+				26E41957E78A4A011020F3E8 /* QuestViewModel.swift */,
+				65C16686B3E03CB0B31BE91D /* ProfileViewModel.swift */,
+				EE628B45D6FDB3BACFB3DAF7 /* AttendanceViewModel.swift */,
+				CEF4CA775C32BD61934DD2AA /* AnalyticsViewModel.swift */,
+				14EDC50FF3D48A5E0AD4DE10 /* ALIVEModelContainer.swift */,
+				9C57958737EC00BB7AC76F53 /* ALIVEApp.swift */,
+				32E6EA40402359369B75A0FF /* ALIVEApplicationDelegate.swift */,
+				0BCD5330616339A9EB8C40D1 /* ALIVERouter.swift */,
+				A2B20A2F34A518B81239C877 /* ALIVEWidgetSnapshot.swift */,
+				BC317E47BAC0C7DAC6C816CE /* FocusActivityAttributes.swift */,
+				25CD87AB97BD49916B5697AE /* CharacterClass.swift */,
+				F891A73AF9E271E3E7877E73 /* Quest.swift */,
+				180E249C8CDA586B08EE5F43 /* SkillNode.swift */,
+				48907E5561DF66F214D03840 /* UserProfile.swift */,
+				5E7192969B612BAE772B4DEA /* Course.swift */,
+				A703CE55A264D5CD38770C99 /* Achievement.swift */,
+				898E6E4655E15326DCEF0058 /* StudySession.swift */,
+				5000AF7F9FB137B2FFAFE490 /* XPTransaction.swift */,
+				884A3AEBC0220FDC4F8E49FD /* ParticleEffectView.swift */,
+				A30953914B2675F2B482E383 /* ColorPalette.swift */,
+				D857462CEE8B561F0625BF64 /* GlassCardStyle.swift */,
+				7D08DFC57240D45F15EB0B5A /* ALIVEAppIntents.swift */,
+				2DC8696C54A9AEFF43D607AD /* QuestCardView.swift */,
+				CD562F7217D299093E9DE0A2 /* QuestListView.swift */,
+				F94B6875E8D2CC52A0C7C5A5 /* MainTabView.swift */,
+				0BBE56A4254830B18E6725D8 /* AttendanceTrackerView.swift */,
+				CE233D634140ABAE0BB77092 /* BadgeVaultView.swift */,
+				EDB64DE8EF4C7FD67C4C7F76 /* SkillNodeDetailView.swift */,
+				ACB393B6A159089CC4E2F0BB /* SkillTreeCanvasView.swift */,
+				7C2292E9D71411AB5830E60F /* WellnessView.swift */,
+				36406A065B87442572E81F03 /* CharacterCreationView.swift */,
+				B677AF7D6A53197FD44F6A63 /* AuthView.swift */,
+				537598493A1E00924474DF4F /* FocusSessionView.swift */,
+				B63A505D8A5BDA700B244790 /* FocusSessionComponents.swift */,
+				40C0F715EC2C2E925A8C1F75 /* AnalyticsView.swift */,
+				B8A7F287DC8FF668E2436B66 /* DashboardView.swift */,
+				974A25DE533096DC2EBD82A5 /* LevelUpModalView.swift */,
+				2AA68A470EC4322500E91202 /* CharacterHUDHeader.swift */,
+				726E36B1AC12E81E397A0307 /* QuestProgressEngine.swift */,
+				E57A2B496B467F91E043FEA8 /* FocusReminderManager.swift */,
+				EC0C41B9C81845C67E9F5202 /* DailyQuestService.swift */,
+				BA70F091A0419ECFCD3DB1CD /* ProgressionModifierEngine.swift */,
+				A953BF89D542AFC324675ED8 /* HapticManager.swift */,
+				B481F8E985E760760FDD4AB2 /* XPEngine.swift */,
+				6F26214B63B640950DE94949 /* PersistenceService.swift */,
+				C9D32C5ECD76B92D07FCC9F0 /* FocusNotificationService.swift */,
+				AA21449F7285AD2AFC8CECA4 /* SkillTreeSeedFactory.swift */,
+				2065CF33709340F6910D091F /* QuestEngine.swift */,
+				8C378185F52AF3AEC65609BC /* AuthService.swift */,
+				5858995B33F2467834714998 /* HealthKitService.swift */,
+				25717E46E2D952020355DD09 /* FocusLiveActivityManager.swift */,
+				2123ACB056FD3FD7260754DA /* HealthKitManager.swift */,
+				B11E7AC000BF99B540D14687 /* WidgetSnapshotService.swift */,
+				9E1D2C4516806D3A626F1064 /* MockDataGenerator.swift */,
+				99D34EE9CBA2779F4473BF9B /* Assets.xcassets */,
+				2E13CF18166FA1F2AA54C21B /* ALIVE Widgets */,
+				A451D36DC35295757132CBFA /* AnalyticsViewModelTests.swift */,
+				A02A761AA99E937C3C85FF68 /* AttendanceCalculatorTests.swift */,
+				47E515B4F90C46FC649A216E /* XPEngineTests.swift */,
+				E19D7C44DD130361EC7EFD20 /* ALIVERouterTests.swift */,
+				2174939A9D550A497D18196D /* QuestProgressEngineTests.swift */,
+				7376955CD27A7CEFCAA081A9 /* QuestEngineTests.swift */,
+				B1F315F1A553DC37845C28F5 /* ProgressionModifierEngineTests.swift */,
+				5A50EE915874A8933A490B6B /* FocusSessionTests.swift */,
+				F9CDA335609AA4B6D4D27747 /* DailyQuestServiceTests.swift */,
+				84A780991E5FB4674E3704BF /* SwiftDataModelTests.swift */,
+				E4E58079E7991C9AE748AAAE /* FocusSessionViewModelTests.swift */,
+			);
+			sourceTree = "<group>";
+		};
+		D1D2E68AA7CD2709AC34D17A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BADF897136841988D6CF190E /* ALIVE.app */,
+				66EE889B79FD2C744DD8C351 /* ALIVEWidgets.appex */,
+				29418054D0142B4D0F0399F4 /* ALIVETests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		202F952B2A477FE1970A8001 /* ALIVETests */ = {
+		015AD993D8BA75799C626399 /* ALIVETests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 27B76EE8F3065096E6D126DE /* Build configuration list for PBXNativeTarget "ALIVETests" */;
+			buildConfigurationList = 5F6631CD60C9EFFFD8232826 /* Build configuration list for PBXNativeTarget "ALIVETests" */;
 			buildPhases = (
-				A433054D5606B8ABCE9F2D1E /* Sources */,
-				E1DF1212A8147AC1069AAC40 /* Frameworks */,
-				171ED19CA78BD3654B840BA5 /* Resources */,
+				7996B6D3C7A2C288209C998C /* Sources */,
+				BE7C2D517D143EA76672F98E /* Frameworks */,
+				5C97D3E86078A8EDB68E49F5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				253436DB2EF87532EB17C244 /* PBXTargetDependency */,
+				97310CAF219E179F6EE13729 /* PBXTargetDependency */,
 			);
 			name = ALIVETests;
 			productName = ALIVETests;
-			productReference = 1139C2A66CE8C13169081116 /* ALIVETests.xctest */;
+			productReference = 29418054D0142B4D0F0399F4 /* ALIVETests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		2AE6A7D23D6D6A80CAA5D60B /* ALIVE */ = {
+		0B3276A94F32452288D02978 /* ALIVE */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 38902A73D86C3CA898D5208E /* Build configuration list for PBXNativeTarget "ALIVE" */;
+			buildConfigurationList = 3916991DC12ABB7CF05E467A /* Build configuration list for PBXNativeTarget "ALIVE" */;
 			buildPhases = (
-				51D07C090365B56E478B4B10 /* Sources */,
-				F16018AEA16A6C0F0A39ECAA /* Frameworks */,
-				3CABC70B4A29CB8D9B72FB2E /* Resources */,
-				12F97313FC2E82CC773D8D6B /* Embed App Extensions */,
+				A3F99E1594277E20D7BF3E90 /* Sources */,
+				056E39C8C9EDD6A84EF40A3E /* Frameworks */,
+				04DC63DA68CD054B5C35D924 /* Resources */,
+				9DED2C34E2A58EB2AA0C3395 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				44453836975AE01AA0C1C30C /* PBXTargetDependency */,
+				89543257A0AD14FF5C88B1C8 /* PBXTargetDependency */,
 			);
 			name = ALIVE;
 			productName = ALIVE;
-			productReference = 23C13D13F052C575F448C545 /* ALIVE.app */;
+			productReference = BADF897136841988D6CF190E /* ALIVE.app */;
 			productType = "com.apple.product-type.application";
 		};
-		84BA00B5AB7E3C75841BB4D7 /* ALIVEWidgets */ = {
+		B616D36C7A949A767FC56B53 /* ALIVEWidgets */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF4ED141A254E4918BB735CC /* Build configuration list for PBXNativeTarget "ALIVEWidgets" */;
+			buildConfigurationList = 6A240F1D9FE3A0EFE10DC463 /* Build configuration list for PBXNativeTarget "ALIVEWidgets" */;
 			buildPhases = (
-				6F5E179C7C2A7F69239A70A2 /* Sources */,
-				604D5E66D83256B501B5086D /* Frameworks */,
-				5CBDB02CE5C65D0998ECB749 /* Resources */,
+				C05A5812A1C6E32100E19167 /* Sources */,
+				823F120D1D503C80FC6263FD /* Frameworks */,
+				6171DF99267828B35D5CCD5F /* Resources */,
 			);
 			buildRules = (
 			);
@@ -390,19 +411,19 @@
 			);
 			name = ALIVEWidgets;
 			productName = ALIVEWidgets;
-			productReference = 6AE84E3C67FEC2FEB39F5804 /* ALIVEWidgets.appex */;
+			productReference = 66EE889B79FD2C744DD8C351 /* ALIVEWidgets.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		32C9BAF6EB91B37CA1CDA740 /* Project object */ = {
+		E18F73AA1E0CA5E6330E9FDE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 			};
-			buildConfigurationList = A739977A7CD96BCFBF1BC557 /* Build configuration list for PBXProject "alive" */;
+			buildConfigurationList = AB9970E5D48E9CAFC2D3BE0D /* Build configuration list for PBXProject "alive" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -410,37 +431,37 @@
 				en,
 				Base,
 			);
-			mainGroup = 7322F3F35785F86A32570166;
+			mainGroup = 8DF27A4FB7CFE2D2A7C8A66F;
 			minimizedProjectReferenceProxies = 0;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 70419B8AADE0FC62379263C2 /* Products */;
+			productRefGroup = D1D2E68AA7CD2709AC34D17A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2AE6A7D23D6D6A80CAA5D60B /* ALIVE */,
-				84BA00B5AB7E3C75841BB4D7 /* ALIVEWidgets */,
-				202F952B2A477FE1970A8001 /* ALIVETests */,
+				0B3276A94F32452288D02978 /* ALIVE */,
+				B616D36C7A949A767FC56B53 /* ALIVEWidgets */,
+				015AD993D8BA75799C626399 /* ALIVETests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		171ED19CA78BD3654B840BA5 /* Resources */ = {
+		04DC63DA68CD054B5C35D924 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82F6B89C2CFC312362D58F23 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C97D3E86078A8EDB68E49F5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3CABC70B4A29CB8D9B72FB2E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B8FB0ACEBE2E436B2F65F3A5 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5CBDB02CE5C65D0998ECB749 /* Resources */ = {
+		6171DF99267828B35D5CCD5F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -450,124 +471,117 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		51D07C090365B56E478B4B10 /* Sources */ = {
+		7996B6D3C7A2C288209C998C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AAC1FE8C03E6D45EDDB447A /* FocusViewModel.swift in Sources */,
-				858C12C3F1607B0453782180 /* SkillTreeViewModel.swift in Sources */,
-				0901106F22BDD5D328177A18 /* AuthViewModel.swift in Sources */,
-				9B12E3CE4A54D5A9595F4FDC /* QuestViewModel.swift in Sources */,
-				656165DC5A87F81F55C7F452 /* ProfileViewModel.swift in Sources */,
-				C7852624E615CBA1E4968818 /* AttendanceViewModel.swift in Sources */,
-				9957A091E9A07552C3EB869D /* AnalyticsViewModel.swift in Sources */,
-				19172B6DCA805FC0E3FDB25B /* ALIVEModelContainer.swift in Sources */,
-				A168CB5AAEE112777DD2F755 /* ALIVEApp.swift in Sources */,
-				E6E231C51C0F37F1428AD7C8 /* ALIVERouter.swift in Sources */,
-				95D198B5C553830B298E65E2 /* ALIVEWidgetSnapshot.swift in Sources */,
-				DB278B151089CA256B6D2AF2 /* FocusActivityAttributes.swift in Sources */,
-				6979C24E22563DF28138E52E /* CharacterClass.swift in Sources */,
-				1A6A17AAA63653E56A3BFB39 /* Quest.swift in Sources */,
-				758C7367806C2FFE7F1A33E4 /* SkillNode.swift in Sources */,
-				BC5C6682620890EB715FD38A /* UserProfile.swift in Sources */,
-				2AC90D7F4432B3E73DE8173A /* Course.swift in Sources */,
-				1EDD7E6B4A2251006A22EAE0 /* Achievement.swift in Sources */,
-				2FA2E81F8A6226D4CF51C0F6 /* StudySession.swift in Sources */,
-				6BA430A5ABB46DEE32D3FECA /* XPTransaction.swift in Sources */,
-				4638E91486CB3B5498798153 /* ParticleEffectView.swift in Sources */,
-				89DD12AE91319BA24B0AF491 /* ColorPalette.swift in Sources */,
-				D08AD72E6DF55DCB33FEDA08 /* GlassCardStyle.swift in Sources */,
-				80A56937DE2C7E96A064D915 /* ALIVEAppIntents.swift in Sources */,
-				6E561E5DB9FF76932F7B08A3 /* QuestCardView.swift in Sources */,
-				DF3F0A17BD8C51120E5B9914 /* QuestListView.swift in Sources */,
-				25C95C4CC006BB1480AE673C /* MainTabView.swift in Sources */,
-				38526DB87D200811B7932B04 /* AttendanceTrackerView.swift in Sources */,
-				BD4517053E327FECECD0B419 /* BadgeVaultView.swift in Sources */,
-				6C51F6BF3A45B0D291383600 /* SkillNodeDetailView.swift in Sources */,
-				6F715C65D457AD8D8AD3F6CC /* SkillTreeCanvasView.swift in Sources */,
-				C863B22A1477E18445CB50AE /* WellnessView.swift in Sources */,
-				AC93A03ACE2F05E3F9907713 /* CharacterCreationView.swift in Sources */,
-				786B025F2AB5324877AF82AA /* AuthView.swift in Sources */,
-				38655A88BFA7BB38C503C22F /* FocusSessionView.swift in Sources */,
-				304CE8B9B2BDC3462773A327 /* AnalyticsView.swift in Sources */,
-				4C0F78DB4A59CA7098FE02D4 /* DashboardView.swift in Sources */,
-				A76E9B1E795FC6826EBD1CB2 /* LevelUpModalView.swift in Sources */,
-				AFD857799B0141BD54D3ABBA /* CharacterHUDHeader.swift in Sources */,
-				B0619AA5DBF49DD5F81371EA /* QuestProgressEngine.swift in Sources */,
-				00122E00AC0A8AA5D8705B1C /* DailyQuestService.swift in Sources */,
-				C18CD03B26449DCE4A2E2506 /* HapticManager.swift in Sources */,
-				73D53DB809B030AC7E1048D0 /* XPEngine.swift in Sources */,
-				406749E4A06902825DAA45EE /* PersistenceService.swift in Sources */,
-				88628C3E2D0A77EA4881DF32 /* FocusNotificationService.swift in Sources */,
-				E95C62F6115BFFD9184AC4BD /* SkillTreeSeedFactory.swift in Sources */,
-				C35F01F26C8E2A0DFCF4AE8B /* QuestEngine.swift in Sources */,
-				FBE6F90F64CA485B4A9B920D /* AuthService.swift in Sources */,
-				E3F9742526CADB9087EC1FDC /* HealthKitService.swift in Sources */,
-				AD558C4C19215C05A86F2F6E /* FocusLiveActivityManager.swift in Sources */,
-				86E5DFB411A2389E3BEC9F1E /* WidgetSnapshotService.swift in Sources */,
-				2E75947FFE03738BC0C579A3 /* MockDataGenerator.swift in Sources */,
+				D4C930FBDCB6947C42A18B51 /* AnalyticsViewModelTests.swift in Sources */,
+				034835099A72DC174C9CFD95 /* AttendanceCalculatorTests.swift in Sources */,
+				513B779E85C333C8BB6A0BBD /* XPEngineTests.swift in Sources */,
+				FC6F5DCC1E1FDE4459D5443E /* ALIVERouterTests.swift in Sources */,
+				86B1B4433566B8826E40F0A3 /* QuestProgressEngineTests.swift in Sources */,
+				09F7AEBB525748287A3714E8 /* QuestEngineTests.swift in Sources */,
+				668166FA42F4018AAC1F941E /* ProgressionModifierEngineTests.swift in Sources */,
+				2B7E0915564A252C1A9A55D7 /* FocusSessionTests.swift in Sources */,
+				D1F3245BCE32D1611B3EA81F /* DailyQuestServiceTests.swift in Sources */,
+				65BADAE6123255590F71DCFB /* SwiftDataModelTests.swift in Sources */,
+				EA0CFF4350A1224BE90822CD /* FocusSessionViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6F5E179C7C2A7F69239A70A2 /* Sources */ = {
+		A3F99E1594277E20D7BF3E90 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				159D808D3428FDA56BD598C3 /* ALIVEWidgets.swift in Sources */,
-				B3F3E6A34477791CBBE8EE7A /* ALIVEWidgetSnapshot.swift in Sources */,
-				6FF489B088794C7D5F211675 /* FocusActivityAttributes.swift in Sources */,
+				D351C32A50AA0C086981D554 /* FocusViewModel.swift in Sources */,
+				2DBC7808E6854B631E264AB5 /* SkillTreeViewModel.swift in Sources */,
+				F59FAD70793F0B877C2F2E51 /* AuthViewModel.swift in Sources */,
+				DEC0CD492AA11B9EB353622F /* QuestViewModel.swift in Sources */,
+				12BF2755015C86DA707D1A32 /* ProfileViewModel.swift in Sources */,
+				D96E207C981CA4763486AFF3 /* AttendanceViewModel.swift in Sources */,
+				6EA45A9252F07503F90B37FF /* AnalyticsViewModel.swift in Sources */,
+				0F956EEE4136130BDFDEC84E /* ALIVEModelContainer.swift in Sources */,
+				D813AC9FF47D1609D6123AB2 /* ALIVEApp.swift in Sources */,
+				712584D5FB0238111D9D2A9A /* ALIVEApplicationDelegate.swift in Sources */,
+				7F24AD5563F618F56F975286 /* ALIVERouter.swift in Sources */,
+				F55CEFB910376B1A74F32A29 /* ALIVEWidgetSnapshot.swift in Sources */,
+				071538FF18046AF1391CE260 /* FocusActivityAttributes.swift in Sources */,
+				E7F18413AC9F88D3738FDE2F /* CharacterClass.swift in Sources */,
+				5C37F9EE51526B144E4C35B0 /* Quest.swift in Sources */,
+				751864BF22372863CE474A71 /* SkillNode.swift in Sources */,
+				CAED15A0F2A3D54C0A1B8B4E /* UserProfile.swift in Sources */,
+				3D084615EAFA8752B62DCED0 /* Course.swift in Sources */,
+				7FF9C93651C9C54040FA75BC /* Achievement.swift in Sources */,
+				F8CD37A8F0568A2FABBED2EC /* StudySession.swift in Sources */,
+				D3DD08DE3B1CA5D13C57258D /* XPTransaction.swift in Sources */,
+				C6E9496256029EA879FE2034 /* ParticleEffectView.swift in Sources */,
+				000B793D99CB91242EF8E035 /* ColorPalette.swift in Sources */,
+				C8BEC1E4649CDB678A4BCD30 /* GlassCardStyle.swift in Sources */,
+				5A0D33AB0EE776CE63D4424E /* ALIVEAppIntents.swift in Sources */,
+				03561716BBFAFA7EAE63962F /* QuestCardView.swift in Sources */,
+				16DBF1B9BDD9748D7B0008F8 /* QuestListView.swift in Sources */,
+				0D00CA7C41AD17F6FF3A6250 /* MainTabView.swift in Sources */,
+				F7082DFDB100A500E3F996E6 /* AttendanceTrackerView.swift in Sources */,
+				0FF7CE2A60A640D679E15FA9 /* BadgeVaultView.swift in Sources */,
+				65A3679AD785C34BDCD5E04E /* SkillNodeDetailView.swift in Sources */,
+				6455F35BC899F7E365AFFB1A /* SkillTreeCanvasView.swift in Sources */,
+				5084B7EADA76F49E09401851 /* WellnessView.swift in Sources */,
+				313099478F601131FA597281 /* CharacterCreationView.swift in Sources */,
+				B7B32C472E2B7EC3E0E92FB0 /* AuthView.swift in Sources */,
+				8F61E17F4B6169D9BBD30C49 /* FocusSessionView.swift in Sources */,
+				0E9DF0F52F084C4C3265B7BF /* FocusSessionComponents.swift in Sources */,
+				36018E5F61FC0B8253CAC47E /* AnalyticsView.swift in Sources */,
+				E42841B6199E26A7024E9942 /* DashboardView.swift in Sources */,
+				7DBA86E52FB992C4AE0BD4BE /* LevelUpModalView.swift in Sources */,
+				9196E0199A2428BA39A81A44 /* CharacterHUDHeader.swift in Sources */,
+				643B354297E7BE737564BA61 /* QuestProgressEngine.swift in Sources */,
+				6D71BF40F721035AF0A1B1D7 /* FocusReminderManager.swift in Sources */,
+				0125009782506CB802A52F6B /* DailyQuestService.swift in Sources */,
+				BC5E9F0A2EBD2EF84E2A3FEF /* ProgressionModifierEngine.swift in Sources */,
+				7073DD252CC1CC08E04DC89C /* HapticManager.swift in Sources */,
+				0A4B185932B01E791134A142 /* XPEngine.swift in Sources */,
+				B91F0697FDD43796EB5D8E23 /* PersistenceService.swift in Sources */,
+				F6648D5C190FFB8D87244BD7 /* FocusNotificationService.swift in Sources */,
+				2AAA2BD0AA256BC576E269FC /* SkillTreeSeedFactory.swift in Sources */,
+				39F5E480180F60FDC97B48C9 /* QuestEngine.swift in Sources */,
+				7C2DECB218FE0E9097A2519A /* AuthService.swift in Sources */,
+				30F3E22D017B3C1829E23200 /* HealthKitService.swift in Sources */,
+				6B389F243241E1CE469056A9 /* FocusLiveActivityManager.swift in Sources */,
+				091BF5AC0E1C5875E45C4BD3 /* HealthKitManager.swift in Sources */,
+				EC20E9CD806EA8FAF7F70863 /* WidgetSnapshotService.swift in Sources */,
+				01D191BA167E29808539B845 /* MockDataGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A433054D5606B8ABCE9F2D1E /* Sources */ = {
+		C05A5812A1C6E32100E19167 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D44A4F656930275B560AF809 /* AnalyticsViewModelTests.swift in Sources */,
-				1306BA31CCFC9E648A0B787F /* AttendanceCalculatorTests.swift in Sources */,
-				CAC30704FB4C8200BD76ED96 /* XPEngineTests.swift in Sources */,
-				258548E8340E3C79967B1A9A /* ALIVERouterTests.swift in Sources */,
-				B210DC3963F24B4C260E16F7 /* QuestProgressEngineTests.swift in Sources */,
-				7DFD6C8E2BAAEF6ADC2E3B2C /* QuestEngineTests.swift in Sources */,
-				050586AD030FF4D723B38123 /* FocusSessionTests.swift in Sources */,
-				2236FDA5DA56F73A529BC0E4 /* DailyQuestServiceTests.swift in Sources */,
-				335B31A9FC4962F860F3E85C /* SwiftDataModelTests.swift in Sources */,
+				0955BD7486C25161CA8692B1 /* ALIVEWidgets.swift in Sources */,
+				25E815A80788063692E70ED9 /* ALIVEWidgetSnapshot.swift in Sources */,
+				DD54D5D4E828B0513DB22005 /* FocusActivityAttributes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		253436DB2EF87532EB17C244 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ALIVE;
-			target = 2AE6A7D23D6D6A80CAA5D60B /* ALIVE */;
-			targetProxy = 353DA9F68D2FC65F6959760E /* PBXContainerItemProxy */;
-		};
-		44453836975AE01AA0C1C30C /* PBXTargetDependency */ = {
+		89543257A0AD14FF5C88B1C8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ALIVEWidgets;
-			target = 84BA00B5AB7E3C75841BB4D7 /* ALIVEWidgets */;
-			targetProxy = F0551221078D45AC17DF0BA2 /* PBXContainerItemProxy */;
+			target = B616D36C7A949A767FC56B53 /* ALIVEWidgets */;
+			targetProxy = 60F0311E28B0AD12970E0006 /* PBXContainerItemProxy */;
+		};
+		97310CAF219E179F6EE13729 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ALIVE;
+			target = 0B3276A94F32452288D02978 /* ALIVE */;
+			targetProxy = E54A59031FCFA1117449CF0A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		20DE43D485085D51C525D279 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alive.app.tests;
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ALIVE.app/ALIVE";
-			};
-			name = Debug;
-		};
-		3BF3BF889BC70F76C2BABBEB /* Debug */ = {
+		0F0BE6FB60132B32325D6BB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -588,7 +602,7 @@
 			};
 			name = Debug;
 		};
-		444A1E7B4B4D5BDA2285F721 /* Debug */ = {
+		11DBA7944A5CB848F9566600 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -650,50 +664,7 @@
 			};
 			name = Debug;
 		};
-		5578E0FC0F7A1EFBCD21F8F1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_ENTITLEMENTS = ALIVE/Extensions/ALIVEWidgets/ALIVEWidgets.entitlements;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = ALIVE/Extensions/ALIVEWidgets/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alive.app.widgets;
-				PRODUCT_NAME = ALIVEWidgets;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		688F53FFC23EE0962CFB61B5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_ENTITLEMENTS = ALIVE/ALIVE.entitlements;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = ALIVE/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alive.app;
-				PRODUCT_NAME = ALIVE;
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		A9605355076C5E1E3C656CE8 /* Debug */ = {
+		77120A62C24977168C1D161B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
@@ -713,7 +684,28 @@
 			};
 			name = Debug;
 		};
-		AB6C83AFB6D3C62328ED8238 /* Release */ = {
+		993AA776CCCC78381EA26601 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = ALIVE/Extensions/ALIVEWidgets/ALIVEWidgets.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ALIVE/Extensions/ALIVEWidgets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alive.app.widgets;
+				PRODUCT_NAME = ALIVEWidgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A445105761413574A5C1EF7A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -728,7 +720,21 @@
 			};
 			name = Release;
 		};
-		B27D1E424544F114238327E8 /* Release */ = {
+		AA48CBE5B5A673E843C3005B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alive.app.tests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ALIVE.app/ALIVE";
+			};
+			name = Debug;
+		};
+		DA2722EBF86A81722B0426E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -783,46 +789,68 @@
 			};
 			name = Release;
 		};
+		F3E1A87C1423F0F6B6A6D56A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = ALIVE/ALIVE.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ALIVE/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alive.app;
+				PRODUCT_NAME = ALIVE;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		27B76EE8F3065096E6D126DE /* Build configuration list for PBXNativeTarget "ALIVETests" */ = {
+		3916991DC12ABB7CF05E467A /* Build configuration list for PBXNativeTarget "ALIVE" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AB6C83AFB6D3C62328ED8238 /* Release */,
-				20DE43D485085D51C525D279 /* Debug */,
+				F3E1A87C1423F0F6B6A6D56A /* Release */,
+				0F0BE6FB60132B32325D6BB1 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		38902A73D86C3CA898D5208E /* Build configuration list for PBXNativeTarget "ALIVE" */ = {
+		5F6631CD60C9EFFFD8232826 /* Build configuration list for PBXNativeTarget "ALIVETests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				688F53FFC23EE0962CFB61B5 /* Release */,
-				3BF3BF889BC70F76C2BABBEB /* Debug */,
+				A445105761413574A5C1EF7A /* Release */,
+				AA48CBE5B5A673E843C3005B /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A739977A7CD96BCFBF1BC557 /* Build configuration list for PBXProject "alive" */ = {
+		6A240F1D9FE3A0EFE10DC463 /* Build configuration list for PBXNativeTarget "ALIVEWidgets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				444A1E7B4B4D5BDA2285F721 /* Debug */,
-				B27D1E424544F114238327E8 /* Release */,
+				993AA776CCCC78381EA26601 /* Release */,
+				77120A62C24977168C1D161B /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF4ED141A254E4918BB735CC /* Build configuration list for PBXNativeTarget "ALIVEWidgets" */ = {
+		AB9970E5D48E9CAFC2D3BE0D /* Build configuration list for PBXProject "alive" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5578E0FC0F7A1EFBCD21F8F1 /* Release */,
-				A9605355076C5E1E3C656CE8 /* Debug */,
+				11DBA7944A5CB848F9566600 /* Debug */,
+				DA2722EBF86A81722B0426E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 32C9BAF6EB91B37CA1CDA740 /* Project object */;
+	rootObject = E18F73AA1E0CA5E6330E9FDE /* Project object */;
 }
