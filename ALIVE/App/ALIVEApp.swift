@@ -4,37 +4,23 @@ import SwiftData
 @main
 struct ALIVEApp: App {
     @StateObject private var authService = AuthService()
-    
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            UserProfile.self,
-            Quest.self,
-            SkillNode.self,
-            Course.self,
-            StudySession.self,
-            Achievement.self,
-            XPTransaction.self
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-        
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+    #if os(iOS)
+    @UIApplicationDelegateAdaptor(ALIVEApplicationDelegate.self) private var applicationDelegate
+    #endif
     
     var body: some Scene {
         WindowGroup {
             AppRootView()
                 .environmentObject(authService)
-                .modelContainer(sharedModelContainer)
+                .modelContainer(ALIVEModelContainer.shared)
         }
     }
 }
 
 struct AppRootView: View {
     @EnvironmentObject private var authService: AuthService
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var router = ALIVERouter()
     
     var body: some View {
         Group {
@@ -46,6 +32,19 @@ struct AppRootView: View {
                 }
             }
         }
+        .environment(router)
         .preferredColorScheme(.dark)
+        .onOpenURL { router.handle(url: $0) }
+        .onReceive(NotificationCenter.default.publisher(for: ALIVEIntentRouteStore.didRequestRoute)) { _ in
+            router.consumePendingIntentRoute()
+        }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .active {
+                router.consumePendingIntentRoute()
+            }
+        }
+        .task {
+            router.consumePendingIntentRoute()
+        }
     }
 }

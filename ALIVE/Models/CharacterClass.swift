@@ -21,13 +21,13 @@ public enum CharacterClass: String, Codable, CaseIterable, Identifiable {
     public var description: String {
         switch self {
         case .scholar:
-            return "Master of theory and deep literature research. +15% XP bonus on long reading and study sessions."
+            return "Theory-first build with the strongest starting Intelligence stat."
         case .engineer:
-            return "Architect of complex systems and code logic. +15% XP bonus on lab assignments and project focus timers."
+            return "Systems-minded build with the strongest starting Focus stat."
         case .creative:
-            return "Designer of visual ideas and creative concepts. High Stamina and +20% bonus on streak retention."
+            return "Idea-driven build with high starting Stamina and Discipline."
         case .strategist:
-            return "Tactician of exam planning and attendance optimization. Never misses a safe bunk calculation."
+            return "Planning-oriented build with the strongest starting Discipline stat."
         }
     }
     

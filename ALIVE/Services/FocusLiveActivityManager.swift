@@ -1,36 +1,50 @@
-import ActivityKit
 import Foundation
 
-@MainActor
-public final class FocusLiveActivityManager {
+#if os(iOS) && canImport(ActivityKit)
+import ActivityKit
+
+public actor FocusLiveActivityManager {
     public static let shared = FocusLiveActivityManager()
 
-    private var activity: Activity<FocusLiveActivityAttributes>?
+    private var activity: Activity<FocusActivityAttributes>?
 
-    private init() {}
+    public func beginOrResume(
+        courseName: String,
+        targetMinutes: Int,
+        timeRemainingSeconds: Int,
+        focusScore: Int
+    ) async {
+        let contentState = FocusActivityAttributes.ContentState(
+            courseName: courseName,
+            timeRemainingSeconds: timeRemainingSeconds,
+            endDate: Date().addingTimeInterval(TimeInterval(timeRemainingSeconds)),
+            focusScore: focusScore
+        )
 
-    public func start(courseName: String, durationSeconds: Int, focusScore: Int) async {
-        guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
-
-        if let existing = activity ?? Activity<FocusLiveActivityAttributes>.activities.first {
-            await existing.end(nil, dismissalPolicy: .immediate)
+        if let activity {
+            await activity.update(ActivityContent(
+                state: contentState,
+                staleDate: contentState.endDate?.addingTimeInterval(60)
+            ))
+            return
         }
 
-        let attributes = FocusLiveActivityAttributes(
-            courseName: courseName,
-            totalDurationMinutes: max(1, durationSeconds / 60),
-            xpRewardPotential: durationSeconds / 6
-        )
-        let state = FocusLiveActivityAttributes.ContentState(
-            timeRemainingSeconds: durationSeconds,
-            focusScore: focusScore,
-            endDate: Date().addingTimeInterval(TimeInterval(durationSeconds))
+        guard ActivityAuthorizationInfo().areActivitiesEnabled else {
+            return
+        }
+
+        let attributes = FocusActivityAttributes(
+            sessionName: courseName,
+            targetMinutes: targetMinutes
         )
 
         do {
             activity = try Activity.request(
                 attributes: attributes,
-                content: ActivityContent(state: state, staleDate: nil),
+                content: ActivityContent(
+                    state: contentState,
+                    staleDate: contentState.endDate?.addingTimeInterval(60)
+                ),
                 pushType: nil
             )
         } catch {
@@ -38,54 +52,63 @@ public final class FocusLiveActivityManager {
         }
     }
 
-    public func pause(timeRemainingSeconds: Int, focusScore: Int) async {
-        await update(
-            timeRemainingSeconds: timeRemainingSeconds,
-            focusScore: focusScore,
-            isPaused: true,
-            endDate: nil
-        )
-    }
-
-    public func resume(timeRemainingSeconds: Int, focusScore: Int) async {
-        await update(
-            timeRemainingSeconds: timeRemainingSeconds,
-            focusScore: focusScore,
-            isPaused: false,
-            endDate: Date().addingTimeInterval(TimeInterval(timeRemainingSeconds))
-        )
-    }
-
-    public func end(focusScore: Int) async {
-        guard let current = activity ?? Activity<FocusLiveActivityAttributes>.activities.first else { return }
-
-        let state = FocusLiveActivityAttributes.ContentState(
-            timeRemainingSeconds: 0,
-            focusScore: focusScore,
-            endDate: nil
-        )
-        await current.end(
-            ActivityContent(state: state, staleDate: nil),
-            dismissalPolicy: .immediate
-        )
-        activity = nil
-    }
-
-    private func update(
+    public func update(
+        courseName: String,
         timeRemainingSeconds: Int,
         focusScore: Int,
-        isPaused: Bool,
-        endDate: Date?
+        isPaused: Bool = false,
+        isCompleted: Bool = false
     ) async {
-        guard let current = activity ?? Activity<FocusLiveActivityAttributes>.activities.first else { return }
+        guard let activity else {
+            return
+        }
 
-        let state = FocusLiveActivityAttributes.ContentState(
+        let state = FocusActivityAttributes.ContentState(
+            courseName: courseName,
             timeRemainingSeconds: timeRemainingSeconds,
+            endDate: isPaused || isCompleted
+                ? nil
+                : Date().addingTimeInterval(TimeInterval(timeRemainingSeconds)),
             focusScore: focusScore,
             isPaused: isPaused,
-            endDate: endDate
+            isCompleted: isCompleted
         )
-        await current.update(ActivityContent(state: state, staleDate: nil))
-        activity = current
+        await activity.update(ActivityContent(
+            state: state,
+            staleDate: state.endDate?.addingTimeInterval(60)
+        ))
+    }
+
+    public func end() async {
+        guard let activity else {
+            return
+        }
+
+        await activity.end(nil, dismissalPolicy: .immediate)
+        self.activity = nil
     }
 }
+#else
+/// No-op implementation keeps the shared gameplay engine portable to tests and
+/// non-iOS platforms while the real implementation is compiled into iOS builds.
+public actor FocusLiveActivityManager {
+    public static let shared = FocusLiveActivityManager()
+
+    public func beginOrResume(
+        courseName: String,
+        targetMinutes: Int,
+        timeRemainingSeconds: Int,
+        focusScore: Int
+    ) async {}
+
+    public func update(
+        courseName: String,
+        timeRemainingSeconds: Int,
+        focusScore: Int,
+        isPaused: Bool = false,
+        isCompleted: Bool = false
+    ) async {}
+
+    public func end() async {}
+}
+#endif

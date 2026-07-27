@@ -23,15 +23,25 @@ public final class AuthViewModel: ObservableObject {
             currentXP: 0,
             streakDays: 1
         )
+        newProfile.lastQuestRefreshDate = Date()
         
         context.insert(newProfile)
-        try? context.save()
-        
-        // Seed initial quests and skills for new character
+
+        // Seed the first playable quest board before committing the new hero.
         let dailyQuests = QuestEngine.defaultDailyQuests()
         let weeklyQuests = QuestEngine.defaultWeeklyQuests()
         (dailyQuests + weeklyQuests).forEach { context.insert($0) }
-        
-        authService.loginMockUser(profile: newProfile)
+        SkillTreeSeedFactory.defaultNodes().forEach { context.insert($0) }
+
+        do {
+            try PersistenceService.save(context)
+            WidgetSnapshotService.refresh(
+                profile: newProfile,
+                pendingQuestCount: dailyQuests.count + weeklyQuests.count
+            )
+            authService.loginMockUser(profile: newProfile)
+        } catch {
+            errorMessage = "Your hero could not be saved. Please try again."
+        }
     }
 }

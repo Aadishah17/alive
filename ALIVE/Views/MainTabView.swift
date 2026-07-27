@@ -2,54 +2,76 @@ import SwiftUI
 import SwiftData
 
 public struct MainTabView: View {
-    @EnvironmentObject private var authService: AuthService
+    @Environment(ALIVERouter.self) private var router
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     
     public init() {}
     
     public var body: some View {
-        TabView {
-            NavigationView {
+        @Bindable var router = router
+
+        TabView(selection: $router.selectedTab) {
+            NavigationStack {
                 DashboardView()
             }
             .tabItem {
-                Label("Hero HUD", systemImage: "shield.fill")
+                Label("Today", systemImage: "shield.lefthalf.filled")
             }
+            .tag(ALIVETab.today)
             
-            NavigationView {
+            NavigationStack {
                 QuestListView()
             }
             .tabItem {
                 Label("Quests", systemImage: "scroll.fill")
             }
+            .tag(ALIVETab.quests)
             
-            NavigationView {
+            NavigationStack {
                 SkillTreeCanvasView()
             }
             .tabItem {
                 Label("Skills", systemImage: "tree.fill")
             }
+            .tag(ALIVETab.skills)
             
-            NavigationView {
+            NavigationStack {
                 AttendanceTrackerView()
             }
             .tabItem {
                 Label("Academics", systemImage: "percent")
             }
+            .tag(ALIVETab.academics)
             
-            NavigationView {
+            NavigationStack {
                 FocusSessionView()
             }
             .tabItem {
                 Label("Focus", systemImage: "timer")
             }
+            .tag(ALIVETab.focus)
             
-            NavigationView {
+            NavigationStack {
                 BadgeVaultView()
             }
             .tabItem {
                 Label("Badges", systemImage: "crown.fill")
             }
+            .tag(ALIVETab.badges)
         }
         .tint(ALIVEColor.neonCyan)
+        .task {
+            refreshDailyQuests()
+        }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .active {
+                refreshDailyQuests()
+            }
+        }
+    }
+
+    private func refreshDailyQuests() {
+        _ = try? DailyQuestService.refreshIfNeeded(context: modelContext)
     }
 }

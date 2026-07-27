@@ -44,7 +44,7 @@ public struct SkillNodeDetailView: View {
                 
                 // Active Perk Buff
                 VStack(spacing: 4) {
-                    Text("PASSIVE BUFF")
+                    Text("UNLOCKED BENEFIT")
                         .font(.system(size: 10, weight: .bold))
                         .foregroundColor(ALIVEColor.neonCyan)
                     Text(skill.buffDescription)
@@ -71,7 +71,7 @@ public struct SkillNodeDetailView: View {
                     } label: {
                         HStack {
                             Image(systemName: "lock.open.fill")
-                            Text("UNLOCK FOR \(skill.xpCost) XP")
+                            Text("UNLOCK AT \(skill.xpCost) TOTAL XP")
                                 .fontWeight(.bold)
                         }
                         .frame(maxWidth: .infinity)

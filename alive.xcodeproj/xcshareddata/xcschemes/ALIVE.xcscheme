@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2455BDCFBC14A40EAEBD2A45"
+               BlueprintIdentifier = "2AE6A7D23D6D6A80CAA5D60B"
                BuildableName = "ALIVE.app"
                BlueprintName = "ALIVE"
+               ReferencedContainer = "container:alive.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "202F952B2A477FE1970A8001"
+               BuildableName = "ALIVETests.xctest"
+               BlueprintName = "ALIVETests"
                ReferencedContainer = "container:alive.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,7 +41,26 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2AE6A7D23D6D6A80CAA5D60B"
+            BuildableName = "ALIVE.app"
+            BlueprintName = "ALIVE"
+            ReferencedContainer = "container:alive.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "202F952B2A477FE1970A8001"
+               BuildableName = "ALIVETests.xctest"
+               BlueprintName = "ALIVETests"
+               ReferencedContainer = "container:alive.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -40,6 +73,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2AE6A7D23D6D6A80CAA5D60B"
+            BuildableName = "ALIVE.app"
+            BlueprintName = "ALIVE"
+            ReferencedContainer = "container:alive.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -47,6 +90,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2AE6A7D23D6D6A80CAA5D60B"
+            BuildableName = "ALIVE.app"
+            BlueprintName = "ALIVE"
+            ReferencedContainer = "container:alive.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

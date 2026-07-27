@@ -1,177 +1,230 @@
-import SwiftUI
-import SwiftData
 import Combine
+import Foundation
+import SwiftData
 
+public enum FocusSessionStatus: String, Equatable, Sendable {
+    case idle
+    case running
+    case paused
+    case completed
+}
+
+public struct FocusSessionReward: Equatable, Sendable {
+    public let xpGained: Int
+    public let durationSeconds: Int
+    public let sessionType: String
+}
+
+/// Owns the transient focus-timer state. Persistence and XP are deliberately
+/// gated behind `completed` so a paused or in-progress timer can never claim a
+/// full reward.
 public final class FocusViewModel: ObservableObject {
     @Published public var selectedCourseName: String = "General Study"
-    @Published public var targetMinutes: Int = 25
-    @Published public var timeRemainingSeconds: Int = 25 * 60
-    @Published public var isRunning: Bool = false
-    @Published public var isPaused: Bool = false
-    @Published public private(set) var isReadyToClaimXP: Bool = false
+    @Published public private(set) var targetMinutes: Int = 25
+    @Published public private(set) var timeRemainingSeconds: Int = 25 * 60
+    @Published public private(set) var status: FocusSessionStatus = .idle
     @Published public private(set) var saveErrorMessage: String?
-    @Published public var focusScore: Int = 100
-    @Published public var ambientSoundMode: String = "Rain & Lo-Fi RPG"
-    
+
+    public var focusScore: Int = 100
+    public var ambientSoundMode: String = "Rain & Lo-Fi RPG"
+
+    public var isRunning: Bool { status == .running }
+    public var isPaused: Bool { status == .paused }
+    public var isClaimable: Bool { status == .completed }
+    public var isReadyToClaimXP: Bool { isClaimable }
+    public var elapsedSeconds: Int { max(0, (targetMinutes * 60) - timeRemainingSeconds) }
+    public var baseRewardEstimate: Int {
+        Self.xpAward(forMinutes: targetMinutes, focusScore: focusScore)
+    }
+
+    public func rewardEstimate(forStreak streakDays: Int, skills: [SkillNode]) -> Int {
+        let modifiedBaseXP = ProgressionModifierEngine.modifiedFocusBaseXP(
+            baseXP: baseRewardEstimate,
+            minutes: targetMinutes,
+            skills: skills
+        )
+        return Self.xpAwardWithStreak(baseXP: modifiedBaseXP, streakDays: streakDays)
+    }
+
     private var timer: Timer?
-    private var sessionEndDate: Date?
-    
+
     public init() {}
 
     deinit {
         timer?.invalidate()
     }
-    
+
     public func startSession() {
-        guard !isReadyToClaimXP else { return }
+        guard status != .running, status != .completed else {
+            return
+        }
 
-        let wasPaused = isPaused
-        let courseName = selectedCourseName
-        let remainingSeconds = timeRemainingSeconds
-        let score = focusScore
-        isRunning = true
-        isPaused = false
         saveErrorMessage = nil
-        sessionEndDate = Date().addingTimeInterval(TimeInterval(remainingSeconds))
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            self?.updateRemainingTime()
-        }
-
-        Task { @MainActor in
-            if wasPaused {
-                await FocusLiveActivityManager.shared.resume(
-                    timeRemainingSeconds: remainingSeconds,
-                    focusScore: score
-                )
-            } else {
-                await FocusLiveActivityManager.shared.start(
-                    courseName: courseName,
-                    durationSeconds: remainingSeconds,
-                    focusScore: score
-                )
-            }
-            await FocusReminderManager.shared.scheduleCompletion(
-                after: remainingSeconds,
-                courseName: courseName
-            )
-        }
+        status = .running
+        scheduleTimer()
+        beginOrResumeLiveActivity()
     }
-    
+
     public func pauseSession() {
-        updateRemainingTime()
-        guard !isReadyToClaimXP else { return }
-
-        isPaused = true
-        isRunning = false
-        timer?.invalidate()
-        sessionEndDate = nil
-
-        let remainingSeconds = timeRemainingSeconds
-        let score = focusScore
-        Task { @MainActor in
-            await FocusLiveActivityManager.shared.pause(
-                timeRemainingSeconds: remainingSeconds,
-                focusScore: score
-            )
-            FocusReminderManager.shared.cancelCompletionReminder()
+        guard status == .running else {
+            return
         }
+
+        timer?.invalidate()
+        timer = nil
+        status = .paused
+        updateLiveActivity(isPaused: true)
     }
-    
+
     public func resetSession() {
         timer?.invalidate()
-        isRunning = false
-        isPaused = false
+        timer = nil
+        status = .idle
         timeRemainingSeconds = targetMinutes * 60
-        sessionEndDate = nil
-        isReadyToClaimXP = false
         saveErrorMessage = nil
-
-        let score = focusScore
-        Task { @MainActor in
-            await FocusLiveActivityManager.shared.end(focusScore: score)
-            FocusReminderManager.shared.cancelCompletionReminder()
+        Task {
+            await FocusLiveActivityManager.shared.end()
         }
     }
-    
+
     public func setDuration(minutes: Int) {
+        guard minutes > 0, status != .running else {
+            return
+        }
+
         targetMinutes = minutes
         resetSession()
     }
-    
+
+    public func clearSaveError() {
+        saveErrorMessage = nil
+    }
+
     public func completeTimerSession() {
         timer?.invalidate()
-        isRunning = false
-        isPaused = false
+        timer = nil
         timeRemainingSeconds = 0
-        sessionEndDate = nil
-        isReadyToClaimXP = true
+        status = .completed
         HapticManager.shared.levelUpHaptic()
-
-        let score = focusScore
-        Task { @MainActor in
-            await FocusLiveActivityManager.shared.end(focusScore: score)
-            FocusReminderManager.shared.cancelCompletionReminder()
-        }
+        updateLiveActivity(isCompleted: true)
     }
-    
-    @discardableResult
-    public func saveCompletedSession(profile: UserProfile, context: ModelContext) -> Bool {
-        guard isReadyToClaimXP else { return false }
 
-        let durationSec = targetMinutes * 60
-        // Formula: 1 XP per minute studied + bonus for high focus score
-        let baseXP = targetMinutes * 5
-        let bonusXP = Int(Double(baseXP) * (Double(focusScore) / 100.0))
-        let xpGained = baseXP + bonusXP
-        
+    /// Persists a fully completed session and its XP reward. Calling this before
+    /// the countdown completes is a no-op by design.
+    @discardableResult
+    public func claimCompletedSession(
+        profile: UserProfile,
+        context: ModelContext
+    ) -> FocusSessionReward? {
+        guard isClaimable else {
+            return nil
+        }
+
+        let durationSeconds = targetMinutes * 60
+        let skills = (try? context.fetch(FetchDescriptor<SkillNode>())) ?? []
+        let baseXP = ProgressionModifierEngine.modifiedFocusBaseXP(
+            baseXP: baseRewardEstimate,
+            minutes: targetMinutes,
+            skills: skills
+        )
+        let sessionType = targetMinutes >= 45 ? "Deep Work" : "Pomodoro"
+        let xpResult = XPEngine.addXP(
+            amount: baseXP,
+            to: profile,
+            source: "Focus Session (\(targetMinutes)m)",
+            context: context
+        )
+
         let session = StudySession(
             courseName: selectedCourseName,
-            durationSeconds: durationSec,
-            xpEarned: xpGained,
+            durationSeconds: durationSeconds,
+            xpEarned: xpResult.xpGained,
             focusScore: focusScore,
-            sessionType: targetMinutes >= 45 ? "Deep Work" : "Pomodoro"
+            sessionType: sessionType
         )
-        
         context.insert(session)
-        let previousState = (
-            level: profile.level,
-            currentXP: profile.currentXP,
-            totalXPEarned: profile.totalXPEarned,
-            unallocatedStatPoints: profile.unallocatedStatPoints,
-            focus: profile.focus
-        )
-        let source = "Focus Session (\(targetMinutes)m)"
-        let result = XPEngine.addXP(amount: xpGained, to: profile, source: source)
-        let transaction = XPTransaction(source: source, amount: result.xpGained)
-        context.insert(transaction)
+
         profile.focus += 1
 
         do {
-            try context.save()
-            resetSession()
-            return true
+            try PersistenceService.save(context)
         } catch {
-            context.delete(session)
-            context.delete(transaction)
-            profile.level = previousState.level
-            profile.currentXP = previousState.currentXP
-            profile.totalXPEarned = previousState.totalXPEarned
-            profile.unallocatedStatPoints = previousState.unallocatedStatPoints
-            profile.focus = previousState.focus
-            saveErrorMessage = "Could not save this focus session. Please try again."
-            return false
+            saveErrorMessage = "Your completed session is still ready to claim. Please try again."
+            return nil
+        }
+
+        let pendingQuestCount = (try? context.fetch(FetchDescriptor<Quest>()))?
+            .filter { !$0.isCompleted }
+            .count ?? 0
+        WidgetSnapshotService.refresh(profile: profile, pendingQuestCount: pendingQuestCount)
+
+        let reward = FocusSessionReward(
+            xpGained: xpResult.xpGained,
+            durationSeconds: durationSeconds,
+            sessionType: sessionType
+        )
+        resetSession()
+        return reward
+    }
+
+    public static func xpAward(forMinutes minutes: Int, focusScore: Int) -> Int {
+        let safeMinutes = max(0, minutes)
+        let baseXP = safeMinutes * 5
+        let clampedFocusScore = min(max(focusScore, 0), 100)
+        let focusBonus = Int(Double(baseXP) * (Double(clampedFocusScore) / 100.0))
+        return baseXP + focusBonus
+    }
+
+    public static func xpAwardWithStreak(baseXP: Int, streakDays: Int) -> Int {
+        Int(Double(baseXP) * XPEngine.streakMultiplier(forStreak: streakDays))
+    }
+
+    private func scheduleTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            guard let self else {
+                return
+            }
+
+            guard self.timeRemainingSeconds > 1 else {
+                self.completeTimerSession()
+                return
+            }
+
+            self.timeRemainingSeconds -= 1
+            if self.timeRemainingSeconds.isMultiple(of: 60) {
+                self.updateLiveActivity()
+            }
         }
     }
 
-    private func updateRemainingTime() {
-        guard let sessionEndDate else { return }
+    private func beginOrResumeLiveActivity() {
+        let courseName = selectedCourseName
+        let targetMinutes = targetMinutes
+        let timeRemainingSeconds = timeRemainingSeconds
+        let focusScore = focusScore
+        Task {
+            await FocusLiveActivityManager.shared.beginOrResume(
+                courseName: courseName,
+                targetMinutes: targetMinutes,
+                timeRemainingSeconds: timeRemainingSeconds,
+                focusScore: focusScore
+            )
+        }
+    }
 
-        let remainingSeconds = max(0, Int(ceil(sessionEndDate.timeIntervalSinceNow)))
-        timeRemainingSeconds = remainingSeconds
-
-        if remainingSeconds == 0 {
-            completeTimerSession()
+    private func updateLiveActivity(isPaused: Bool = false, isCompleted: Bool = false) {
+        let courseName = selectedCourseName
+        let timeRemainingSeconds = timeRemainingSeconds
+        let focusScore = focusScore
+        Task {
+            await FocusLiveActivityManager.shared.update(
+                courseName: courseName,
+                timeRemainingSeconds: timeRemainingSeconds,
+                focusScore: focusScore,
+                isPaused: isPaused,
+                isCompleted: isCompleted
+            )
         }
     }
 }

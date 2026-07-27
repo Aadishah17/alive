@@ -19,14 +19,20 @@ let package = Package(
             path: "ALIVE",
             exclude: [
                 "Extension",
+                "Extensions",
                 "WatchApp",
                 "App/ALIVEApp.swift",
                 "Assets.xcassets",
+                "ALIVE.entitlements",
+                "Info.plist",
                 "Tests"
             ],
             sources: [
+                "App",
+                "Intents",
                 "Models",
                 "Services",
+                "Shared",
                 "ViewModels",
                 "Theme",
                 "Views"

@@ -64,6 +64,19 @@ public struct AttendanceTrackerView: View {
         .sheet(isPresented: $viewModel.showAddCourseSheet) {
             AddCourseSheetView(viewModel: viewModel)
         }
+        .alert(
+            "Couldn’t save your update",
+            isPresented: Binding(
+                get: { viewModel.saveErrorMessage != nil },
+                set: { if !$0 { viewModel.saveErrorMessage = nil } }
+            )
+        ) {
+            Button("OK", role: .cancel) {
+                viewModel.saveErrorMessage = nil
+            }
+        } message: {
+            Text(viewModel.saveErrorMessage ?? "Please try again.")
+        }
         .navigationTitle("ATTENDANCE ENGINE")
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)

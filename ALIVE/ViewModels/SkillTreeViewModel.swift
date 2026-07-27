@@ -37,8 +37,14 @@ public final class SkillTreeViewModel: ObservableObject {
         }
         
         skill.isUnlocked = true
-        unlockErrorMessage = nil
-        HapticManager.shared.triggerNotification(type: .success)
-        try? context.save()
+
+        do {
+            try PersistenceService.save(context)
+            unlockErrorMessage = nil
+            HapticManager.shared.triggerNotification(type: .success)
+        } catch {
+            unlockErrorMessage = "That skill could not be unlocked. Please try again."
+            HapticManager.shared.triggerNotification(type: .error)
+        }
     }
 }

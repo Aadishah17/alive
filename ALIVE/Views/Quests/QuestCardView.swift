@@ -7,14 +7,30 @@ public struct QuestCardView: View {
     let profile: UserProfile
     @StateObject private var viewModel = QuestViewModel()
     @State private var showParticleFx: Bool = false
+
+    private var awardedXP: Int {
+        Int(Double(quest.xpReward) * XPEngine.streakMultiplier(forStreak: profile.streakDays))
+    }
     
     public var body: some View {
         HStack(alignment: .top, spacing: 14) {
             // Quest Completion Checkbox Button
             Button {
                 if !quest.isCompleted {
-                    showParticleFx = true
-                    viewModel.completeQuest(quest: quest, profile: profile, context: modelContext)
+                    let didComplete = viewModel.completeQuest(
+                        quest: quest,
+                        profile: profile,
+                        context: modelContext
+                    )
+                    showParticleFx = didComplete
+
+                    if didComplete {
+                        Task { @MainActor in
+                            try? await Task.sleep(for: .milliseconds(1_300))
+                            guard !Task.isCancelled else { return }
+                            showParticleFx = false
+                        }
+                    }
                 }
             } label: {
                 ZStack {
@@ -61,7 +77,7 @@ public struct QuestCardView: View {
                     HStack(spacing: 4) {
                         Image(systemName: "sparkles")
                             .foregroundColor(ALIVEColor.rpgGold)
-                        Text("+\(quest.xpReward) XP")
+                        Text("+\(awardedXP) XP")
                             .font(.system(size: 10, weight: .bold))
                             .foregroundColor(ALIVEColor.rpgGold)
                     }
@@ -85,5 +101,18 @@ public struct QuestCardView: View {
             }
         )
         .glassCard(borderColor: quest.isCompleted ? ALIVEColor.staminaGreen.opacity(0.4) : ALIVEColor.neonCyan.opacity(0.2))
+        .alert(
+            "Couldn’t claim this quest",
+            isPresented: Binding(
+                get: { viewModel.completionErrorMessage != nil },
+                set: { if !$0 { viewModel.completionErrorMessage = nil } }
+            )
+        ) {
+            Button("OK", role: .cancel) {
+                viewModel.completionErrorMessage = nil
+            }
+        } message: {
+            Text(viewModel.completionErrorMessage ?? "Please try again.")
+        }
     }
 }

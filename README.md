@@ -4,11 +4,10 @@
 
 # 🛡️ ALIVE ⚡
 
-### *Gamified Academic & Life Management System for iOS & watchOS*
+### *Gamified Academic & Life Management System for iPhone*
 
 [![Swift 5.9](https://img.shields.io/badge/Swift-5.9+-FA7343?style=for-the-badge&logo=swift&logoColor=white)](https://swift.org)
 [![iOS 17.0+](https://img.shields.io/badge/iOS-17.0+-000000?style=for-the-badge&logo=apple&logoColor=white)](https://apple.com/ios)
-[![watchOS 10.0+](https://img.shields.io/badge/watchOS-10.0+-007ACC?style=for-the-badge&logo=apple&logoColor=white)](https://apple.com/watchos)
 [![SwiftData](https://img.shields.io/badge/SwiftData-Supported-00C853?style=for-the-badge&logo=swift&logoColor=white)](https://developer.apple.com/xcode/swiftdata/)
 [![Architecture MVVM](https://img.shields.io/badge/Architecture-MVVM-7B1FA2?style=for-the-badge)](https://developer.apple.com/design/human-interface-guidelines/)
 [![License MIT](https://img.shields.io/badge/License-MIT-008080?style=for-the-badge)](LICENSE)
@@ -16,7 +15,7 @@
 <br/>
 
 **ALIVE** turns academic routines into an interactive Role-Playing Game (RPG).  
-Students build custom hero archetypes, earn experience points (XP) for study sessions, optimize course attendance using exact mathematical algorithms, unlock skill tree perks, and monitor stats on their iPhone, Apple Watch, and Dynamic Island.
+Students build a custom hero, earn XP for completed focus sessions and quests, protect attendance thresholds, unlock progression perks, and monitor momentum from their iPhone, Lock Screen, Dynamic Island, and Home Screen widget.
 
 [Explore Features](#-key-features) • [Architecture](#-system-architecture) • [Getting Started](#-getting-started) • [Testing](#-unit-tests--verification) • [Documentation](#-mathematical--algorithmic-specifications)
 
@@ -34,7 +33,7 @@ Students build custom hero archetypes, earn experience points (XP) for study ses
   - [📜 Quest System & Dynamic Boss Battles](#-quest-system--dynamic-boss-battles)
   - [🌳 Interactive Skill Tree Canvas](#-interactive-skill-tree-canvas)
   - [⏱️ Deep Work Focus Timer & Live Activities](#️-deep-work-focus-timer--live-activities)
-  - [⌚ watchOS Companion & WidgetKit](#-watchos-companion--widgetkit)
+  - [📱 Widgets, Siri & Wellness](#-widgets-siri--wellness)
 - [🏗️ System Architecture](#-system-architecture)
   - [Data Flow Diagram](#data-flow-diagram)
   - [Directory Structure](#directory-structure)
@@ -54,14 +53,14 @@ Students build custom hero archetypes, earn experience points (XP) for study ses
 ## ✨ Core Highlights
 
 > [!NOTE]
-> **ALIVE** is engineered using pure **SwiftUI**, **SwiftData**, **ActivityKit**, **WidgetKit**, **WatchConnectivity**, and **LocalAuthentication**. It runs natively without external third-party dependencies.
+> **ALIVE** is engineered with pure **SwiftUI**, **SwiftData**, **ActivityKit**, **WidgetKit**, **HealthKit**, **App Intents**, **UserNotifications**, and **LocalAuthentication**. It has no third-party runtime dependencies.
 
 - 🔒 **Biometric Security & Onboarding**: FaceID/TouchID protection for hero profiles and custom character creation.
 - 🎭 **4 Playable Character Archetypes**: Class-specific passive bonuses, theme color palettes, and base stat distributions.
 - 📐 **Predictive Bunk Calculator**: Real-time algorithm ensuring student attendance stays above required policy thresholds.
 - 🌳 **Visual RPG Skill Canvas**: Rendered interactive node trees, perk unlocks, and prerequisite validation.
-- 🏝️ **Live Activity & Dynamic Island Integration**: Real-time study timer countdowns streamed to Lock Screen.
-- 🔄 **Real-Time watchOS Sync**: WCSession bridge streaming hero metrics directly to Apple Watch.
+- 🏝️ **Live Activity & Dynamic Island Integration**: Focus sessions count down on the Lock Screen and Dynamic Island.
+- 📱 **Hero HUD Widget**: Level, streak, XP, and quest load are available at a glance.
 
 ---
 
@@ -131,17 +130,17 @@ The skill tree interface ([`SkillTreeCanvasView.swift`](ALIVE/Views/SkillTree/Sk
 
 ### ⏱️ Deep Work Focus Timer & Live Activities
 
-- Integrated Pomodoro and continuous deep work timers ([`FocusSessionView.swift`](ALIVE/Views/Focus/FocusSessionView.swift)).
-- Real-time focus score calculation based on session stability.
-- **ActivityKit Extension** ([`FocusLiveActivityAttributes.swift`](ALIVE/Extension/LiveActivity/FocusLiveActivityAttributes.swift)) streams timer countdowns to the iOS Dynamic Island and Lock Screen.
+- Integrated Pomodoro and deep-work timers ([`FocusSessionView.swift`](ALIVE/Views/Focus/FocusSessionView.swift)) award XP only after the countdown completes.
+- Streaks and unlocked focus perks are reflected in the claimed reward.
+- [`FocusLiveActivityManager.swift`](ALIVE/Services/FocusLiveActivityManager.swift) and the [`ALIVEWidgets`](ALIVE/Extensions/ALIVEWidgets/ALIVEWidgets.swift) extension render a battery-efficient countdown on the Lock Screen and Dynamic Island.
 
 ---
 
-### ⌚ watchOS Companion & WidgetKit
+### 📱 Widgets, Siri & Wellness
 
-- **WatchConnectivity Manager** ([`WatchConnectivityManager.swift`](ALIVE/WatchApp/WatchConnectivityManager.swift)): Direct bi-directional communication between iPhone and Apple Watch.
-- **Glanceable Dashboard** ([`WatchDashboardView.swift`](ALIVE/WatchApp/WatchDashboardView.swift)): Real-time level progress, streak count, and safe bunk indicators on your wrist.
-- **WidgetKit Integration** ([`AliveWidgetBundle.swift`](ALIVE/Extension/Widgets/AliveWidgetBundle.swift)): Home screen widgets showing character HUD and upcoming daily quests.
+- **WidgetKit** ([`ALIVEWidgets.swift`](ALIVE/Extensions/ALIVEWidgets/ALIVEWidgets.swift)): A Home Screen hero HUD displays level, streak, XP progress, and pending quest count.
+- **Siri / Shortcuts** ([`ALIVEAppIntents.swift`](ALIVE/Intents/ALIVEAppIntents.swift)): Start a focus session, open a destination, or complete an eligible quest using App Intents.
+- **HealthKit & Notifications** ([`WellnessView.swift`](ALIVE/Views/Wellness/WellnessView.swift)): Opt-in step-count movement context and a user-selected daily focus reminder.
 
 ---
 
@@ -401,4 +400,3 @@ Contributions are welcome! Please follow these guidelines:
 ## 📄 License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-

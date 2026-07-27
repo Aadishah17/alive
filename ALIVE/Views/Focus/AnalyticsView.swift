@@ -4,9 +4,18 @@ import SwiftData
 public struct AnalyticsView: View {
     @Query private var sessions: [StudySession]
     @Query private var courses: [Course]
-    @StateObject private var viewModel = AnalyticsViewModel()
+    @Query private var skills: [SkillNode]
+    private let viewModel = AnalyticsViewModel()
     
     public init() {}
+
+    private var weeklyMetrics: [WeeklyStudyMetric] {
+        viewModel.weeklyStudyMetrics(sessions: sessions)
+    }
+
+    private var weeklyPeakMinutes: Int {
+        max(weeklyMetrics.map(\.minutes).max() ?? 0, 1)
+    }
     
     public var body: some View {
         ZStack {
@@ -61,21 +70,38 @@ public struct AnalyticsView: View {
                         .glassCard(borderColor: ALIVEColor.healthRed.opacity(0.3))
                     }
                     
-                    // Study Time Distribution Chart Mock/Visual
+                    // Study Time Distribution Chart
                     VStack(alignment: .leading, spacing: 12) {
                         Text("WEEKLY STUDY DISTRIBUTION")
                             .font(.caption)
                             .fontWeight(.bold)
                             .foregroundColor(ALIVEColor.textMuted)
                         
-                        VStack(spacing: 10) {
-                            BarRow(label: "Mon", fraction: 0.8, color: ALIVEColor.neonCyan)
-                            BarRow(label: "Tue", fraction: 0.5, color: ALIVEColor.xpViolet)
-                            BarRow(label: "Wed", fraction: 0.95, color: ALIVEColor.rpgGold)
-                            BarRow(label: "Thu", fraction: 0.4, color: ALIVEColor.staminaGreen)
-                            BarRow(label: "Fri", fraction: 0.7, color: ALIVEColor.manaBlue)
-                            BarRow(label: "Sat", fraction: 0.3, color: ALIVEColor.neonCyan)
-                            BarRow(label: "Sun", fraction: 0.6, color: ALIVEColor.rpgGold)
+                        if !ProgressionModifierEngine.isUnlocked(
+                            ProgressionModifierEngine.examClairvoyance,
+                            in: skills
+                        ) {
+                            Label(
+                                "Unlock Exam Clairvoyance in the skill tree to reveal your seven-day study pattern.",
+                                systemImage: "lock.fill"
+                            )
+                            .font(.footnote)
+                            .foregroundStyle(ALIVEColor.textSecondary)
+                        } else if weeklyMetrics.allSatisfy({ $0.minutes == 0 }) {
+                            Text("Your completed focus sessions will appear here over the next seven days.")
+                                .font(.footnote)
+                                .foregroundStyle(ALIVEColor.textSecondary)
+                        } else {
+                            VStack(spacing: 10) {
+                                ForEach(Array(weeklyMetrics.enumerated()), id: \.element.id) { index, metric in
+                                    BarRow(
+                                        label: metric.label,
+                                        value: "\(metric.minutes)m",
+                                        fraction: Double(metric.minutes) / Double(weeklyPeakMinutes),
+                                        color: chartColor(for: index)
+                                    )
+                                }
+                            }
                         }
                     }
                     .glassCard()
@@ -87,6 +113,17 @@ public struct AnalyticsView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+    }
+
+    private func chartColor(for index: Int) -> Color {
+        let colors = [
+            ALIVEColor.neonCyan,
+            ALIVEColor.xpViolet,
+            ALIVEColor.rpgGold,
+            ALIVEColor.staminaGreen,
+            ALIVEColor.manaBlue
+        ]
+        return colors[index % colors.count]
     }
 }
 
@@ -121,7 +158,8 @@ struct MetricBox: View {
 
 struct BarRow: View {
     let label: String
-    let fraction: CGFloat
+    let value: String
+    let fraction: Double
     let color: Color
     
     var body: some View {
@@ -131,6 +169,11 @@ struct BarRow: View {
                 .fontWeight(.bold)
                 .foregroundColor(ALIVEColor.textSecondary)
                 .frame(width: 35, alignment: .leading)
+
+            Text(value)
+                .font(.caption2.monospacedDigit())
+                .foregroundColor(ALIVEColor.textMuted)
+                .frame(width: 35, alignment: .trailing)
             
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
@@ -138,7 +181,7 @@ struct BarRow: View {
                         .fill(Color(red: 0.88, green: 0.91, blue: 0.95))
                     Capsule()
                         .fill(color)
-                        .frame(width: geo.size.width * fraction)
+                        .frame(width: geo.size.width * min(max(fraction, 0), 1))
                 }
             }
             .frame(height: 10)

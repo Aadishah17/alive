@@ -8,6 +8,7 @@ public final class AttendanceViewModel: ObservableObject {
     @Published public var newCourseName: String = ""
     @Published public var newInstructor: String = ""
     @Published public var newMinPercentage: Double = 75.0
+    @Published public var saveErrorMessage: String?
     
     public init() {}
     
@@ -21,7 +22,15 @@ public final class AttendanceViewModel: ObservableObject {
             HapticManager.shared.triggerImpact(style: .heavy)
         }
         
-        try? context.save()
+        do {
+            try PersistenceService.save(context)
+            let pendingQuestCount = (try? context.fetch(FetchDescriptor<Quest>()))?
+                .filter { !$0.isCompleted }
+                .count ?? 0
+            WidgetSnapshotService.refresh(profile: profile, pendingQuestCount: pendingQuestCount)
+        } catch {
+            saveErrorMessage = "Attendance could not be saved. Please try again."
+        }
     }
     
     public func addCourse(context: ModelContext) {
@@ -35,11 +44,15 @@ public final class AttendanceViewModel: ObservableObject {
         )
         
         context.insert(course)
-        try? context.save()
-        
-        newCourseCode = ""
-        newCourseName = ""
-        newInstructor = ""
-        showAddCourseSheet = false
+
+        do {
+            try PersistenceService.save(context)
+            newCourseCode = ""
+            newCourseName = ""
+            newInstructor = ""
+            showAddCourseSheet = false
+        } catch {
+            saveErrorMessage = "Course could not be registered. Please try again."
+        }
     }
 }

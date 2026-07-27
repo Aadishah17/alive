@@ -11,6 +11,7 @@ public final class UserProfile {
     public var totalXPEarned: Int
     public var streakDays: Int
     public var lastActiveDate: Date
+    public var lastQuestRefreshDate: Date?
     public var intelligence: Int
     public var stamina: Int
     public var focus: Int
@@ -49,6 +50,7 @@ public final class UserProfile {
         self.totalXPEarned = currentXP
         self.streakDays = streakDays
         self.lastActiveDate = Date()
+        self.lastQuestRefreshDate = nil
         
         let stats = characterClass.baseStats
         self.intelligence = stats.intelligence

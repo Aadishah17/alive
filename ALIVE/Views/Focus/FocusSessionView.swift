@@ -1,159 +1,113 @@
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 public struct FocusSessionView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(ALIVERouter.self) private var router
     @Query private var profiles: [UserProfile]
     @Query private var courses: [Course]
+    @Query private var skills: [SkillNode]
     @StateObject private var viewModel = FocusViewModel()
-    
+    @State private var claimedReward: FocusSessionReward?
+
     public init() {}
-    
+
     public var body: some View {
         ZStack {
             ALIVEColor.backgroundDark.ignoresSafeArea()
-            
-            VStack(spacing: 24) {
-                // Course Selector Pill
-                HStack {
-                    Image(systemName: "book.fill")
-                        .foregroundColor(ALIVEColor.neonCyan)
-                    Picker("Select Course", selection: $viewModel.selectedCourseName) {
-                        Text("General Study").tag("General Study")
-                        ForEach(courses) { course in
-                            Text("\(course.courseCode) - \(course.courseName)").tag(course.courseCode)
-                        }
-                    }
-                    .pickerStyle(.menu)
-                    .tint(ALIVEColor.textPrimary)
-                }
-                .padding(.horizontal, 14)
-                .padding(.vertical, 8)
-                .background(ALIVEColor.glassSurface)
-                .cornerRadius(20)
-                
-                // Focus Timer Ring
-                ZStack {
-                    Circle()
-                        .stroke(Color(red: 0.88, green: 0.91, blue: 0.95), lineWidth: 16)
-                        .frame(width: 240, height: 240)
-                    
-                    Circle()
-                        .trim(from: 0, to: CGFloat(viewModel.timeRemainingSeconds) / CGFloat(viewModel.targetMinutes * 60))
-                        .stroke(
-                            ALIVEColor.xpGradient,
-                            style: StrokeStyle(lineWidth: 16, lineCap: .round)
-                        )
-                        .frame(width: 240, height: 240)
-                        .rotationEffect(.degrees(-90))
-                        .shadow(color: ALIVEColor.neonCyan.opacity(0.3), radius: 8)
-                    
-                    VStack(spacing: 6) {
-                        Text(formattedTime(seconds: viewModel.timeRemainingSeconds))
-                            .font(.system(size: 44, weight: .black, design: .monospaced))
-                            .foregroundColor(ALIVEColor.textPrimary)
-                        
-                        Text(viewModel.isRunning ? "FLOWSTATE ACTIVE" : "READY FOR BATTLE")
-                            .font(.system(size: 10, weight: .bold))
-                            .foregroundColor(ALIVEColor.rpgGold)
-                    }
-                }
-                .padding(.vertical, 20)
-                
-                // Duration Selectors
-                HStack(spacing: 12) {
-                    DurationButton(mins: 15, isSelected: viewModel.targetMinutes == 15) { viewModel.setDuration(minutes: 15) }
-                    DurationButton(mins: 25, isSelected: viewModel.targetMinutes == 25) { viewModel.setDuration(minutes: 25) }
-                    DurationButton(mins: 45, isSelected: viewModel.targetMinutes == 45) { viewModel.setDuration(minutes: 45) }
-                    DurationButton(mins: 60, isSelected: viewModel.targetMinutes == 60) { viewModel.setDuration(minutes: 60) }
-                }
-                
-                // Controls
-                HStack(spacing: 20) {
-                    if viewModel.isReadyToClaimXP {
-                        if let profile = profiles.first {
-                            Button {
-                                viewModel.saveCompletedSession(profile: profile, context: modelContext)
-                            } label: {
-                                HStack {
-                                    Image(systemName: "sparkles")
-                                    Text("CLAIM XP")
-                                        .fontWeight(.bold)
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(ALIVEColor.goldGradient)
-                                .foregroundColor(.black)
-                                .cornerRadius(14)
-                            }
-                        }
-                    } else if !viewModel.isRunning {
-                        Button {
-                            viewModel.startSession()
-                        } label: {
-                            HStack {
-                                Image(systemName: viewModel.isPaused ? "play.fill" : "bolt.fill")
-                                Text(viewModel.isPaused ? "RESUME FOCUS" : "ENGAGE FOCUS")
-                                    .fontWeight(.bold)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(ALIVEColor.neonCyan)
-                            .foregroundColor(.white)
-                            .cornerRadius(14)
-                        }
-                    } else {
-                        Button {
-                            viewModel.pauseSession()
-                        } label: {
-                            Text("PAUSE")
-                                .fontWeight(.bold)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(ALIVEColor.glassSurface)
-                                .foregroundColor(ALIVEColor.textPrimary)
-                                .cornerRadius(14)
-                        }
-                    }
-                }
-                .padding(.horizontal)
 
-                if let error = viewModel.saveErrorMessage {
-                    Text(error)
-                        .font(.footnote)
-                        .foregroundColor(ALIVEColor.healthRed)
-                        .multilineTextAlignment(.center)
+            ScrollView {
+                VStack(spacing: 24) {
+                    FocusCoursePicker(
+                        selectedCourseName: $viewModel.selectedCourseName,
+                        courses: courses
+                    )
+
+                    FocusTimerRing(
+                        timeRemainingSeconds: viewModel.timeRemainingSeconds,
+                        targetMinutes: viewModel.targetMinutes,
+                        status: viewModel.status
+                    )
+
+                    FocusDurationPicker(
+                        selectedMinutes: viewModel.targetMinutes,
+                        isEnabled: viewModel.status != .running,
+                        selectDuration: viewModel.setDuration(minutes:)
+                    )
+
+                    FocusControlBar(
+                        status: viewModel.status,
+                        rewardEstimate: viewModel.rewardEstimate(
+                            forStreak: profiles.first?.streakDays ?? 0,
+                            skills: skills
+                        ),
+                        start: viewModel.startSession,
+                        pause: viewModel.pauseSession,
+                        reset: viewModel.resetSession,
+                        claim: claimCompletedSession
+                    )
+
+                    FocusSessionGuidance(
+                        status: viewModel.status,
+                        selectedCourseName: viewModel.selectedCourseName,
+                        perkSummary: ProgressionModifierEngine.focusPerkSummary(
+                            forMinutes: viewModel.targetMinutes,
+                            skills: skills
+                        )
+                    )
                 }
+                .padding()
             }
-            .padding()
         }
-        .navigationTitle("FOCUS TIMER")
+        .navigationTitle("FOCUS SESSION")
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
-    }
-    
-    private func formattedTime(seconds: Int) -> String {
-        let mins = seconds / 60
-        let secs = seconds % 60
-        return String(format: "%02d:%02d", mins, secs)
-    }
-}
-
-struct DurationButton: View {
-    let mins: Int
-    let isSelected: Bool
-    let onTap: () -> Void
-    
-    var body: some View {
-        Button(action: onTap) {
-            Text("\(mins)M")
-                .font(.system(size: 12, weight: .bold))
-                .padding(.horizontal, 14)
-                .padding(.vertical, 8)
-                .background(isSelected ? ALIVEColor.xpViolet : ALIVEColor.glassSurface)
-                .foregroundColor(isSelected ? .white : ALIVEColor.textSecondary)
-                .cornerRadius(10)
+        .task(id: router.focusStartRequestID) {
+            startRequestedFocusSession()
         }
+        .alert(
+            "XP claimed",
+            isPresented: Binding(
+                get: { claimedReward != nil },
+                set: { if !$0 { claimedReward = nil } }
+            ),
+            presenting: claimedReward
+        ) { _ in
+            Button("Keep going") {
+                claimedReward = nil
+            }
+        } message: { reward in
+            Text("+\(reward.xpGained) XP earned for your \(reward.sessionType.lowercased()) session.")
+        }
+        .alert(
+            "Couldn’t save this session",
+            isPresented: Binding(
+                get: { viewModel.saveErrorMessage != nil },
+                set: { if !$0 { viewModel.clearSaveError() } }
+            )
+        ) {
+            Button("OK", role: .cancel) {
+                viewModel.clearSaveError()
+            }
+        } message: {
+            Text(viewModel.saveErrorMessage ?? "Please try again.")
+        }
+    }
+
+    private func startRequestedFocusSession() {
+        guard router.focusStartRequestID != nil, viewModel.status == .idle else {
+            return
+        }
+
+        viewModel.startSession()
+    }
+
+    private func claimCompletedSession() {
+        guard let profile = profiles.first else {
+            return
+        }
+
+        claimedReward = viewModel.claimCompletedSession(profile: profile, context: modelContext)
     }
 }

@@ -22,6 +22,25 @@
 	<true/>
 	<key>NSFaceIDUsageDescription</key>
 	<string>ALIVE uses Face ID to secure your hero profile and stats.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>ALIVE reads your daily step count to power the optional movement quest.</string>
+	<key>NSSiriUsageDescription</key>
+	<string>ALIVE uses Siri to start focus sessions, open your quest board, and complete eligible quests.</string>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
+	<key>NSSupportsLiveActivitiesFrequentUpdates</key>
+	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.alive.app</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>alive</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

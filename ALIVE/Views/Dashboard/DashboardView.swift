@@ -2,11 +2,10 @@ import SwiftUI
 import SwiftData
 
 public struct DashboardView: View {
-    @Environment(\.modelContext) private var modelContext
     @Query private var profiles: [UserProfile]
     @Query private var quests: [Quest]
     @Query private var courses: [Course]
-    @Query private var sessions: [StudySession]
+    @Query(sort: \StudySession.date, order: .reverse) private var sessions: [StudySession]
     
     @StateObject private var profileViewModel = ProfileViewModel()
     @StateObject private var healthKitManager = HealthKitManager()
@@ -25,6 +24,10 @@ public struct DashboardView: View {
     private var coursesAtRisk: [Course] {
         courses.filter { !$0.isSafe }
     }
+
+    private var completedDailyQuestCount: Int {
+        quests.filter { $0.category == .daily && $0.isCompleted }.count
+    }
     
     public var body: some View {
         ZStack {
@@ -37,6 +40,15 @@ public struct DashboardView: View {
                         CharacterHUDHeader(profile: profile) {
                             showLevelUpModal = true
                         }
+
+                        TodayCommandCenter(
+                            completedQuestCount: completedDailyQuestCount,
+                            totalQuestCount: completedDailyQuestCount + pendingDailyQuests.count,
+                            coursesAtRisk: coursesAtRisk.count,
+                            focusMinutesToday: sessions
+                                .filter { Calendar.current.isDateInToday($0.date) }
+                                .reduce(0) { $0 + ($1.durationSeconds / 60) }
+                        )
 
                         HealthProgressCard(manager: healthKitManager) {
                             Task {
@@ -111,6 +123,12 @@ public struct DashboardView: View {
                                 NavigationLink(destination: AnalyticsView()) {
                                     ShortcutCard(title: "Insights", subtitle: "Study Heatmap", icon: "chart.bar.fill", color: ALIVEColor.staminaGreen)
                                 }
+                                NavigationLink(destination: WellnessView()) {
+                                    ShortcutCard(title: "Wellness", subtitle: "Health & Rituals", icon: "heart.text.square.fill", color: ALIVEColor.staminaGreen)
+                                }
+                                NavigationLink(destination: BadgeVaultView()) {
+                                    ShortcutCard(title: "Badge Vault", subtitle: "Track Growth", icon: "crown.fill", color: ALIVEColor.xpViolet)
+                                }
                             }
                         }
                         
@@ -156,7 +174,7 @@ public struct DashboardView: View {
                 .padding()
             }
         }
-        #else
+        #if os(iOS)
         .sheet(isPresented: $showLevelUpModal) {
             if let profile = userProfile {
                 LevelUpModalView(profile: profile) {
@@ -241,6 +259,97 @@ struct HealthProgressCard: View {
         .glassCard(borderColor: ALIVEColor.staminaGreen.opacity(0.35))
     }
 }
+
+private struct TodayCommandCenter: View {
+    let completedQuestCount: Int
+    let totalQuestCount: Int
+    let coursesAtRisk: Int
+    let focusMinutesToday: Int
+
+    private var questProgress: Double {
+        guard totalQuestCount > 0 else {
+            return 0
+        }
+
+        return Double(completedQuestCount) / Double(totalQuestCount)
+    }
+
+    private var nextMove: String {
+        if coursesAtRisk > 0 {
+            return "Protect your attendance buffer first."
+        }
+        if completedQuestCount < totalQuestCount {
+            return "One small quest can keep your streak alive."
+        }
+        return "Daily quest board cleared. Build tomorrow’s advantage."
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("TODAY’S MOMENTUM")
+                        .font(.system(size: 11, weight: .bold, design: .monospaced))
+                        .foregroundStyle(ALIVEColor.neonCyan)
+                    Text(nextMove)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(ALIVEColor.textPrimary)
+                }
+
+                Spacer()
+
+                Gauge(value: questProgress) {
+                    EmptyView()
+                } currentValueLabel: {
+                    Text("\(completedQuestCount)/\(totalQuestCount)")
+                        .font(.caption2.weight(.bold).monospacedDigit())
+                }
+                .gaugeStyle(.accessoryCircularCapacity)
+                .tint(ALIVEColor.xpGradient)
+                .frame(width: 50, height: 50)
+            }
+
+            HStack(spacing: 10) {
+                MomentumMetric(
+                    value: "\(focusMinutesToday)m",
+                    label: "FOCUS TODAY",
+                    icon: "timer",
+                    color: ALIVEColor.xpViolet
+                )
+                MomentumMetric(
+                    value: "\(coursesAtRisk)",
+                    label: "COURSES AT RISK",
+                    icon: coursesAtRisk > 0 ? "exclamationmark.triangle.fill" : "shield.checkmark.fill",
+                    color: coursesAtRisk > 0 ? ALIVEColor.healthRed : ALIVEColor.staminaGreen
+                )
+            }
+        }
+        .glassCard(cornerRadius: 20, borderColor: ALIVEColor.neonCyan.opacity(0.24))
+    }
+}
+
+private struct MomentumMetric: View {
+    let value: String
+    let label: String
+    let icon: String
+    let color: Color
+
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(systemName: icon)
+                .foregroundStyle(color)
+            VStack(alignment: .leading, spacing: 1) {
+                Text(value)
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(ALIVEColor.textPrimary)
+                Text(label)
+                    .font(.system(size: 8, weight: .bold))
+                    .foregroundStyle(ALIVEColor.textMuted)
+            }
+            Spacer(minLength: 0)
+        }
+        .padding(10)
+        .background(color.opacity(0.08), in: RoundedRectangle(cornerRadius: 12))
     }
 }
 

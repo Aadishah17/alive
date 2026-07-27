@@ -20,13 +20,23 @@ public final class ProfileViewModel: ObservableObject {
         }
         
         profile.unallocatedStatPoints -= 1
-        HapticManager.shared.triggerImpact(style: .light)
-        try? context.save()
+        do {
+            try PersistenceService.save(context)
+            HapticManager.shared.triggerImpact(style: .light)
+        } catch {
+            // SwiftData rolls the stat change back; the player can try again.
+        }
     }
     
     public func awardXP(amount: Int, source: String, profile: UserProfile, context: ModelContext) {
         let result = XPEngine.addXP(amount: amount, to: profile, source: source, context: context)
         
+        do {
+            try PersistenceService.save(context)
+        } catch {
+            return
+        }
+
         if result.didLevelUp {
             showLevelUpEffect = true
             levelUpMessage = "LEVEL UP! You reached Level \(result.newLevel)! +\(result.statPointsEarned) Stat Points"
@@ -35,6 +45,5 @@ public final class ProfileViewModel: ObservableObject {
             HapticManager.shared.triggerNotification(type: .success)
         }
         
-        try? context.save()
     }
 }

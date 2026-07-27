@@ -24,64 +24,14 @@ public final class MockDataGenerator {
         profile.focus = 28
         profile.discipline = 22
         profile.unallocatedStatPoints = 4
+        profile.lastQuestRefreshDate = Date()
         context.insert(profile)
         
         // 2. Skill Tree Nodes
-        let skills = [
-            SkillNode(
-                name: "Deep Concentration I",
-                skillDescription: "Increases study focus score threshold and reduces fatigue.",
-                category: "Focus",
-                tier: 1,
-                iconName: "brain.head.profile",
-                xpCost: 200,
-                buffDescription: "+10% Focus XP Gain",
-                isUnlocked: true
-            ),
-            SkillNode(
-                name: "Exam Clairvoyance",
-                skillDescription: "Predicts high-priority revision topics based on course historical weight.",
-                category: "Academia",
-                tier: 1,
-                iconName: "eye.fill",
-                xpCost: 250,
-                buffDescription: "Unlocks Advanced Study Analytics",
-                isUnlocked: true
-            ),
-            SkillNode(
-                name: "Master Bunk Calculator",
-                skillDescription: "Allows exact safe bunk margin calculations with alert buffer.",
-                category: "Time Magic",
-                tier: 2,
-                iconName: "calculator.fill",
-                xpCost: 350,
-                prerequisiteNodeNames: ["Exam Clairvoyance"],
-                buffDescription: "+1 Bunk Shield per course",
-                isUnlocked: true
-            ),
-            SkillNode(
-                name: "Hyper-Focus Flowstate",
-                skillDescription: "Double XP bonus during continuous 60-minute pomodoro sessions.",
-                category: "Focus",
-                tier: 2,
-                iconName: "bolt.shield.fill",
-                xpCost: 500,
-                prerequisiteNodeNames: ["Deep Concentration I"],
-                buffDescription: "2x XP on 60m+ Focus sessions",
-                isUnlocked: false
-            ),
-            SkillNode(
-                name: "Circadian Mastery",
-                skillDescription: "Protects stamina stat from sleep schedule decay.",
-                category: "Health",
-                tier: 3,
-                iconName: "moon.stars.fill",
-                xpCost: 750,
-                prerequisiteNodeNames: ["Hyper-Focus Flowstate"],
-                buffDescription: "Stamina Protection & Sleep Insights",
-                isUnlocked: false
-            )
-        ]
+        let skills = SkillTreeSeedFactory.defaultNodes()
+        skills.first?.isUnlocked = true
+        skills.dropFirst().first?.isUnlocked = true
+        skills.first(where: { $0.name == "Master Bunk Calculator" })?.isUnlocked = true
         skills.forEach { context.insert($0) }
         
         // 3. Courses & Attendance
@@ -151,6 +101,14 @@ public final class MockDataGenerator {
         ]
         achievements.forEach { context.insert($0) }
         
-        try? context.save()
+        do {
+            try PersistenceService.save(context)
+            WidgetSnapshotService.refresh(
+                profile: profile,
+                pendingQuestCount: (dailyQuests + weeklyQuests).filter { !$0.isCompleted }.count
+            )
+        } catch {
+            // Demo data is only offered as an optional convenience on first launch.
+        }
     }
 }
