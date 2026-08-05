@@ -5,6 +5,7 @@ public struct MainTabView: View {
     @Environment(ALIVERouter.self) private var router
     @Environment(\.modelContext) private var modelContext
     @Environment(\.scenePhase) private var scenePhase
+    @StateObject private var healthService = HealthKitService()
     
     public init() {}
     
@@ -60,6 +61,7 @@ public struct MainTabView: View {
             }
             .tag(ALIVETab.badges)
         }
+        .environmentObject(healthService)
         .tint(ALIVEColor.neonCyan)
         .task {
             refreshDailyQuests()

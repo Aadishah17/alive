@@ -31,7 +31,7 @@ public struct FocusSessionView: View {
 
                     FocusDurationPicker(
                         selectedMinutes: viewModel.targetMinutes,
-                        isEnabled: viewModel.status != .running,
+                        isEnabled: viewModel.canAdjustDuration,
                         selectDuration: viewModel.setDuration(minutes:)
                     )
 

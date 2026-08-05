@@ -7,7 +7,7 @@
 ### *Gamified Academic & Life Management System for iPhone*
 
 [![Swift 5.9](https://img.shields.io/badge/Swift-5.9+-FA7343?style=for-the-badge&logo=swift&logoColor=white)](https://swift.org)
-[![iOS 17.0+](https://img.shields.io/badge/iOS-17.0+-000000?style=for-the-badge&logo=apple&logoColor=white)](https://apple.com/ios)
+[![iOS 26.5+](https://img.shields.io/badge/iOS-26.5+-000000?style=for-the-badge&logo=apple&logoColor=white)](https://apple.com/ios)
 [![SwiftData](https://img.shields.io/badge/SwiftData-Supported-00C853?style=for-the-badge&logo=swift&logoColor=white)](https://developer.apple.com/xcode/swiftdata/)
 [![Architecture MVVM](https://img.shields.io/badge/Architecture-MVVM-7B1FA2?style=for-the-badge)](https://developer.apple.com/design/human-interface-guidelines/)
 [![License MIT](https://img.shields.io/badge/License-MIT-008080?style=for-the-badge)](LICENSE)
@@ -56,7 +56,7 @@ Students build a custom hero, earn XP for completed focus sessions and quests, p
 > **ALIVE** is engineered with pure **SwiftUI**, **SwiftData**, **ActivityKit**, **WidgetKit**, **HealthKit**, **App Intents**, **UserNotifications**, and **LocalAuthentication**. It has no third-party runtime dependencies.
 
 - 🔒 **Biometric Security & Onboarding**: FaceID/TouchID protection for hero profiles and custom character creation.
-- 🎭 **4 Playable Character Archetypes**: Class-specific passive bonuses, theme color palettes, and base stat distributions.
+- 🎭 **4 Playable Character Archetypes**: Distinct starting stat distributions and theme palettes.
 - 📐 **Predictive Bunk Calculator**: Real-time algorithm ensuring student attendance stays above required policy thresholds.
 - 🌳 **Visual RPG Skill Canvas**: Rendered interactive node trees, perk unlocks, and prerequisite validation.
 - 🏝️ **Live Activity & Dynamic Island Integration**: Focus sessions count down on the Lock Screen and Dynamic Island.
@@ -77,20 +77,17 @@ Hero profiles are protected with native iOS biometric security ([`AuthService.sw
 
 ### ⚔️ RPG Character Classes & Attribute System
 
-Students choose a character class upon initial onboarding ([`CharacterClass.swift`](ALIVE/Models/CharacterClass.swift)). Each class grants specific starting attribute values and passive bonuses:
+Students choose a character class upon initial onboarding ([`CharacterClass.swift`](ALIVE/Models/CharacterClass.swift)). Each class establishes a distinct starting build:
 
-| Character Class | Specialty Description | Base Stats (INT / STA / FOC / DIS) | Passive Bonus |
-| :--- | :--- | :---: | :--- |
-| 📚 **Scholar** | Master of theory & deep research | `18 / 12 / 16 / 14` | **+15% XP** on deep study sessions |
-| ⚡ **Tech Architect** | Builder of complex systems & code | `16 / 14 / 18 / 12` | **+15% XP** on lab timers & projects |
-| 🎨 **Creative Visionary** | Designer of visual ideas & concepts | `14 / 16 / 14 / 16` | **+20% bonus** on study streak retention |
-| 🎯 **Academic Strategist** | Tactician of exam & attendance planning | `15 / 13 / 15 / 17` | **1 Free Bunk Shield** per course |
+| Character Class | Starting Build | Base Stats (INT / STA / FOC / DIS) |
+| :--- | :--- | :---: |
+| 📚 **Scholar** | Theory-first | `18 / 12 / 16 / 14` |
+| ⚡ **Tech Architect** | Systems-minded | `16 / 14 / 18 / 12` |
+| 🎨 **Creative Visionary** | Idea-driven | `14 / 16 / 14 / 16` |
+| 🎯 **Academic Strategist** | Planning-oriented | `15 / 13 / 15 / 17` |
 
 #### Character Stat Attributes ([`UserProfile.swift`](ALIVE/Models/UserProfile.swift))
-- **Intelligence (INT)**: Enhances study session XP multipliers.
-- **Stamina (STA)**: Protects against daily streak decay and focus fatigue.
-- **Focus (FOC)**: Increases focus timer completion bonuses.
-- **Discipline (DIS)**: Unlocks higher tier daily quest reward multipliers.
+- **Intelligence (INT), Stamina (STA), Focus (FOC), Discipline (DIS)**: Persistent RPG stats that users allocate on level-up and see in their hero HUD.
 
 ---
 
@@ -108,23 +105,23 @@ The academic attendance engine ([`Course.swift`](ALIVE/Models/Course.swift)) con
 
 Task management is structured as RPG Quests ([`Quest.swift`](ALIVE/Models/Quest.swift), [`QuestEngine.swift`](ALIVE/Services/QuestEngine.swift)):
 
-| Quest Category | Refresh Cycle | Difficulty Tiers | XP Reward | Reward Attributes |
+| Quest Category | Availability | Difficulty Tiers | XP Reward | Reward Attributes |
 | :--- | :--- | :--- | :---: | :--- |
-| ☀️ **Daily Quest** | Every 24 Hours | Novice / Adept | `50 - 120 XP` | Focus / Discipline |
-| ⚔️ **Weekly Boss** | Every 7 Days | Master / Legendary | `250 - 500 XP` | Intelligence / Stat Points |
-| 📜 **Main Story** | Milestone Driven | Master | `200+ XP` | Skill Points |
+| ☀️ **Daily Quest** | Refreshed once per calendar day | Novice / Adept | `50 - 120 XP` | Focus / Discipline |
+| ⚔️ **Weekly Boss** | Seeded as longer-term goals | Master / Legendary | `250 - 500 XP` | Intelligence / Discipline |
+| 📜 **Main Story** | Supported quest type for future milestones | Master | Configurable | Configurable |
 
 ---
 
 ### 🌳 Interactive Skill Tree Canvas
 
-The skill tree interface ([`SkillTreeCanvasView.swift`](ALIVE/Views/SkillTree/SkillTreeCanvasView.swift)) renders node paths where students spend accumulated XP to unlock abilities ([`SkillNode.swift`](ALIVE/Models/SkillNode.swift)):
+The skill tree interface ([`SkillTreeCanvasView.swift`](ALIVE/Views/SkillTree/SkillTreeCanvasView.swift)) renders dependency paths. Nodes unlock once the hero has earned the required total XP ([`SkillNode.swift`](ALIVE/Models/SkillNode.swift)):
 
 - 🧠 **Deep Concentration I**: +10% Focus XP Gain *(Tier 1)*.
-- 👁️ **Exam Clairvoyance**: Unlocks advanced historical study analytics *(Tier 1)*.
-- 🧮 **Master Bunk Calculator**: Provides +1 Bunk Shield per course *(Tier 2)*.
+- 👁️ **Exam Clairvoyance**: Unlocks the seven-day study distribution *(Tier 1)*.
+- 🧮 **Master Bunk Calculator**: Attendance-strategy milestone *(Tier 2)*.
 - ⚡ **Hyper-Focus Flowstate**: 2x XP bonus on continuous 60m+ focus sessions *(Tier 2)*.
-- 🌙 **Circadian Mastery**: Stamina decay protection & sleep insights *(Tier 3)*.
+- 🌙 **Circadian Mastery**: Unlocks the recovery ritual *(Tier 3)*.
 
 ---
 
@@ -153,30 +150,29 @@ ALIVE is built using **Model-View-ViewModel (MVVM)** with a centralized engine l
 ```mermaid
 flowchart TD
     subgraph UI ["View Layer (SwiftUI)"]
-        DashboardView["DashboardView\n(Hero HUD & Level Modal)"]
-        AttendanceView["AttendanceTrackerView\n(Safe Bunk Safeguard)"]
-        FocusView["FocusSessionView\n(Deep Work Timer)"]
-        SkillTreeView["SkillTreeCanvasView\n(Interactive Node Canvas)"]
-        AuthView["AuthView / CharacterCreationView\n(Biometric Entry & Onboarding)"]
+        DashboardView["DashboardView"]
+        FocusView["FocusSessionView"]
+        QuestView["QuestListView"]
+        WellnessView["WellnessView"]
+        SkillTreeView["SkillTreeCanvasView"]
     end
 
     subgraph VM ["ViewModel Layer"]
-        ProfileVM["ProfileViewModel"]
-        AttendanceVM["AttendanceViewModel"]
         FocusVM["FocusViewModel"]
+        QuestVM["QuestViewModel"]
         SkillTreeVM["SkillTreeViewModel"]
-        AuthVM["AuthViewModel"]
     end
 
     subgraph Services ["Engine & Service Layer"]
-        XPEngine["XPEngine\n(Level Up Logic & Multipliers)"]
-        QuestEngine["QuestEngine\n(Quest Generator & Rewards)"]
-        AuthService["AuthService\n(Biometric & State Coordinator)"]
-        WatchManager["WatchConnectivityManager\n(WatchOS Bridge)"]
+        XPEngine["XPEngine"]
+        QuestEngine["QuestProgressEngine"]
+        DailyQuestService["DailyQuestService"]
+        ProgressionEngine["ProgressionModifierEngine"]
+        WidgetSnapshot["WidgetSnapshotService"]
     end
 
     subgraph Storage ["SwiftData Persistence Layer"]
-        ModelContainer["ModelContainer"]
+        ModelContainer["ALIVEModelContainer"]
         UserProfile["UserProfile"]
         Course["Course"]
         Quest["Quest"]
@@ -184,21 +180,22 @@ flowchart TD
         StudySession["StudySession"]
     end
 
-    DashboardView --> ProfileVM
-    AttendanceView --> AttendanceVM
     FocusView --> FocusVM
+    QuestView --> QuestVM
     SkillTreeView --> SkillTreeVM
-    AuthView --> AuthVM
 
-    AuthVM --> AuthService
-    ProfileVM --> XPEngine
-    AttendanceVM --> Course
     FocusVM --> XPEngine
-    FocusVM --> WatchManager
-    
+    FocusVM --> ProgressionEngine
+    FocusVM --> WidgetSnapshot
+    QuestVM --> QuestEngine
+    QuestVM --> WidgetSnapshot
+    DashboardView --> DailyQuestService
+    WellnessView --> UserProfile
+
     XPEngine --> UserProfile
     QuestEngine --> Quest
-    
+    ProgressionEngine --> SkillNode
+
     ModelContainer --- UserProfile
     ModelContainer --- Course
     ModelContainer --- Quest
@@ -211,57 +208,21 @@ flowchart TD
 ### Directory Structure
 
 ```
-major/
-└── ALIVE/
-    ├── App/
-    │   └── ALIVEApp.swift                  # App entry point & SwiftData Container configuration
-    ├── Models/                             # SwiftData Persistent @Model Definitions
-    │   ├── UserProfile.swift               # Hero stats, level progression, XP calculations
-    │   ├── CharacterClass.swift            # Archetypes, base attributes, theme palettes
-    │   ├── Course.swift                    # Course metadata & attendance safety logic
-    │   ├── Quest.swift                     # Daily/Weekly quest definitions & XP yields
-    │   ├── SkillNode.swift                 # Node dependency links, unlock state, perks
-    │   ├── StudySession.swift              # Historical focus session records
-    │   ├── Achievement.swift               # Badge vault entries & rarity tiers
-    │   └── XPTransaction.swift             # Transaction log of experience gains
-    ├── Services/                           # Core Business Engines
-    │   ├── AuthService.swift               # Biometric authentication & user session state
-    │   ├── XPEngine.swift                  # Level-up thresholds & multiplier formulas
-    │   ├── QuestEngine.swift               # Quest seed generation & completion handler
-    │   ├── MockDataGenerator.swift         # Demo data initializer for fresh installations
-    │   └── HapticManager.swift             # iOS haptic engine feedback generator
-    ├── ViewModels/                         # SwiftUI State Management Layer
-    │   ├── ProfileViewModel.swift          # Hero HUD state & stat point distribution
-    │   ├── AttendanceViewModel.swift       # Course list state & safe bunk calculations
-    │   ├── FocusViewModel.swift            # Timer countdown logic & Live Activity state
-    │   ├── QuestViewModel.swift            # Quest filtering & completion handlers
-    │   ├── SkillTreeViewModel.swift        # Skill canvas unlock logic & node trees
-    │   ├── AnalyticsViewModel.swift        # Historical study performance aggregations
-    │   └── AuthViewModel.swift             # Character creation wizard & authentication state
-    ├── Views/                              # UI Presentation Layer
-    │   ├── Dashboard/                      # Character HUD, Level Up Modals, XP bar
-    │   ├── Academics/                      # Course attendance cards & bunk status
-    │   ├── Focus/                          # Focus session timers & analytics views
-    │   ├── Quests/                         # Quest list, filter tabs, completion cards
-    │   ├── SkillTree/                      # Interactive node canvas & detail views
-    │   ├── Achievements/                   # Badge vault grid & unlock overlays
-    │   ├── Auth/                           # Sign-in & character creation flow
-    │   └── MainTabView.swift               # Primary tab bar navigation
-    ├── Theme/                              # Design System & Styling
-    │   ├── ColorPalette.swift              # Neon cyberpunk color tokens
-    │   ├── GlassCardStyle.swift            # Glassmorphism view modifiers
-    │   └── ParticleEffectView.swift        # Canvas particle effect render engine
-    ├── Extension/                          # System Framework Extensions
-    │   ├── LiveActivity/                   # ActivityKit focus timer attributes
-    │   └── Widgets/                        # WidgetKit lockscreen/homescreen widgets
-    ├── WatchApp/                           # watchOS App Target
-    │   ├── WatchConnectivityManager.swift  # Phone-to-Watch WCSession delegate
-    │   └── WatchDashboardView.swift        # watchOS interface
-    └── Tests/                              # Automated Unit Test Suite
-        ├── AttendanceCalculatorTests.swift # Attendance algorithm verification
-        ├── QuestEngineTests.swift          # Quest reward & progress tests
-        ├── XPEngineTests.swift             # XP progression & jump calculations
-        └── SwiftDataModelTests.swift       # SwiftData container & schema tests
+alive/
+├── ALIVE/
+│   ├── App/                    # App entry, router, app delegate, model container
+│   ├── Intents/                # App Intents and Shortcuts
+│   ├── Models/                 # SwiftData models
+│   ├── Services/               # XP, quest, health, notification, widget, and activity services
+│   ├── Shared/                 # Live Activity and widget data contracts
+│   ├── Theme/                  # Color tokens, glass styling, and particle effect
+│   ├── ViewModels/             # Screen-level state and business coordination
+│   ├── Views/                  # Dashboard, quests, focus, wellness, academics, skills, badges
+│   ├── Extensions/ALIVEWidgets/ # WidgetKit and Dynamic Island extension target
+│   └── Tests/                  # SwiftData and gameplay regression tests
+├── alive.xcodeproj/            # ALIVE, ALIVEWidgets, and ALIVETests targets
+├── Package.swift                # Fast SwiftPM test harness
+└── generate_xcodeproj.rb       # Reproducible project-target generator
 ```
 
 ---
@@ -325,10 +286,9 @@ $$\text{Required XP}(L) = \left\lfloor 100.0 \times L^{1.4} \right\rfloor$$
 | Requirement | Minimum Version | Recommended |
 | :--- | :--- | :--- |
 | **macOS** | Sonoma 14.0 | Sequoia 15.0+ |
-| **Xcode** | Xcode 15.0 | Xcode 15.4+ |
-| **Swift Toolchain** | Swift 5.9 | Swift 5.10 |
-| **iOS Deployment Target** | iOS 17.0 | iOS 17.4+ |
-| **watchOS Target** | watchOS 10.0 | watchOS 10.4+ |
+| **Xcode** | Xcode 26.0 | Latest Xcode 26 release |
+| **Swift Toolchain** | Swift 5.9 language mode | Toolchain bundled with Xcode |
+| **iOS Deployment Target** | iOS 26.5 | Latest iOS runtime |
 
 ---
 
@@ -336,14 +296,13 @@ $$\text{Required XP}(L) = \left\lfloor 100.0 \times L^{1.4} \right\rfloor$$
 
 1. **Clone Repository**:
    ```bash
-   git clone https://github.com/your-username/major.git
-   cd major
+   git clone <your-repository-url>
+   cd alive
    ```
 
 2. **Open in Xcode**:
    ```bash
-   open ALIVE/App/ALIVEApp.swift
-   # Or open the project root in Xcode
+   open alive.xcodeproj
    ```
 
 3. **Configure Target Scheme**:
@@ -352,7 +311,7 @@ $$\text{Required XP}(L) = \left\lfloor 100.0 \times L^{1.4} \right\rfloor$$
 
 4. **Compile & Run**:
    - Press `Cmd + R` to build and launch the app.
-   - *Note*: On initial launch, [`MockDataGenerator`](ALIVE/Services/MockDataGenerator.swift) seeds demonstration courses, quests, and character profile automatically.
+   - Create a hero for a blank profile, or choose **Demo Mode** on the welcome screen for seeded hackathon data.
 
 ---
 
@@ -361,8 +320,11 @@ $$\text{Required XP}(L) = \left\lfloor 100.0 \times L^{1.4} \right\rfloor$$
 ALIVE features automated unit test coverage across key business components in `ALIVE/Tests`.
 
 ```bash
-# Run unit test suite in Xcode
-Cmd + U
+# Fast domain-level test suite
+swift test
+
+# Or run the ALIVETests target in Xcode
+# Cmd + U
 ```
 
 ### Test Suite Overview
@@ -370,9 +332,11 @@ Cmd + U
 | Test File | Target Under Test | Tested Behaviors & Assertions |
 | :--- | :--- | :--- |
 | [`AttendanceCalculatorTests.swift`](ALIVE/Tests/AttendanceCalculatorTests.swift) | `Course` | Validates safe bunk ceiling, negative margin bounds, and recovery class steps. |
-| [`QuestEngineTests.swift`](ALIVE/Tests/QuestEngineTests.swift) | `QuestEngine` | Verifies daily/weekly quest reward scaling and completion transitions. |
-| [`XPEngineTests.swift`](ALIVE/Tests/XPEngineTests.swift) | `XPEngine` | Tests multi-level level-ups, stat point allocation, and XP multiplier curves. |
-| [`SwiftDataModelTests.swift`](ALIVE/Tests/SwiftDataModelTests.swift) | `ModelContainer` | Verifies in-memory SwiftData container initialization & schema relationships. |
+| [`FocusSessionTests.swift`](ALIVE/Tests/FocusSessionTests.swift) | `FocusViewModel` | Guards completion-only rewards and persists streak-adjusted focus XP. |
+| [`QuestProgressEngineTests.swift`](ALIVE/Tests/QuestProgressEngineTests.swift) | `QuestProgressEngine` | Verifies one-time quest rewards, stats, and transactions. |
+| [`DailyQuestServiceTests.swift`](ALIVE/Tests/DailyQuestServiceTests.swift) | `DailyQuestService` | Covers same-day idempotence and next-day replacement/streak behavior. |
+| [`ProgressionModifierEngineTests.swift`](ALIVE/Tests/ProgressionModifierEngineTests.swift) | `ProgressionModifierEngine` | Verifies focus perk stacking and duration thresholds. |
+| [`ALIVERouterTests.swift`](ALIVE/Tests/ALIVERouterTests.swift) | `ALIVERouter` | Covers custom URL and App Intent route consumption. |
 
 ---
 

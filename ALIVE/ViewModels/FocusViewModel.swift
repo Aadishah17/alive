@@ -32,6 +32,7 @@ public final class FocusViewModel: ObservableObject {
     public var isPaused: Bool { status == .paused }
     public var isClaimable: Bool { status == .completed }
     public var isReadyToClaimXP: Bool { isClaimable }
+    public var canAdjustDuration: Bool { status == .idle }
     public var elapsedSeconds: Int { max(0, (targetMinutes * 60) - timeRemainingSeconds) }
     public var baseRewardEstimate: Int {
         Self.xpAward(forMinutes: targetMinutes, focusScore: focusScore)
@@ -88,7 +89,7 @@ public final class FocusViewModel: ObservableObject {
     }
 
     public func setDuration(minutes: Int) {
-        guard minutes > 0, status != .running else {
+        guard minutes > 0, canAdjustDuration else {
             return
         }
 
@@ -101,6 +102,10 @@ public final class FocusViewModel: ObservableObject {
     }
 
     public func completeTimerSession() {
+        guard status == .running else {
+            return
+        }
+
         timer?.invalidate()
         timer = nil
         timeRemainingSeconds = 0

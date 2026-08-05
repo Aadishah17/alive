@@ -5,7 +5,7 @@ import SwiftData
 /// Nothing is requested until the player explicitly connects Health or enables a reminder.
 public struct WellnessView: View {
     @Query private var skills: [SkillNode]
-    @StateObject private var healthService = HealthKitService()
+    @EnvironmentObject private var healthService: HealthKitService
     @AppStorage("alive.focusReminderEnabled") private var focusReminderEnabled = false
     @AppStorage("alive.focusReminderHour") private var focusReminderHour = 19
     @State private var reminderErrorMessage: String?
@@ -22,8 +22,11 @@ public struct WellnessView: View {
 
                     MovementQuestCard(
                         stepCount: healthService.stepCount,
+                        stepGoal: healthService.dailyStepGoal,
+                        stepProgress: healthService.stepProgress,
                         isLoading: healthService.isLoading,
                         isAvailable: healthService.isHealthDataAvailable,
+                        isConnected: healthService.hasRequestedStepAccess,
                         statusMessage: healthService.statusMessage,
                         connectHealth: connectHealth,
                         refreshHealth: refreshHealth
@@ -52,7 +55,9 @@ public struct WellnessView: View {
         .navigationBarTitleDisplayMode(.inline)
         #endif
         .task {
-            await healthService.refreshToday()
+            if healthService.hasRequestedStepAccess {
+                await healthService.refreshToday()
+            }
         }
         .alert(
             "Reminder unavailable",
@@ -126,17 +131,14 @@ private struct WellnessHeader: View {
 
 private struct MovementQuestCard: View {
     let stepCount: Int
+    let stepGoal: Int
+    let stepProgress: Double
     let isLoading: Bool
     let isAvailable: Bool
+    let isConnected: Bool
     let statusMessage: String
     let connectHealth: () -> Void
     let refreshHealth: () -> Void
-
-    private let dailyStepGoal = 6_000
-
-    private var progress: Double {
-        min(Double(stepCount) / Double(dailyStepGoal), 1)
-    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -145,20 +147,20 @@ private struct MovementQuestCard: View {
                     .font(.headline)
                     .foregroundStyle(ALIVEColor.textPrimary)
                 Spacer()
-                Text("+50 XP")
+                Text("STAMINA SUPPORT")
                     .font(.caption.weight(.bold))
-                    .foregroundStyle(ALIVEColor.rpgGold)
+                    .foregroundStyle(ALIVEColor.staminaGreen)
             }
 
             HStack(alignment: .lastTextBaseline, spacing: 5) {
                 Text("\(stepCount.formatted())")
                     .font(.system(size: 34, weight: .black, design: .rounded))
-                Text("/ \(dailyStepGoal.formatted()) steps")
+                Text("/ \(stepGoal.formatted()) steps")
                     .font(.subheadline)
                     .foregroundStyle(ALIVEColor.textSecondary)
             }
 
-            ProgressView(value: progress)
+            ProgressView(value: stepProgress)
                 .tint(ALIVEColor.staminaGreen)
 
             Text(statusMessage)
@@ -166,16 +168,22 @@ private struct MovementQuestCard: View {
                 .foregroundStyle(ALIVEColor.textSecondary)
 
             HStack(spacing: 10) {
-                Button(isAvailable ? "Connect Apple Health" : "Apple Health unavailable", action: connectHealth)
-                    .buttonStyle(.borderedProminent)
-                    .tint(ALIVEColor.staminaGreen)
-                    .disabled(!isAvailable || isLoading)
+                if isConnected {
+                    Label("Apple Health connected", systemImage: "checkmark.circle.fill")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(ALIVEColor.staminaGreen)
+                } else {
+                    Button(isAvailable ? "Connect Apple Health" : "Apple Health unavailable", action: connectHealth)
+                        .buttonStyle(.borderedProminent)
+                        .tint(ALIVEColor.staminaGreen)
+                        .disabled(!isAvailable || isLoading)
+                }
 
                 Button(action: refreshHealth) {
                     Image(systemName: "arrow.clockwise")
                 }
                 .buttonStyle(.bordered)
-                .disabled(!isAvailable || isLoading)
+                .disabled(!isAvailable || !isConnected || isLoading)
                 .accessibilityLabel("Refresh Apple Health steps")
             }
         }

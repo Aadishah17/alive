@@ -4,18 +4,30 @@ import Foundation
 #if os(iOS) && canImport(HealthKit)
 import HealthKit
 
+/// The single source of truth for ALIVE's optional step-count integration.
+/// Consent is tracked locally because HealthKit intentionally does not expose
+/// a reliable read-authorization status to the app.
 @MainActor
 public final class HealthKitService: ObservableObject {
-    @Published public private(set) var stepCount: Int = 0
+    @Published public private(set) var stepCount = 0
     @Published public private(set) var isLoading = false
     @Published public private(set) var statusMessage = "Connect Apple Health to power movement quests."
     @Published public private(set) var isHealthDataAvailable: Bool
+    @Published public private(set) var hasRequestedStepAccess: Bool
 
+    public let dailyStepGoal = 5_000
+
+    private static let requestedAccessKey = "alive.health.stepAccessRequested"
     private let healthStore = HKHealthStore()
     private let stepType = HKQuantityType.quantityType(forIdentifier: .stepCount)
 
     public init() {
         isHealthDataAvailable = HKHealthStore.isHealthDataAvailable()
+        hasRequestedStepAccess = UserDefaults.standard.bool(forKey: Self.requestedAccessKey)
+    }
+
+    public var stepProgress: Double {
+        min(Double(stepCount) / Double(dailyStepGoal), 1)
     }
 
     public func requestAccess() async {
@@ -24,9 +36,14 @@ public final class HealthKitService: ObservableObject {
             return
         }
 
+        isLoading = true
+        statusMessage = "Requesting Apple Health access…"
+        defer { isLoading = false }
+
         do {
             try await healthStore.requestAuthorization(toShare: [], read: [stepType])
-            statusMessage = "Health access requested. Refresh to load today’s movement."
+            hasRequestedStepAccess = true
+            UserDefaults.standard.set(true, forKey: Self.requestedAccessKey)
             await refreshToday()
         } catch {
             statusMessage = "Apple Health access could not be requested."
@@ -39,14 +56,19 @@ public final class HealthKitService: ObservableObject {
             return
         }
 
+        guard hasRequestedStepAccess else {
+            statusMessage = "Connect Apple Health to load today’s movement."
+            return
+        }
+
         isLoading = true
         defer { isLoading = false }
 
         do {
             stepCount = try await fetchTodayStepCount(for: stepType)
-            statusMessage = stepCount > 0
-                ? "Your movement is helping build today’s stamina."
-                : "No steps yet today. A short walk can complete your movement quest."
+            statusMessage = stepCount >= dailyStepGoal
+                ? "Movement quest ready—claim your Stamina Maintenance quest from the board."
+                : "Your movement is helping build today’s stamina."
         } catch {
             statusMessage = "Unable to load today’s steps. Check Apple Health permissions."
         }
@@ -81,12 +103,17 @@ public final class HealthKitService: ObservableObject {
 #else
 @MainActor
 public final class HealthKitService: ObservableObject {
-    @Published public private(set) var stepCount: Int = 0
+    @Published public private(set) var stepCount = 0
     @Published public private(set) var isLoading = false
     @Published public private(set) var statusMessage = "Apple Health is available in the iPhone app."
     @Published public private(set) var isHealthDataAvailable = false
+    @Published public private(set) var hasRequestedStepAccess = false
+
+    public let dailyStepGoal = 5_000
 
     public init() {}
+
+    public var stepProgress: Double { 0 }
 
     public func requestAccess() async {}
 
