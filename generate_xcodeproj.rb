@@ -33,9 +33,6 @@ def configure_app_target(target, bundle_identifier:, info_plist:, entitlements: 
   end
 end
 
-# `xcodeproj`'s convenience helper can bake its own "last known" SDK number
-# into framework paths. SDKROOT-relative references keep this project portable
-# across Xcode releases instead of pointing at an obsolete SDK directory.
 def add_ios_system_framework(target, name)
   group = target.project.frameworks_group['iOS'] || target.project.frameworks_group.new_group('iOS')
   path = "System/Library/Frameworks/#{name}.framework"
@@ -78,11 +75,11 @@ app_sources.each do |path|
   app_target.add_file_references([project.main_group.new_file(path)])
 end
 
-# assets_path = File.join(app_root, 'Assets.xcassets')
-# if File.exist?(assets_path)
-#   assets_ref = project.main_group.new_file(assets_path)
-#   app_target.resources_build_phase.add_file_reference(assets_ref)
-# end
+assets_path = File.join(app_root, 'Assets.xcassets')
+if File.exist?(assets_path)
+  assets_ref = project.main_group.new_file(assets_path)
+  app_target.resources_build_phase.add_file_reference(assets_ref)
+end
 
 widget_target = project.new_target(:app_extension, 'ALIVEWidgets', :ios, '17.0')
 configure_app_target(

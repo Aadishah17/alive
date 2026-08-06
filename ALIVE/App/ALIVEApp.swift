@@ -49,7 +49,33 @@ struct AppRootView: View {
             if let seeded = try? modelContext.fetch(FetchDescriptor<UserProfile>()).first {
                 authService.loginMockUser(profile: seeded)
             }
+            applyLaunchArgumentRouting()
             router.consumePendingIntentRoute()
+        }
+    }
+    
+    private func applyLaunchArgumentRouting() {
+        let args = ProcessInfo.processInfo.arguments
+        if args.contains("-AutoTabMode") {
+            Task { @MainActor in
+                let sequence: [ALIVETab] = [.today, .quests, .skills, .academics, .focus, .badges]
+                for tab in sequence {
+                    router.selectedTab = tab
+                    try? await Task.sleep(for: .seconds(3.0))
+                }
+            }
+        } else if args.contains("-TabToday") {
+            router.selectedTab = .today
+        } else if args.contains("-TabQuests") {
+            router.selectedTab = .quests
+        } else if args.contains("-TabSkills") {
+            router.selectedTab = .skills
+        } else if args.contains("-TabAcademics") {
+            router.selectedTab = .academics
+        } else if args.contains("-TabFocus") {
+            router.selectedTab = .focus
+        } else if args.contains("-TabBadges") {
+            router.selectedTab = .badges
         }
     }
 }

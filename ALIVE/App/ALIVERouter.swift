@@ -73,7 +73,22 @@ public final class ALIVERouter {
     public var selectedTab: ALIVETab = .today
     public private(set) var focusStartRequestID: UUID?
 
-    public init() {}
+    public init() {
+        let args = ProcessInfo.processInfo.arguments
+        if args.contains("-TabQuests") {
+            selectedTab = .quests
+        } else if args.contains("-TabSkills") {
+            selectedTab = .skills
+        } else if args.contains("-TabAcademics") {
+            selectedTab = .academics
+        } else if args.contains("-TabFocus") {
+            selectedTab = .focus
+        } else if args.contains("-TabBadges") {
+            selectedTab = .badges
+        } else if args.contains("-TabToday") {
+            selectedTab = .today
+        }
+    }
 
     public func route(to route: ALIVEIntentRoute) {
         selectedTab = route.tab

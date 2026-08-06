@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CBB9BB63C11215F0F6B5DBA3"
+               BlueprintIdentifier = "D4517682B965DE29124DF53D"
                BuildableName = "ALIVE.app"
                BlueprintName = "ALIVE"
                ReferencedContainer = "container:alive.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "133DD164ABB9383EBD3AF139"
+               BlueprintIdentifier = "21002281528A89B126C7A7CF"
                BuildableName = "ALIVETests.xctest"
                BlueprintName = "ALIVETests"
                ReferencedContainer = "container:alive.xcodeproj">
@@ -44,7 +44,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CBB9BB63C11215F0F6B5DBA3"
+            BlueprintIdentifier = "D4517682B965DE29124DF53D"
             BuildableName = "ALIVE.app"
             BlueprintName = "ALIVE"
             ReferencedContainer = "container:alive.xcodeproj">
@@ -55,7 +55,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "133DD164ABB9383EBD3AF139"
+               BlueprintIdentifier = "21002281528A89B126C7A7CF"
                BuildableName = "ALIVETests.xctest"
                BlueprintName = "ALIVETests"
                ReferencedContainer = "container:alive.xcodeproj">
@@ -77,7 +77,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CBB9BB63C11215F0F6B5DBA3"
+            BlueprintIdentifier = "D4517682B965DE29124DF53D"
             BuildableName = "ALIVE.app"
             BlueprintName = "ALIVE"
             ReferencedContainer = "container:alive.xcodeproj">
@@ -94,7 +94,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CBB9BB63C11215F0F6B5DBA3"
+            BlueprintIdentifier = "D4517682B965DE29124DF53D"
             BuildableName = "ALIVE.app"
             BlueprintName = "ALIVE"
             ReferencedContainer = "container:alive.xcodeproj">
