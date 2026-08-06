@@ -25,6 +25,14 @@ Students create a hero, earn XP through deep work focus sessions and daily quest
 
 ---
 
+## 🎥 App Video Demonstration
+
+https://github.com/Aadishah17/alive/assets/demo_walkthrough.mp4
+
+> *Watch the full video demonstration above showing hero progression, quest completion, skill tree unlocking, bunk margin calculation, and focus session timer.*
+
+---
+
 ## 📱 App Showcase
 
 | 🛡️ Hero Dashboard & Heatmap | 📜 Quest Board | 🌳 Skill Tree Canvas |
