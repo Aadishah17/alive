@@ -6,6 +6,7 @@ public struct MainTabView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.scenePhase) private var scenePhase
     @StateObject private var healthService = HealthKitService()
+    @Query(filter: #Predicate<Quest> { !$0.isCompleted }) private var pendingQuests: [Quest]
     
     public init() {}
     
@@ -28,6 +29,7 @@ public struct MainTabView: View {
                 Label("Quests", systemImage: "scroll.fill")
             }
             .tag(ALIVETab.quests)
+            .badge(pendingQuests.count > 0 ? pendingQuests.count : 0)
             
             NavigationStack {
                 SkillTreeCanvasView()

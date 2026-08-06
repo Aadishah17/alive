@@ -7,6 +7,8 @@ public struct QuestCardView: View {
     let profile: UserProfile
     @StateObject private var viewModel = QuestViewModel()
     @State private var showParticleFx: Bool = false
+    @State private var checkmarkScale: CGFloat = 0
+    @State private var cardAppeared = false
 
     private var awardedXP: Int {
         Int(Double(quest.xpReward) * XPEngine.streakMultiplier(forStreak: profile.streakDays))
@@ -22,9 +24,12 @@ public struct QuestCardView: View {
                         profile: profile,
                         context: modelContext
                     )
-                    showParticleFx = didComplete
-
+                    
                     if didComplete {
+                        showParticleFx = true
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.5)) {
+                            checkmarkScale = 1
+                        }
                         Task { @MainActor in
                             try? await Task.sleep(for: .milliseconds(1_300))
                             guard !Task.isCancelled else { return }
@@ -39,9 +44,14 @@ public struct QuestCardView: View {
                         .frame(width: 28, height: 28)
                     
                     if quest.isCompleted {
+                        Circle()
+                            .fill(ALIVEColor.staminaGreen.opacity(0.15))
+                            .frame(width: 28, height: 28)
+                        
                         Image(systemName: "checkmark")
                             .font(.system(size: 14, weight: .bold))
                             .foregroundColor(ALIVEColor.staminaGreen)
+                            .scaleEffect(checkmarkScale)
                     }
                 }
             }
@@ -62,8 +72,8 @@ public struct QuestCardView: View {
                         .font(.system(size: 8, weight: .bold))
                         .padding(.horizontal, 6)
                         .padding(.vertical, 2)
-                        .background(ALIVEColor.glassSurface)
-                        .foregroundColor(ALIVEColor.rpgGold)
+                        .background(difficultyColor.opacity(0.12))
+                        .foregroundColor(difficultyColor)
                         .cornerRadius(6)
                 }
                 
@@ -101,8 +111,19 @@ public struct QuestCardView: View {
             }
         )
         .glassCard(borderColor: quest.isCompleted ? ALIVEColor.staminaGreen.opacity(0.4) : ALIVEColor.neonCyan.opacity(0.2))
+        .opacity(cardAppeared ? 1 : 0)
+        .offset(x: cardAppeared ? 0 : 20)
+        .onAppear {
+            // Set initial checkmark state for already-completed quests
+            if quest.isCompleted {
+                checkmarkScale = 1
+            }
+            withAnimation(.spring(response: 0.4, dampingFraction: 0.8).delay(0.1)) {
+                cardAppeared = true
+            }
+        }
         .alert(
-            "Couldn’t claim this quest",
+            "Couldn't claim this quest",
             isPresented: Binding(
                 get: { viewModel.completionErrorMessage != nil },
                 set: { if !$0 { viewModel.completionErrorMessage = nil } }
@@ -113,6 +134,15 @@ public struct QuestCardView: View {
             }
         } message: {
             Text(viewModel.completionErrorMessage ?? "Please try again.")
+        }
+    }
+    
+    private var difficultyColor: Color {
+        switch quest.difficulty {
+        case .easy: return ALIVEColor.staminaGreen
+        case .medium: return ALIVEColor.rpgGold
+        case .hard: return ALIVEColor.xpViolet
+        case .legendary: return ALIVEColor.healthRed
         }
     }
 }

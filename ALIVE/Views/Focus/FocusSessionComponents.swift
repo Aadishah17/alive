@@ -28,6 +28,8 @@ struct FocusTimerRing: View {
     let timeRemainingSeconds: Int
     let targetMinutes: Int
     let status: FocusSessionStatus
+    @State private var breathePulse = false
+    @State private var completionGlow = false
 
     private var progress: Double {
         let totalSeconds = max(1, targetMinutes * 60)
@@ -46,35 +48,87 @@ struct FocusTimerRing: View {
             return "SESSION COMPLETE"
         }
     }
+    
+    private var statusColor: Color {
+        switch status {
+        case .idle: return ALIVEColor.rpgGold
+        case .running: return ALIVEColor.neonCyan
+        case .paused: return ALIVEColor.rpgGold
+        case .completed: return ALIVEColor.staminaGreen
+        }
+    }
 
     var body: some View {
         ZStack {
+            // Outer glow ring for active/completed states
+            Circle()
+                .stroke(statusColor.opacity(status == .running ? (breathePulse ? 0.2 : 0.05) : (status == .completed ? (completionGlow ? 0.4 : 0.1) : 0)), lineWidth: 28)
+                .frame(width: 268, height: 268)
+                .blur(radius: 8)
+            
+            // Background track
             Circle()
                 .stroke(ALIVEColor.glassSurface, lineWidth: 18)
 
+            // Progress arc
             Circle()
                 .trim(from: 0, to: progress)
                 .stroke(
-                    ALIVEColor.xpGradient,
+                    status == .completed
+                        ? LinearGradient(colors: [ALIVEColor.staminaGreen, ALIVEColor.neonCyan], startPoint: .leading, endPoint: .trailing)
+                        : ALIVEColor.xpGradient,
                     style: StrokeStyle(lineWidth: 18, lineCap: .round)
                 )
                 .rotationEffect(.degrees(-90))
                 .animation(.smooth, value: progress)
+            
+            // Tick marks on the ring
+            ForEach(0..<12, id: \.self) { i in
+                Rectangle()
+                    .fill(ALIVEColor.textMuted.opacity(0.15))
+                    .frame(width: 1, height: 8)
+                    .offset(y: -120)
+                    .rotationEffect(.degrees(Double(i) * 30))
+            }
 
             VStack(spacing: 8) {
                 Text(Self.formattedTime(timeRemainingSeconds))
                     .font(.system(size: 46, weight: .black, design: .rounded))
                     .monospacedDigit()
                     .foregroundStyle(ALIVEColor.textPrimary)
+                    .scaleEffect(status == .completed ? (completionGlow ? 1.05 : 1.0) : 1.0)
 
                 Text(statusLabel)
                     .font(.system(size: 11, weight: .bold, design: .monospaced))
-                    .foregroundStyle(status == .completed ? ALIVEColor.staminaGreen : ALIVEColor.rpgGold)
+                    .foregroundStyle(statusColor)
+                
+                if status == .completed {
+                    Image(systemName: "checkmark.seal.fill")
+                        .font(.title2)
+                        .foregroundStyle(ALIVEColor.staminaGreen)
+                        .transition(.scale.combined(with: .opacity))
+                }
             }
         }
         .frame(width: 252, height: 252)
         .accessibilityElement(children: .combine)
         .accessibilityLabel("Focus timer, \(Self.formattedTime(timeRemainingSeconds)) remaining, \(statusLabel.lowercased())")
+        .onChange(of: status) { _, newStatus in
+            if newStatus == .running {
+                withAnimation(.easeInOut(duration: 2).repeatForever(autoreverses: true)) {
+                    breathePulse = true
+                }
+            } else {
+                breathePulse = false
+            }
+            if newStatus == .completed {
+                withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
+                    completionGlow = true
+                }
+            } else {
+                completionGlow = false
+            }
+        }
     }
 
     private static func formattedTime(_ seconds: Int) -> String {
@@ -111,7 +165,8 @@ private struct FocusDurationButtonStyle: ButtonStyle {
             .padding(.vertical, 10)
             .foregroundStyle(isSelected ? Color.white : ALIVEColor.textSecondary)
             .background(isSelected ? ALIVEColor.xpViolet : ALIVEColor.glassSurface, in: Capsule())
-            .opacity(configuration.isPressed ? 0.72 : 1)
+            .scaleEffect(configuration.isPressed ? 0.93 : 1)
+            .animation(.spring(response: 0.2), value: configuration.isPressed)
     }
 }
 
@@ -122,6 +177,7 @@ struct FocusControlBar: View {
     let pause: () -> Void
     let reset: () -> Void
     let claim: () -> Void
+    @State private var claimPulse = false
 
     var body: some View {
         HStack(spacing: 12) {
@@ -141,7 +197,14 @@ struct FocusControlBar: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(ALIVEColor.rpgGold)
+                .scaleEffect(claimPulse ? 1.03 : 1.0)
+                .shadow(color: ALIVEColor.rpgGold.opacity(claimPulse ? 0.4 : 0.1), radius: claimPulse ? 8 : 2)
                 .accessibilityIdentifier("focus.claimReward")
+                .onAppear {
+                    withAnimation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true)) {
+                        claimPulse = true
+                    }
+                }
             }
         }
         .controlSize(.large)

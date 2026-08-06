@@ -23,7 +23,7 @@ public final class WatchConnectivityManager: NSObject, ObservableObject, WCSessi
         let data: [String: Any] = [
             "level": level,
             "safeBunks": safeBunks,
-            "timestamp": Date().timeIntervalSince1960
+            "timestamp": Date().timeIntervalSince1970
         ]
         WCSession.default.sendMessage(data, replyHandler: nil)
     }

@@ -19,6 +19,7 @@ struct ALIVEApp: App {
 
 struct AppRootView: View {
     @EnvironmentObject private var authService: AuthService
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.scenePhase) private var scenePhase
     @State private var router = ALIVERouter()
     
@@ -33,7 +34,7 @@ struct AppRootView: View {
             }
         }
         .environment(router)
-        .preferredColorScheme(.dark)
+        .preferredColorScheme(.light)
         .onOpenURL { router.handle(url: $0) }
         .onReceive(NotificationCenter.default.publisher(for: ALIVEIntentRouteStore.didRequestRoute)) { _ in
             router.consumePendingIntentRoute()
@@ -44,6 +45,10 @@ struct AppRootView: View {
             }
         }
         .task {
+            MockDataGenerator.seedInitialData(context: modelContext)
+            if let seeded = try? modelContext.fetch(FetchDescriptor<UserProfile>()).first {
+                authService.loginMockUser(profile: seeded)
+            }
             router.consumePendingIntentRoute()
         }
     }

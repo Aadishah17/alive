@@ -1,23 +1,23 @@
 import SwiftUI
 
 public enum ALIVEColor {
-    // Minimalist Light Backgrounds
-    public static let backgroundDark = Color(red: 0.97, green: 0.98, blue: 0.99) // #F8FAFC Soft off-white canvas
+    // Crisp Light Backgrounds
+    public static let backgroundDark = Color(red: 0.97, green: 0.98, blue: 0.99) // #F8FAFC Canvas
     public static let cardBackground = Color.white
-    public static let glassSurface = Color(red: 0.93, green: 0.95, blue: 0.98) // #EEF2F6 Soft light slate
+    public static let glassSurface = Color(red: 0.94, green: 0.96, blue: 0.98) // #F1F5F9 Light Slate
     
-    // Typography Colors
-    public static let textPrimary = Color(red: 0.06, green: 0.09, blue: 0.16) // #0F172A Dark Slate
-    public static let textSecondary = Color(red: 0.39, green: 0.45, blue: 0.55) // #64748B Slate Gray
+    // High-Contrast Light Mode Typography
+    public static let textPrimary = Color(red: 0.06, green: 0.09, blue: 0.16) // #0F172A Sharp Slate Dark
+    public static let textSecondary = Color(red: 0.28, green: 0.34, blue: 0.44) // #475569 Slate Gray
     public static let textMuted = Color(red: 0.58, green: 0.64, blue: 0.72) // #94A3B8 Caption Gray
     
-    // Minimalist Vibrant Accents
-    public static let neonCyan = Color(red: 0.14, green: 0.44, blue: 0.96) // #2470F5 Royal Indigo Blue
-    public static let rpgGold = Color(red: 0.85, green: 0.48, blue: 0.02) // #D97A02 Warm Honey Gold
-    public static let xpViolet = Color(red: 0.48, green: 0.23, blue: 0.93) // #7A3BF0 Deep Violet
-    public static let healthRed = Color(red: 0.93, green: 0.23, blue: 0.23) // #EF3B3B Coral Red
-    public static let staminaGreen = Color(red: 0.05, green: 0.65, blue: 0.43) // #0DA66E Emerald Green
-    public static let manaBlue = Color(red: 0.01, green: 0.52, blue: 0.78) // #0384C7 Sky Blue
+    // Vibrant Accents tailored for Light Canvas
+    public static let neonCyan = Color(red: 0.09, green: 0.45, blue: 0.96) // #1773F6 Vivid Royal Blue
+    public static let rpgGold = Color(red: 0.85, green: 0.47, blue: 0.02) // #D97706 Amber Gold
+    public static let xpViolet = Color(red: 0.49, green: 0.23, blue: 0.93) // #7C3AED Electric Violet
+    public static let healthRed = Color(red: 0.88, green: 0.11, blue: 0.28) // #E11D48 Rose Red
+    public static let staminaGreen = Color(red: 0.02, green: 0.59, blue: 0.41) // #059669 Emerald Green
+    public static let manaBlue = Color(red: 0.01, green: 0.52, blue: 0.78) // #0284C7 Sky Blue
     
     // Gradients
     public static let xpGradient = LinearGradient(
@@ -33,7 +33,7 @@ public enum ALIVEColor {
     )
     
     public static let cardBorderGradient = LinearGradient(
-        colors: [neonCyan.opacity(0.3), xpViolet.opacity(0.1)],
+        colors: [neonCyan.opacity(0.25), xpViolet.opacity(0.15)],
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )

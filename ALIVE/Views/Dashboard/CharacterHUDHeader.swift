@@ -3,12 +3,19 @@ import SwiftUI
 public struct CharacterHUDHeader: View {
     let profile: UserProfile
     let onAllocateTap: () -> Void
+    @State private var xpGlowPulse = false
+    @State private var shimmerOffset: CGFloat = -200
+    
+    /// If XP progress is above 80%, we enable a pulsing glow to build excitement.
+    private var isCloseToLevelUp: Bool {
+        profile.xpProgressFraction >= 0.8
+    }
     
     public var body: some View {
         VStack(spacing: 16) {
             // Top Row: Avatar + Username + Class + Streak
             HStack(spacing: 14) {
-                // Avatar Frame
+                // Avatar Frame with subtle glow
                 ZStack {
                     Circle()
                         .fill(profile.characterClass.themeColor.opacity(0.2))
@@ -22,6 +29,7 @@ public struct CharacterHUDHeader: View {
                         .font(.system(size: 30))
                         .foregroundColor(profile.characterClass.themeColor)
                 }
+                .shadow(color: profile.characterClass.themeColor.opacity(0.2), radius: 8)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
@@ -30,6 +38,7 @@ public struct CharacterHUDHeader: View {
                             .fontWeight(.black)
                             .foregroundColor(ALIVEColor.textPrimary)
                         
+                        // Level badge with shimmer
                         Text("LVL \(profile.level)")
                             .font(.system(size: 11, weight: .heavy))
                             .padding(.horizontal, 8)
@@ -37,6 +46,21 @@ public struct CharacterHUDHeader: View {
                             .background(ALIVEColor.goldGradient)
                             .foregroundColor(.white)
                             .cornerRadius(8)
+                            .overlay(
+                                GeometryReader { geo in
+                                    Rectangle()
+                                        .fill(
+                                            LinearGradient(
+                                                colors: [.clear, .white.opacity(0.3), .clear],
+                                                startPoint: .leading,
+                                                endPoint: .trailing
+                                            )
+                                        )
+                                        .frame(width: 30)
+                                        .offset(x: shimmerOffset)
+                                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                                }
+                            )
                     }
                     
                     Text(profile.characterClass.rawValue)
@@ -70,7 +94,7 @@ public struct CharacterHUDHeader: View {
                 )
             }
             
-            // Middle Row: XP Progress Bar
+            // Middle Row: XP Progress Bar with pulsing glow
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
                     Text("XP PROGRESS")
@@ -93,10 +117,23 @@ public struct CharacterHUDHeader: View {
                         Capsule()
                             .fill(ALIVEColor.xpGradient)
                             .frame(width: max(0, min(geo.size.width * CGFloat(profile.xpProgressFraction), geo.size.width)), height: 12)
-                            .shadow(color: ALIVEColor.neonCyan.opacity(0.3), radius: 4, x: 0, y: 0)
+                            .shadow(
+                                color: isCloseToLevelUp
+                                    ? ALIVEColor.xpViolet.opacity(xpGlowPulse ? 0.6 : 0.15)
+                                    : ALIVEColor.neonCyan.opacity(0.3),
+                                radius: isCloseToLevelUp ? (xpGlowPulse ? 10 : 4) : 4,
+                                x: 0, y: 0
+                            )
                     }
                 }
                 .frame(height: 12)
+                
+                if isCloseToLevelUp {
+                    Text("ALMOST THERE — LEVEL UP IS WITHIN REACH!")
+                        .font(.system(size: 9, weight: .bold))
+                        .foregroundColor(ALIVEColor.xpViolet)
+                        .opacity(xpGlowPulse ? 1 : 0.5)
+                }
             }
             
             // Bottom Row: Primary RPG Stat Bar & Unallocated Points Alert
@@ -124,6 +161,18 @@ public struct CharacterHUDHeader: View {
             }
         }
         .glassCard()
+        .onAppear {
+            // Shimmer animation
+            withAnimation(.easeInOut(duration: 2.5).repeatForever(autoreverses: false).delay(1)) {
+                shimmerOffset = 200
+            }
+            // XP glow pulse when close to leveling
+            if isCloseToLevelUp {
+                withAnimation(.easeInOut(duration: 1.2).repeatForever(autoreverses: true)) {
+                    xpGlowPulse = true
+                }
+            }
+        }
     }
 }
 

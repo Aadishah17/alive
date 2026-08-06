@@ -6,6 +6,7 @@ public struct AttendanceTrackerView: View {
     @Query private var courses: [Course]
     @Query private var profiles: [UserProfile]
     @StateObject private var viewModel = AttendanceViewModel()
+    @State private var appeared = false
     
     public init() {}
     
@@ -36,6 +37,8 @@ public struct AttendanceTrackerView: View {
                     }
                 }
                 .padding()
+                .opacity(appeared ? 1 : 0)
+                .offset(y: appeared ? 0 : -10)
                 
                 ScrollView {
                     VStack(spacing: 16) {
@@ -51,8 +54,14 @@ public struct AttendanceTrackerView: View {
                             .padding(.top, 40)
                         } else {
                             if let profile = profiles.first {
-                                ForEach(courses) { course in
+                                ForEach(Array(courses.enumerated()), id: \.element.id) { index, course in
                                     CourseAttendanceCard(course: course, profile: profile)
+                                        .opacity(appeared ? 1 : 0)
+                                        .offset(y: appeared ? 0 : 20)
+                                        .animation(
+                                            .spring(response: 0.5, dampingFraction: 0.8).delay(Double(index) * 0.1),
+                                            value: appeared
+                                        )
                                 }
                             }
                         }
@@ -65,7 +74,7 @@ public struct AttendanceTrackerView: View {
             AddCourseSheetView(viewModel: viewModel)
         }
         .alert(
-            "Couldn’t save your update",
+            "Couldn't save your update",
             isPresented: Binding(
                 get: { viewModel.saveErrorMessage != nil },
                 set: { if !$0 { viewModel.saveErrorMessage = nil } }
@@ -81,6 +90,11 @@ public struct AttendanceTrackerView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .onAppear {
+            withAnimation(.easeOut(duration: 0.4)) {
+                appeared = true
+            }
+        }
     }
 }
 
@@ -89,6 +103,7 @@ struct CourseAttendanceCard: View {
     let course: Course
     let profile: UserProfile
     @StateObject private var viewModel = AttendanceViewModel()
+    @State private var dangerPulse = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -106,17 +121,35 @@ struct CourseAttendanceCard: View {
                 
                 Spacer()
                 
-                // Attendance Percentage Badge
-                VStack(alignment: .trailing, spacing: 2) {
-                    Text("\(String(format: "%.1f", course.currentAttendancePercentage))%")
-                        .font(.title3)
-                        .fontWeight(.black)
-                        .foregroundColor(course.isSafe ? ALIVEColor.staminaGreen : ALIVEColor.healthRed)
+                // Circular Attendance Gauge
+                ZStack {
+                    Circle()
+                        .stroke(ALIVEColor.glassSurface, lineWidth: 6)
+                        .frame(width: 56, height: 56)
                     
-                    Text("REQ: \(Int(course.minimumAttendancePercentage))%")
-                        .font(.system(size: 9, weight: .bold))
-                        .foregroundColor(ALIVEColor.textMuted)
+                    Circle()
+                        .trim(from: 0, to: min(course.currentAttendancePercentage / 100, 1))
+                        .stroke(
+                            course.isSafe ? ALIVEColor.staminaGreen : ALIVEColor.healthRed,
+                            style: StrokeStyle(lineWidth: 6, lineCap: .round)
+                        )
+                        .frame(width: 56, height: 56)
+                        .rotationEffect(.degrees(-90))
+                        .animation(.easeOut(duration: 0.8), value: course.currentAttendancePercentage)
+                    
+                    VStack(spacing: 0) {
+                        Text("\(String(format: "%.0f", course.currentAttendancePercentage))")
+                            .font(.system(size: 16, weight: .black, design: .rounded))
+                            .foregroundColor(course.isSafe ? ALIVEColor.staminaGreen : ALIVEColor.healthRed)
+                        Text("%")
+                            .font(.system(size: 8, weight: .bold))
+                            .foregroundColor(ALIVEColor.textMuted)
+                    }
                 }
+                .shadow(
+                    color: !course.isSafe ? ALIVEColor.healthRed.opacity(dangerPulse ? 0.4 : 0.1) : .clear,
+                    radius: dangerPulse ? 8 : 2
+                )
             }
             
             // Bunk Margin Indicator Banner
@@ -130,6 +163,7 @@ struct CourseAttendanceCard: View {
                 } else {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundColor(ALIVEColor.healthRed)
+                        .scaleEffect(dangerPulse ? 1.2 : 1.0)
                     Text("DANGER! Must attend next **\(course.classesNeededToRecover)** class(es)")
                         .font(.caption)
                         .foregroundColor(ALIVEColor.healthRed)
@@ -140,10 +174,16 @@ struct CourseAttendanceCard: View {
             .background(course.isSafe ? ALIVEColor.staminaGreen.opacity(0.12) : ALIVEColor.healthRed.opacity(0.15))
             .cornerRadius(8)
             
+            // Requirement label
+            Text("REQ: \(Int(course.minimumAttendancePercentage))%")
+                .font(.system(size: 9, weight: .bold))
+                .foregroundColor(ALIVEColor.textMuted)
+            
             // Quick 1-Tap Log Buttons
             HStack(spacing: 12) {
                 Button {
                     viewModel.logAttendance(course: course, attended: true, profile: profile, context: modelContext)
+                    HapticManager.shared.triggerImpact(style: .medium)
                 } label: {
                     HStack {
                         Image(systemName: "checkmark.circle.fill")
@@ -160,6 +200,7 @@ struct CourseAttendanceCard: View {
                 
                 Button {
                     viewModel.logAttendance(course: course, attended: false, profile: profile, context: modelContext)
+                    HapticManager.shared.triggerImpact(style: .light)
                 } label: {
                     HStack {
                         Image(systemName: "xmark.circle.fill")
@@ -176,6 +217,13 @@ struct CourseAttendanceCard: View {
             }
         }
         .glassCard(borderColor: course.isSafe ? ALIVEColor.neonCyan.opacity(0.2) : ALIVEColor.healthRed)
+        .onAppear {
+            if !course.isSafe {
+                withAnimation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true)) {
+                    dangerPulse = true
+                }
+            }
+        }
     }
 }
 

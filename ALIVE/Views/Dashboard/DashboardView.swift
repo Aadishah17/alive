@@ -11,6 +11,7 @@ public struct DashboardView: View {
     @Query(sort: \StudySession.date, order: .reverse) private var sessions: [StudySession]
 
     @State private var showLevelUpModal = false
+    @State private var appeared = false
 
     public init() {}
 
@@ -49,7 +50,8 @@ public struct DashboardView: View {
                         coursesAtRisk: coursesAtRisk,
                         sessions: sessions,
                         focusMinutesToday: focusMinutesToday,
-                        onShowLevelUp: { showLevelUpModal = true }
+                        onShowLevelUp: { showLevelUpModal = true },
+                        appeared: appeared
                     )
                     .padding()
                 } else {
@@ -68,5 +70,10 @@ public struct DashboardView: View {
             }
         }
         #endif
+        .onAppear {
+            withAnimation(.easeOut(duration: 0.5)) {
+                appeared = true
+            }
+        }
     }
 }
